@@ -1,0 +1,19 @@
+Package: g2r
+Title: Powerful Interactive Visualisations
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "John",
+           family = "Coene",
+           role = c("aut", "cre"),
+           email = "jcoenep@gmail.com")
+Description: Powerful interactive visualisations.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    purrr,
+    rlang,
+    dplyr,
+    magrittr,
+    htmlwidgets
+RoxygenNote: 6.1.1
