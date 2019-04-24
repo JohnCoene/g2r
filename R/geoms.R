@@ -13,103 +13,103 @@
 #' @rdname geoms
 #' @export
 g2_bar <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "interval", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "interval", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_line <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "line", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "line", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_point <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "point", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "point", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_path <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "path", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "path", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_area <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "area", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "area", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_polygon <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "polygon", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "polygon", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_schema <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "schema", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "schema", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_edge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "edge", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "edge", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_heatmap <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "heatmap", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "heatmap", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_point_jitter <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "pointJitter", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "pointJitter", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_point_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "pointStack", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "pointStack", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_point_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "pointDodge", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "pointDodge", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
-g2_interval_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "intervalStack", inherit_aes = inherit_gaes)
+g2_bar_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data = data, chart_type = "intervalStack", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_interval_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "intervalDodge", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "intervalDodge", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
-g2_interval_symmetric <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "intervalSymmetric", inherit_aes = inherit_gaes)
+g2_bar_symmetric <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data = data, chart_type = "intervalSymmetric", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_area_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "areaStack", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "areaStack", inherit_aes = inherit_gaes)
 }
 
 #' @rdname geoms
 #' @export
 g2_schema_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
-  make_geom(g2, ..., data, chart_type = "schemaDodge", inherit_aes = inherit_gaes)
+  make_geom(g2, ..., data = data, chart_type = "schemaDodge", inherit_aes = inherit_gaes)
 }
 
 make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes = TRUE) {

@@ -11,6 +11,13 @@
 \alias{g2_edge}
 \alias{g2_heatmap}
 \alias{g2_point_jitter}
+\alias{g2_point_stack}
+\alias{g2_point_dodge}
+\alias{g2_bar_stack}
+\alias{g2_interval_dodge}
+\alias{g2_bar_symmetric}
+\alias{g2_area_stack}
+\alias{g2_schema_dodge}
 \title{Bar}
 \usage{
 g2_bar(g2, ..., data = NULL, inherit_gaes = TRUE)
@@ -32,6 +39,20 @@ g2_edge(g2, ..., data = NULL, inherit_gaes = TRUE)
 g2_heatmap(g2, ..., data = NULL, inherit_gaes = TRUE)
 
 g2_point_jitter(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_point_stack(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_point_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_bar_stack(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_interval_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_bar_symmetric(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_area_stack(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_schema_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

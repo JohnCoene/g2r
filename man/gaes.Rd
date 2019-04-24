@@ -14,3 +14,18 @@ they are so common; all other aesthetics must be named.}
 \description{
 Mapping aesthetics.
 }
+\section{Aesthetics}{
+
+\itemize{
+  \item{\code{x}, \code{y}}
+  \item{\code{size}}
+  \item{\code{color}}
+  \item{\code{shape}}
+  \item{\code{opacity}}
+  \item{\code{adjust}}
+  \item{\code{tooltip}}
+  \item{\code{label}}
+  \item{\code{style}}
+}
+}
+

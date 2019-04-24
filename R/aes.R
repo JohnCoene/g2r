@@ -6,6 +6,19 @@
 #'  variables. The names for x and y aesthetics are typically omitted because
 #'  they are so common; all other aesthetics must be named.
 #' 
+#' @section Aesthetics:
+#' \itemize{
+#'   \item{\code{x}, \code{y}}
+#'   \item{\code{size}}
+#'   \item{\code{color}}
+#'   \item{\code{shape}}
+#'   \item{\code{opacity}}
+#'   \item{\code{adjust}}
+#'   \item{\code{tooltip}}
+#'   \item{\code{label}}
+#'   \item{\code{style}}
+#' }
+#' 
 #' @export
 gaes <- function(x, y, ...) {
   exprs <- rlang::enquos(x = x, y = y, ..., .ignore_empty = "all")
