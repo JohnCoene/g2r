@@ -153,3 +153,13 @@ build_position <- function(aes){
 build_size <- function(aes){
   build_geom_method(aes, c("size"))
 }
+
+# build size()
+build_shape <- function(aes){
+  build_geom_method(aes, c("shape"))
+}
+
+# build size()
+build_label <- function(aes){
+  build_geom_method(aes, c("label"))
+}

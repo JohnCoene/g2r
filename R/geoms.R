@@ -12,7 +12,7 @@
 #' 
 #' @rdname geoms
 #' @export
-g2_bar <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+g2_interval <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
   make_geom(g2, ..., data = data, chart_type = "interval", inherit_aes = inherit_gaes)
 }
 
@@ -84,7 +84,7 @@ g2_point_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
 
 #' @rdname geoms
 #' @export
-g2_bar_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+g2_interval_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
   make_geom(g2, ..., data = data, chart_type = "intervalStack", inherit_aes = inherit_gaes)
 }
 
@@ -96,7 +96,7 @@ g2_interval_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
 
 #' @rdname geoms
 #' @export
-g2_bar_symmetric <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+g2_interval_symmetric <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
   make_geom(g2, ..., data = data, chart_type = "intervalSymmetric", inherit_aes = inherit_gaes)
 }
 

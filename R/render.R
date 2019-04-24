@@ -19,6 +19,12 @@ render_g2r <- function(g2){
       color <- build_size(aes)
       layer$methods <- .add_geom_method("color", color, layer$methods)
 
+      shape <- build_shape(aes)
+      layer$methods <- .add_geom_method("shape", shape, layer$methods)
+
+      label <- build_label(aes)
+      layer$methods <- .add_geom_method("label", label, layer$methods)
+
       # remove useless vars
       layer$mapping <- NULL
       layer$inherit_aes <- NULL
