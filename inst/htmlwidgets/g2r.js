@@ -21,10 +21,22 @@ HTMLWidgets.widget({
         chart = new G2.Chart(initialOptions);
 
         x.layers.forEach(function(layer){
+
+          // required
           view = chart.view();
           view.source(x.data);
-          eval("view." + layer.chart_type + "()").position(layer.position);
-        });
+
+          // initialise layer
+          var geom = eval("view." + layer.chart_type + "()");
+
+          console.log(layer);
+
+          // loop through methods of layer
+          layer.methods.forEach(function(method){
+            var str = "geom." + method.name + "(" + JSON.stringify(method.arg) + ")";
+            eval(str);
+          });
+        }); 
 
         if(x.render)
           chart.render() // render

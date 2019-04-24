@@ -4,9 +4,23 @@ render_g2r <- function(g2){
 
   if(length(g2$x$layers)){
     for(i in 1:length(g2$x$layers)){
-      aes <- mutate_aes(main_mapping, g2$x$layers[[i]]$mapping)
-      g2$x$layers[[i]]$position <- build_position(aes) %>% as.list
-      g2$x$layers[[i]]$mapping <- NULL
+      layer <- g2$x$layers[[i]] # extract layer
+
+      aes <- mutate_aes(main_mapping, layer$mapping, layer$inherit_aes)
+      layer$methods <- list()
+
+      position <- build_position(aes)
+      layer$methods <- .add_geom_method("position", position, layer$methods)
+
+      size <- build_size(aes)
+      layer$methods <- .add_geom_method("size", size, layer$methods)
+
+      layer$mapping <- NULL
+
+      print(layer)
+
+      layer$inherit_aes <- NULL
+      g2$x$layers[[i]] <- layer # override
     }
   }
 
@@ -14,4 +28,14 @@ render_g2r <- function(g2){
 
   g2$x$mapping <- NULL
   g2
+}
+
+.add_geom_method <- function(name, argument, layer_methods){
+
+  method <- list(name = name, arg = argument)
+
+  if(!is.null(argument))
+    layer_methods <- append(layer_methods, list(method))
+
+  return(layer_methods)
 }

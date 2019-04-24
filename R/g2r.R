@@ -13,12 +13,20 @@
 #' @import purrr
 #' @import dplyr
 #'
+#' @examples
+#' cars %>% 
+#'   g2r(gaes(speed, dist)) %>% 
+#'   g2_point()
+#' 
 #' @export
 g2r <- function(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL, height = NULL, 
   elementId = NULL) {
 
   x = list(
-    opts = list(...),
+    opts = list(
+      ...,
+      forceFit = TRUE
+    ),
     mapping = mapping,
     render = render,
     data = NULL

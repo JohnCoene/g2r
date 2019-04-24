@@ -103,28 +103,40 @@ get_aes <- function(...){
 }
 
 # mutate aesthetics
-mutate_aes <- function(main_aes = NULL, aes = NULL){
+mutate_aes <- function(main_aes = NULL, aes = NULL, inherit = TRUE){
 
-  if(is.null(aes))
+  if(is.null(aes) && isTRUE(inherit))
     return(main_aes)
 
-  combined <- append(aes, main_aes)
+  if(isTRUE(inherit)){
+    combined <- append(aes, main_aes)
+    # will remove main_aes duplicates => aes overrides
+    return(combined[!duplicated(combined)]) 
+  }
 
-  # will remove main_aes duplicates => aes overrides
-  combined[!duplicated(combined)] 
+  return(aes)
 }
 
-# build position
-build_position <- function(aes){
-  is_present <- names(aes) %in% c("x", "y")
-  names(is_present) <- 1:length(is_present)
+# build basic geom method
+build_geom_method <- function(aes, vars){
+  is_present <- names(aes) %in% vars
+  aes <- aes[is_present]
 
-  present <- is_present[is_present %in% TRUE]
-  present <- names(present)
-  indices <- as.integer(present)
+  if(!length(aes)) return(NULL)
 
-  map(aes[indices], rlang::quo_name) %>% 
-    .[order(unlist(.),decreasing=TRUE)] %>% 
+  map(aes, rlang::quo_name) %>% 
     unlist() %>% 
-    unname()
+    .[order(., decreasing = TRUE)] %>% 
+    unname() %>% 
+    as.list()
+}
+
+# build position()
+build_position <- function(aes){
+  build_geom_method(aes, c("x", "y"))
+}
+
+# build size()
+build_size <- function(aes){
+  build_geom_method(aes, c("size"))
 }

@@ -23,3 +23,9 @@ g2r(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL,
 \description{
 Initialise a g2 chart.
 }
+\examples{
+cars \%>\% 
+  g2r(gaes(speed, dist)) \%>\% 
+  g2_point()
+
+}

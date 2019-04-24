@@ -1,3 +1,5 @@
+globalVariables(c("."))
+
 get_data <- function(main_data = NULL, data = NULL){
   if(is.null(main_data) && is.null(data))
     stop("Missing data", call. = FALSE)
