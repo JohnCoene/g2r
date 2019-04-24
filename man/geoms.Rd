@@ -10,6 +10,7 @@
 \alias{g2_schema}
 \alias{g2_edge}
 \alias{g2_heatmap}
+\alias{g2_point_jitter}
 \title{Bar}
 \usage{
 g2_bar(g2, ..., data = NULL, inherit_gaes = TRUE)
@@ -29,6 +30,8 @@ g2_schema(g2, ..., data = NULL, inherit_gaes = TRUE)
 g2_edge(g2, ..., data = NULL, inherit_gaes = TRUE)
 
 g2_heatmap(g2, ..., data = NULL, inherit_gaes = TRUE)
+
+g2_point_jitter(g2, ..., data = NULL, inherit_gaes = TRUE)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

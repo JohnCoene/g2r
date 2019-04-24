@@ -9,17 +9,20 @@ render_g2r <- function(g2){
       aes <- mutate_aes(main_mapping, layer$mapping, layer$inherit_aes)
       layer$methods <- list()
 
+      # methods
       position <- build_position(aes)
       layer$methods <- .add_geom_method("position", position, layer$methods)
 
       size <- build_size(aes)
       layer$methods <- .add_geom_method("size", size, layer$methods)
 
+      color <- build_size(aes)
+      layer$methods <- .add_geom_method("color", color, layer$methods)
+
+      # remove useless vars
       layer$mapping <- NULL
-
-      print(layer)
-
       layer$inherit_aes <- NULL
+
       g2$x$layers[[i]] <- layer # override
     }
   }

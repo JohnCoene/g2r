@@ -64,6 +64,54 @@ g2_heatmap <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
   make_geom(g2, ..., data, chart_type = "heatmap", inherit_aes = inherit_gaes)
 }
 
+#' @rdname geoms
+#' @export
+g2_point_jitter <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "pointJitter", inherit_aes = inherit_gaes)
+}
+
+#' @rdname geoms
+#' @export
+g2_point_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "pointStack", inherit_aes = inherit_gaes)
+}
+
+#' @rdname geoms
+#' @export
+g2_point_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "pointDodge", inherit_aes = inherit_gaes)
+}
+
+#' @rdname geoms
+#' @export
+g2_interval_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "intervalStack", inherit_aes = inherit_gaes)
+}
+
+#' @rdname geoms
+#' @export
+g2_interval_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "intervalDodge", inherit_aes = inherit_gaes)
+}
+
+#' @rdname geoms
+#' @export
+g2_interval_symmetric <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "intervalSymmetric", inherit_aes = inherit_gaes)
+}
+
+#' @rdname geoms
+#' @export
+g2_area_stack <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "areaStack", inherit_aes = inherit_gaes)
+}
+
+#' @rdname geoms
+#' @export
+g2_schema_dodge <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
+  make_geom(g2, ..., data, chart_type = "schemaDodge", inherit_aes = inherit_gaes)
+}
+
 make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes = TRUE) {
   specs <- list(chart_type = chart_type, inherit_aes = inherit_aes)
 
