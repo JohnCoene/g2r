@@ -51,7 +51,12 @@ build_geom_method <- function(aes, vars){
 
   if(!length(aes)) return(NULL)
 
-  map(aes, rlang::quo_name) %>% 
+  map(aes, function(m){
+    if(!rlang::is_double(m) && !rlang::is_integer(m))
+      rlang::quo_name(m)
+    else
+      m
+  }) %>% 
     unlist() %>% 
     .[order(.)] %>% # for position method: x comes before y
     unname() %>% 
@@ -69,11 +74,11 @@ build_geom_method <- function(aes, vars){
   # add relevant arguments (from scales) to method
   is_relevant_scale <- name %in% names(scales)
   if(is_relevant_scale){
-    scale <- list("")
     is_relevant_to_aes <- sum(name %in% names(aes))
-    if(is_relevant_to_aes > 0)
+    if(is_relevant_to_aes > 0){
       scale <- scales[is_relevant_to_aes] %>% unlist() %>% unname()
-    arguments <- append(arguments, list(scale))
+      arguments <- append(arguments, list(scale))
+    }
   } 
 
   method <- list(name = name, args = arguments)

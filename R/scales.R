@@ -27,6 +27,18 @@ g2_scale_shape <- function(g2, shapes){
   make_scale(g2, vars = shapes, method = "shape")
 }
 
+#' Scale size
+#'
+#' Scale size.
+#' 
+#' @inheritParams geoms
+#' @param size A vector of sizes (\code{min, max}) or a JavaScript function.
+#' 
+#' @export
+g2_scale_shape <- function(g2, size){
+  make_scale(g2, vars = size, method = "shape")
+}
+
 # make scale
 make_scale <- function(g2, vars, method = "color"){
 

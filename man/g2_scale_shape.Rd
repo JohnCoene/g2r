@@ -4,13 +4,19 @@
 \alias{g2_scale_shape}
 \title{Scale shape}
 \usage{
-g2_scale_shape(g2, shapes)
+g2_scale_shape(g2, size)
+
+g2_scale_shape(g2, size)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
+
+\item{size}{A vector of sizes (\code{min, max}) or a JavaScript function.}
 
 \item{shapes}{A vector of shapes or a JavaScript function.}
 }
 \description{
 Scale shapes.
+
+Scale size.
 }
