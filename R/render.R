@@ -15,7 +15,7 @@ render_g2r <- function(g2){
       if(!is.null(layer$data))
         layer$data <- layer$data %>% 
           process_data(aes) %>% 
-          apply(1, as.list)
+          pmap(list)
 
       # methods
       for(method in method_and_aes$method){
@@ -37,7 +37,7 @@ render_g2r <- function(g2){
 
   g2$x$data <- g2$x$data %>% 
     process_data(keep_main_mapping) %>% 
-    apply(1, as.list)
+    pmap(list)
 
   g2$x$scales <- NULL
   g2$x$mapping <- NULL
@@ -52,7 +52,7 @@ build_geom_method <- function(aes, vars){
   if(!length(aes)) return(NULL)
 
   map(aes, function(m){
-    if(!rlang::is_double(m) && !rlang::is_integer(m))
+    if(rlang::is_quosure(m))
       rlang::quo_name(m)
     else
       m

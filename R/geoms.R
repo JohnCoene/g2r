@@ -123,6 +123,11 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
   if(!is.null(data))
     specs$data <- keep_data(data)
 
+  anim <- get_animation(...)
+
+  if(!is.null(anim))
+    specs$animation <- anim
+
   g2$x$layers <- append(g2$x$layers, list(specs))
   g2
 }

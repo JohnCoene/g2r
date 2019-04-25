@@ -16,5 +16,6 @@ keep_data <- function(data){
 }
 
 process_data <- function(data, aes){
+  aes <- keep(aes, rlang::is_quosure)
   select(data, !!!unname(aes))
 }

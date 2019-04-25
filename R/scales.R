@@ -35,8 +35,44 @@ g2_scale_shape <- function(g2, shapes){
 #' @param size A vector of sizes (\code{min, max}) or a JavaScript function.
 #' 
 #' @export
-g2_scale_shape <- function(g2, size){
-  make_scale(g2, vars = size, method = "shape")
+g2_scale_size <- function(g2, size){
+  make_scale(g2, vars = size, method = "size")
+}
+
+#' Scale opacity
+#'
+#' Scale opacity.
+#' 
+#' @inheritParams geoms
+#' @param opacity A JavaScript function.
+#' 
+#' @export
+g2_scale_opacity <- function(g2, opacity){
+  make_scale(g2, vars = opacity, method = "opacity")
+}
+
+#' Scale label
+#'
+#' Scale label.
+#' 
+#' @inheritParams geoms
+#' @param label A configuration list or a JavaScript funtion.
+#' 
+#' @export
+g2_scale_label <- function(g2, label){
+  make_scale(g2, vars = label, method = "label")
+}
+
+#' Scale tooltip
+#'
+#' Scale tooltip.
+#' 
+#' @inheritParams geoms
+#' @param tooltip A JavaScript function.
+#' 
+#' @export
+g2_scale_tooltip <- function(g2, tooltip){
+  make_scale(g2, vars = tooltip, method = "tooltip")
 }
 
 # make scale
