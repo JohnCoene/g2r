@@ -26,7 +26,7 @@ Initialise a \code{g2r} chart.
 }
 \examples{
 cars \%>\% 
-  g2(gaes(speed, dist)) \%>\% 
+  g2(plan(speed, dist)) \%>\% 
   fig_point()
 
 }

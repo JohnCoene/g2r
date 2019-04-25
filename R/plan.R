@@ -1,4 +1,4 @@
-#' Aesthetics
+#' Mapping
 #' 
 #' Mapping aesthetics, similar to \code{ggplot2}'s aesthetics.
 #' 
@@ -20,7 +20,7 @@
 #' }
 #' 
 #' @export
-gaes <- function(x, y, ...) {
+plan <- function(x, y, ...) {
   exprs <- rlang::enquos(x = x, y = y, ..., .ignore_empty = "all")
   aes <- new_aes(exprs, env = parent.frame())
   .construct_aesthetics(aes)

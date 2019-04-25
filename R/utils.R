@@ -15,7 +15,13 @@ keep_data <- function(data){
   return(data)
 }
 
+is_quo_sym <- function(x){
+  if(rlang::is_quosure(x) || rlang::is_symbol(x))
+    return(TRUE)
+  return(FALSE)
+}
+
 process_data <- function(data, aes){
-  aes <- keep(aes, rlang::is_quosure)
+  aes <- keep(aes, is_quo_sym)
   select(data, !!!unname(aes))
 }

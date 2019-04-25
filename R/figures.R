@@ -8,8 +8,8 @@
 #' @param inherit_gaes Whether to inherit aesthetics from \code{g2r}.
 #' 
 #' @examples
-#' cars %>% 
-#'   g2(gaes(speed, dist)) %>% 
+#' iris %>% 
+#'   g2(plan(Sepal.Length, Sepal.Width, color = Species)) %>% 
 #'   fig_point()
 #' 
 #' @name geoms

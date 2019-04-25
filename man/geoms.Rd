@@ -68,8 +68,8 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
 Figures, equivalent to \code{ggplot2}'s geometries.
 }
 \examples{
-cars \%>\% 
-  g2(gaes(speed, dist)) \%>\% 
+iris \%>\% 
+  g2(plan(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
   fig_point()
 
 }

@@ -22,7 +22,7 @@ anim <- Animation$
   appear(duration = 2000, delay = 500)
 
 iris \%>\% 
-  g2(gaes(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
+  g2(plan(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
   fig_point(anim) # pass animation to the geom
 
 }

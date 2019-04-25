@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' cars %>% 
-#'   g2(gaes(speed, dist)) %>% 
+#'   g2(plan(speed, dist)) %>% 
 #'   fig_point()
 #' 
 #' @name g2r
