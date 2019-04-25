@@ -17,5 +17,6 @@ Imports:
     rlang,
     dplyr,
     magrittr,
+    jsonlite,
     htmlwidgets
 RoxygenNote: 6.1.1

@@ -58,7 +58,7 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Any option, aesthetic (\code{\link{gaes}}), or animation (\code{\link{Animation}}).}
+\item{...}{Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).}
 
 \item{data}{A \code{data.frame} containing data to chart.}
 

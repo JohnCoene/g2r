@@ -5,6 +5,7 @@ render_g2r <- function(g2){
 
   if(length(g2$x$layers)){
     keep_main_mapping <- combine_aes(main_mapping, g2$x$layers)
+
     for(i in 1:length(g2$x$layers)){
       layer <- g2$x$layers[[i]] # extract layer
 
@@ -33,6 +34,26 @@ render_g2r <- function(g2){
 
       g2$x$layers[[i]] <- layer # override
     }
+
+    if(!is.null(g2$x$facet)){
+      each_view <- g2$x$layers[[1]]
+
+      str <- paste0("view.", each_view$chart_type, "()")
+
+      method_args <- "" 
+      for(method in 1:length(each_view$methods)){
+        method_args <- paste0(method_args, ".", 
+          each_view$methods[[method]]$name, "(", 
+          .get_method_arg(each_view$methods[[method]]$args, 1), ",", 
+          .get_method_arg(each_view$methods[[method]]$args, 2), ")")
+      }
+
+      str <- paste0("function eachView(view){", str, method_args, "}")
+      each_view <- htmlwidgets::JS(str)
+
+      g2$x$facet$opts$eachView <- each_view
+      g2$x$facet$facet <- NULL
+    }
   }
 
   g2$x$data <- g2$x$data %>% 
@@ -42,6 +63,13 @@ render_g2r <- function(g2){
   g2$x$scales <- NULL
   g2$x$mapping <- NULL
   g2
+}
+
+.get_method_arg <- function(x, i){
+  arg <- tryCatch(x[[i]], error = function(e) NULL)
+  if(is.null(arg))
+    x <- ""
+  x <- jsonlite::toJSON(unlist(x), auto_unbox = TRUE)
 }
 
 # build basic geom method

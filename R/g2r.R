@@ -6,7 +6,7 @@
 #' @param width,height Dimensions of chart.
 #' @param elementId ID of \code{DOM} container.
 #' @param ... Any general options.
-#' @param mapping Mapping aesthetics as returned by \code{\link{gaes}}.
+#' @param plan Mapping aesthetics as returned by \code{\link{plan}}.
 #' @param render Whether to render the chart.
 #'
 #' @import htmlwidgets
@@ -20,7 +20,7 @@
 #' 
 #' @name g2r
 #' @export
-g2 <- function(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL, height = NULL, 
+g2 <- function(data = NULL, plan = NULL, ..., render = TRUE, width = NULL, height = NULL, 
   elementId = NULL) {
 
   x = list(
@@ -29,7 +29,7 @@ g2 <- function(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL, he
       forceFit = TRUE
     ),
     scales = list(),
-    mapping = mapping,
+    mapping = plan,
     render = render,
     data = NULL
   )

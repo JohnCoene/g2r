@@ -5,13 +5,13 @@
 \alias{g2}
 \title{Initialise}
 \usage{
-g2(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL,
+g2(data = NULL, plan = NULL, ..., render = TRUE, width = NULL,
   height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{A \code{data.frame} containing data to chart.}
 
-\item{mapping}{Mapping aesthetics as returned by \code{\link{gaes}}.}
+\item{plan}{Mapping aesthetics as returned by \code{\link{plan}}.}
 
 \item{...}{Any general options.}
 

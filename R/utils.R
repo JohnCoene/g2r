@@ -25,3 +25,10 @@ process_data <- function(data, aes){
   aes <- keep(aes, is_quo_sym)
   select(data, !!!unname(aes))
 }
+
+# JavaScript NULL
+js_null <- function(x){
+  if(is.null(x))
+    x <- htmlwidgets::JS("null")
+  return(x)
+}
