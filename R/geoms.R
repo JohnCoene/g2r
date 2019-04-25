@@ -10,7 +10,7 @@
 #'   g2r(gaes(speed, dist)) %>% 
 #'   g2_point()
 #' 
-#' @rdname geoms
+#' @name geoms
 #' @export
 g2_interval <- function(g2, ..., data = NULL, inherit_gaes = TRUE) {
   make_geom(g2, ..., data = data, chart_type = "interval", inherit_aes = inherit_gaes)
@@ -126,3 +126,4 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
   g2$x$layers <- append(g2$x$layers, list(specs))
   g2
 }
+

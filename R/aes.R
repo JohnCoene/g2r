@@ -23,7 +23,15 @@
 gaes <- function(x, y, ...) {
   exprs <- rlang::enquos(x = x, y = y, ..., .ignore_empty = "all")
   aes <- new_aes(exprs, env = parent.frame())
-  structure(aes, class = c("gaes", class(aes)))
+  .construct_aesthetics(aes)
+}
+
+# construct aesthetics for re-use
+.construct_aesthetics <- function(aes, cl = NULL){
+  class <- "gaes"
+  if(!is.null(cl))
+    class <- append(class, cl)
+  structure(aes, class = c(class, class(aes)))
 }
 
 # Wrap symbolic objects in quosures but pull out constants out of
@@ -122,44 +130,24 @@ mutate_aes <- function(main_aes = NULL, aes = NULL, inherit = TRUE){
     return(main_aes)
 
   if(isTRUE(inherit)){
+    # aes overrides main_aes
+    main_aes <- main_aes[!names(main_aes) %in% names(aes)]
     combined <- append(aes, main_aes)
-    # will remove main_aes duplicates => aes overrides
-    return(combined[!duplicated(combined)]) 
+    return(combined)
   }
 
   return(aes)
 }
 
-# build basic geom method
-build_geom_method <- function(aes, vars){
-  is_present <- names(aes) %in% vars
-  aes <- aes[is_present]
-
-  if(!length(aes)) return(NULL)
-
-  map(aes, rlang::quo_name) %>% 
-    unlist() %>% 
-    .[order(., decreasing = TRUE)] %>% 
-    unname() %>% 
-    as.list()
-}
-
-# build position()
-build_position <- function(aes){
-  build_geom_method(aes, c("x", "y"))
-}
-
-# build size()
-build_size <- function(aes){
-  build_geom_method(aes, c("size"))
-}
-
-# build size()
-build_shape <- function(aes){
-  build_geom_method(aes, c("shape"))
-}
-
-# build size()
-build_label <- function(aes){
-  build_geom_method(aes, c("label"))
+# combine mappings into main
+combine_aes <- function(main_mapping, layers){
+  map(layers, function(x){
+    if(isTRUE(x$inherit_aes))
+      return(x$mapping)
+    else
+      return(NULL)
+  }) %>% 
+    unlist() %>%  # removes NULLs
+    append(main_mapping) %>% 
+    unique()
 }

@@ -14,3 +14,7 @@ keep_data <- function(data){
   row.names(data) <- NULL
   return(data)
 }
+
+process_data <- function(data, aes){
+  select(data, !!!unname(aes))
+}

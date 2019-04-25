@@ -1,3 +1,4 @@
+^data-raw$
 ^LICENSE\.md$
 test.html
 test.R

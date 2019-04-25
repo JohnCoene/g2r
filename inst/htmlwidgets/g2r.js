@@ -24,16 +24,20 @@ HTMLWidgets.widget({
 
           // required
           view = chart.view();
-          view.source(x.data);
+          
+          // source data 
+          if(layer.hasOwnProperty('data'))
+            view.source(layer.data);
+          else
+            view.source(x.data);
 
           // initialise layer
           var geom = eval("view." + layer.chart_type + "()");
 
-          console.log(layer);
-
           // loop through methods of layer
           layer.methods.forEach(function(method){
-            var str = "geom." + method.name + "(" + JSON.stringify(method.arg) + ")";
+            console.log(JSON.stringify(method.args[1]));
+            var str = "geom." + method.name + "(" + JSON.stringify(method.args[0]) + "," + JSON.stringify(method.args[1]) + ")";
             eval(str);
           });
         }); 

@@ -27,6 +27,7 @@ g2r <- function(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL, h
       ...,
       forceFit = TRUE
     ),
+    scales = list(),
     mapping = mapping,
     render = render,
     data = NULL
