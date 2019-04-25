@@ -2,9 +2,10 @@
 % Please edit documentation in R/g2r.R
 \name{g2r}
 \alias{g2r}
+\alias{g2}
 \title{Initialise}
 \usage{
-g2r(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL,
+g2(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL,
   height = NULL, elementId = NULL)
 }
 \arguments{
@@ -21,11 +22,11 @@ g2r(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL,
 \item{elementId}{ID of \code{DOM} container.}
 }
 \description{
-Initialise a g2 chart.
+Initialise a \code{g2r} chart.
 }
 \examples{
 cars \%>\% 
-  g2r(gaes(speed, dist)) \%>\% 
-  g2_point()
+  g2(gaes(speed, dist)) \%>\% 
+  fig_point()
 
 }

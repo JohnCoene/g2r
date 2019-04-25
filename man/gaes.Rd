@@ -12,7 +12,7 @@ variables. The names for x and y aesthetics are typically omitted because
 they are so common; all other aesthetics must be named.}
 }
 \description{
-Mapping aesthetics.
+Mapping aesthetics, similar to \code{ggplot2}'s aesthetics.
 }
 \section{Aesthetics}{
 

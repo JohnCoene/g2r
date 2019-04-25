@@ -1,6 +1,6 @@
 #' Aesthetics
 #' 
-#' Mapping aesthetics.
+#' Mapping aesthetics, similar to \code{ggplot2}'s aesthetics.
 #' 
 #' @param x,y,... List of name value pairs giving aesthetics to map to
 #'  variables. The names for x and y aesthetics are typically omitted because

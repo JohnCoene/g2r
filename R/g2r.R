@@ -1,6 +1,6 @@
 #' Initialise
 #'
-#' Initialise a g2 chart.
+#' Initialise a \code{g2r} chart.
 #' 
 #' @param data A \code{data.frame} containing data to chart.
 #' @param width,height Dimensions of chart.
@@ -15,11 +15,12 @@
 #'
 #' @examples
 #' cars %>% 
-#'   g2r(gaes(speed, dist)) %>% 
-#'   g2_point()
+#'   g2(gaes(speed, dist)) %>% 
+#'   fig_point()
 #' 
+#' @name g2r
 #' @export
-g2r <- function(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL, height = NULL, 
+g2 <- function(data = NULL, mapping = NULL, ..., render = TRUE, width = NULL, height = NULL, 
   elementId = NULL) {
 
   x = list(

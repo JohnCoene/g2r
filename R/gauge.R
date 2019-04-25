@@ -1,77 +1,77 @@
-#' Scale colour
+#' Gauge colour
 #'
-#' Scale colour.
+#' Gauge colour, similar to the \code{scale_colour_*} family of functions from the \code{ggplot2} package.
 #' 
 #' @inheritParams geoms
 #' @param colors A vector of colors or a JavaScript function.
 #' 
 #' @name scale-color
 #' @export
-g2_scale_colour <- function(g2, colors){
+gauge_colour <- function(g2, colors){
   make_scale(g2, vars = colors, method = "color")
 }
 
 #' @rdname scale-color
 #' @export
-g2_scale_color <- g2_scale_colour
+gauge_color <- gauge_colour
 
-#' Scale shape
+#' Gauge shape
 #'
-#' Scale shapes.
+#' Gauge shapes.
 #' 
 #' @inheritParams geoms
 #' @param shapes A vector of shapes or a JavaScript function.
 #' 
 #' @export
-g2_scale_shape <- function(g2, shapes){
+gauge_shape <- function(g2, shapes){
   make_scale(g2, vars = shapes, method = "shape")
 }
 
-#' Scale size
+#' Gauge size
 #'
-#' Scale size.
+#' Gauge size.
 #' 
 #' @inheritParams geoms
 #' @param size A vector of sizes (\code{min, max}) or a JavaScript function.
 #' 
 #' @export
-g2_scale_size <- function(g2, size){
+gauge_size <- function(g2, size){
   make_scale(g2, vars = size, method = "size")
 }
 
-#' Scale opacity
+#' Gauge opacity
 #'
-#' Scale opacity.
+#' Gauge opacity.
 #' 
 #' @inheritParams geoms
 #' @param opacity A JavaScript function.
 #' 
 #' @export
-g2_scale_opacity <- function(g2, opacity){
+gauge_opacity <- function(g2, opacity){
   make_scale(g2, vars = opacity, method = "opacity")
 }
 
-#' Scale label
+#' Gauge label
 #'
-#' Scale label.
+#' Gauge label.
 #' 
 #' @inheritParams geoms
 #' @param label A configuration list or a JavaScript funtion.
 #' 
 #' @export
-g2_scale_label <- function(g2, label){
+gauge_label <- function(g2, label){
   make_scale(g2, vars = label, method = "label")
 }
 
-#' Scale tooltip
+#' Gauge tooltip
 #'
-#' Scale tooltip.
+#' Gauge tooltip.
 #' 
 #' @inheritParams geoms
 #' @param tooltip A JavaScript function.
 #' 
 #' @export
-g2_scale_tooltip <- function(g2, tooltip){
+gauge_tooltip <- function(g2, tooltip){
   make_scale(g2, vars = tooltip, method = "tooltip")
 }
 

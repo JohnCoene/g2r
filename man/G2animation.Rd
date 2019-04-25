@@ -3,12 +3,12 @@
 \docType{data}
 \name{G2animation}
 \alias{G2animation}
-\alias{G2Animation}
+\alias{Animation}
 \alias{new_animation}
 \title{Animations}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-G2Animation
+Animation
 
 new_animation()
 }
@@ -17,13 +17,13 @@ Helper function to build animations.
 }
 \examples{
 # create animation
-anim <- G2animation$
+anim <- Animation$
   new()$
   appear(duration = 2000, delay = 500)
 
 iris \%>\% 
-  g2r(gaes(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
-  g2_point(anim) # pass animation to the geom
+  g2(gaes(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
+  fig_point(anim) # pass animation to the geom
 
 }
 \keyword{datasets}

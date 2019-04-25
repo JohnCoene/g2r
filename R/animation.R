@@ -4,18 +4,18 @@
 #' 
 #' @examples
 #' # create animation
-#' anim <- G2animation$
+#' anim <- Animation$
 #'   new()$
 #'   appear(duration = 2000, delay = 500)
 #' 
 #' iris %>% 
-#'   g2r(gaes(Sepal.Length, Sepal.Width, color = Species)) %>% 
-#'   g2_point(anim) # pass animation to the geom
+#'   g2(gaes(Sepal.Length, Sepal.Width, color = Species)) %>% 
+#'   fig_point(anim) # pass animation to the geom
 #' 
 #' @name G2animation
 #' @export
-G2Animation <- R6::R6Class(
-  "G2Animation",
+Animation <- R6::R6Class(
+  "Animation",
   public = list(
     enter = function(animation = NULL, easing = NULL, delay = NULL, duration = NULL){
       private$.enter <- private$build_list(animation, easing, delay, duration)
@@ -34,7 +34,7 @@ G2Animation <- R6::R6Class(
       invisible(self)
     },
     print = function(){
-      print("A g2r geom animation")
+      print("A g2r figure animation")
       invisible(self)
     }
   ),
@@ -83,13 +83,13 @@ G2Animation <- R6::R6Class(
 #' @rdname G2animation
 #' @export
 new_animation <- function(){
-  G2animation$new()
+  Animation$new()
 }
 
 # is animation to keep
 is_animation <- function(x){
   aes <- FALSE
-  if(inherits(x, "G2Animation"))
+  if(inherits(x, "Animation"))
     aes <- TRUE
   return(aes)
 }
