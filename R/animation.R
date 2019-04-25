@@ -14,8 +14,8 @@
 #' 
 #' @name G2animation
 #' @export
-G2animation <- R6::R6Class(
-  "G2animation",
+G2Animation <- R6::R6Class(
+  "G2Animation",
   public = list(
     enter = function(animation = NULL, easing = NULL, delay = NULL, duration = NULL){
       private$.enter <- private$build_list(animation, easing, delay, duration)
@@ -89,7 +89,7 @@ new_animation <- function(){
 # is animation to keep
 is_animation <- function(x){
   aes <- FALSE
-  if(inherits(x, "G2animation"))
+  if(inherits(x, "G2Animation"))
     aes <- TRUE
   return(aes)
 }

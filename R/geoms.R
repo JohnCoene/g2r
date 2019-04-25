@@ -1,7 +1,7 @@
 #' Bar
 #' 
 #' @param g2 An object of class \code{g2r} as returned by \code{\link{g2r}}.
-#' @param ... Any option or aesthetic.
+#' @param ... Any option, aesthetic (\code{\link{gaes}}), or animation (\code{\link{G2Animation}}).
 #' @param data A \code{data.frame} containing data to chart.
 #' @param inherit_gaes Whether to inherit aesthetics from \code{g2r}.
 #' 

@@ -58,7 +58,7 @@ g2_schema_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Any option or aesthetic.}
+\item{...}{Any option, aesthetic (\code{\link{gaes}}), or animation (\code{\link{G2Animation}}).}
 
 \item{data}{A \code{data.frame} containing data to chart.}
 
