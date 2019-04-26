@@ -45,7 +45,7 @@ HTMLWidgets.widget({
               geom.animate(layer.animation);
           }); 
         } else {
-          chart.source(x.data);
+          chart.source(x.data, x.dataOpts);
           chart.facet(x.facet.type, x.facet.opts);
         }
 

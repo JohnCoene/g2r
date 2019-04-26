@@ -44,7 +44,7 @@ render_g2r <- function(g2){
 
       each_view_func <- paste_facet(each_view$methods)
 
-      each_view_func <- paste0("function eachView(view){", view_func, each_view_func, "}")
+      each_view_func <- paste0("function eachView(view){", view_func, each_view_func, ";}")
       each_view_func <- htmlwidgets::JS(each_view_func)
 
       g2$x$facet$opts$eachView <- each_view_func

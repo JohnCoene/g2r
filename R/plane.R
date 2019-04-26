@@ -18,13 +18,16 @@ plane_wrap <- function(g2, ..., type = c("list", "rect", "circle", "tree", "mirr
   # add to main mapping
   plane_names <- plane_aes %>% 
     map(rlang::quo_name) %>% 
-    unlist()
+    unlist() %>% 
+    unname()
 
   # extract fields
   fields <- plane_names %>% 
-    map(js_null) %>% 
-    unname() %>% 
-    unlist()
+    map(js_null) 
+  
+  # fields needs to be an array
+  if(length(fields) == 1)
+    fields <- list(fields)
 
   # options
   g2$x$facet <- list(

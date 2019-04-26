@@ -31,7 +31,8 @@ g2 <- function(data = NULL, plan = NULL, ..., render = TRUE, width = NULL, heigh
     scales = list(),
     mapping = plan,
     render = render,
-    data = NULL
+    data = NULL,
+    dataOpts = list()
   )
 
   if(!is.null(data))
