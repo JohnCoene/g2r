@@ -7,7 +7,9 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     var view,
-        chart;
+        chart,
+        geom,
+        coord;
 
     G2.track(false);
 
@@ -19,6 +21,22 @@ HTMLWidgets.widget({
         initialOptions = x.opts;
         initialOptions.container = el.id;
         chart = new G2.Chart(initialOptions);
+
+        // Coordinates
+        if(x.hasOwnProperty("coord"))
+          coord = chart.coord(x.coord.type, x.coord.opts);
+
+        if(x.hasOwnProperty("coordRotate"))
+          coord.rotate(x.coordRotate);
+
+        if(x.hasOwnProperty("coordScale"))
+          coord.scale(x.coordScale[0], x.coordScale[1]);
+
+        if(x.hasOwnProperty("coordReflect"))
+          coord.reflect(x.coordReflect);
+
+        if(x.hasOwnProperty("coordTranspose"))
+          coord.transpose();
 
         if(!x.hasOwnProperty("facet")){
           x.layers.forEach(function(layer){
@@ -33,7 +51,7 @@ HTMLWidgets.widget({
               view.source(x.data);
   
             // initialise layer
-            var geom = eval("view." + layer.chart_type + "()");
+            geom = eval("view." + layer.chart_type + "()");
   
             // loop through methods of layer
             layer.methods.forEach(function(method){
@@ -49,8 +67,11 @@ HTMLWidgets.widget({
           chart.facet(x.facet.type, x.facet.opts);
         }
 
+        if(x.hasOwnProperty("legend"))
+          chart.legend(x.legend);
+
         if(x.render)
-          chart.render() // render
+          chart.render(); // render
       },
 
       resize: function(width, height) {
