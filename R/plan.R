@@ -105,9 +105,14 @@ has_aes <- function(...){
 }
 
 # aes to keep
-is_aes <- function(x){
+is_plane <- function(x){
+  is_aes(x, "planes")
+}
+
+# is aesthetic?
+is_aes <- function(x, cl = "gaes"){
   aes <- FALSE
-  if(inherits(x, "gaes"))
+  if(inherits(x, cl))
     aes <- TRUE
   return(aes)
 }
@@ -116,6 +121,17 @@ is_aes <- function(x){
 get_aes <- function(...){
   aes <- list(...) %>% 
     keep(is_aes) 
+
+  if(length(aes))
+    aes[[1]]
+  else
+    list()
+}
+
+# retrieve aesthetics
+get_planes <- function(...){
+  aes <- list(...) %>% 
+    keep(is_plane) 
 
   if(length(aes))
     aes[[1]]

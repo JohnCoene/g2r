@@ -6,6 +6,7 @@ render_g2r <- function(g2){
   if(length(g2$x$layers)){
     keep_main_mapping <- combine_aes(main_mapping, g2$x$layers)
 
+    # loop over layers
     for(i in 1:length(g2$x$layers)){
       layer <- g2$x$layers[[i]] # extract layer
 
@@ -35,23 +36,18 @@ render_g2r <- function(g2){
       g2$x$layers[[i]] <- layer # override
     }
 
+    # build facet
     if(!is.null(g2$x$facet)){
       each_view <- g2$x$layers[[1]]
 
-      str <- paste0("view.", each_view$chart_type, "()")
+      view_func <- paste0("view.", each_view$chart_type, "()")
 
-      method_args <- "" 
-      for(method in 1:length(each_view$methods)){
-        method_args <- paste0(method_args, ".", 
-          each_view$methods[[method]]$name, "(", 
-          .get_method_arg(each_view$methods[[method]]$args, 1), ",", 
-          .get_method_arg(each_view$methods[[method]]$args, 2), ")")
-      }
+      each_view_func <- paste_facet(each_view$methods)
 
-      str <- paste0("function eachView(view){", str, method_args, "}")
-      each_view <- htmlwidgets::JS(str)
+      each_view_func <- paste0("function eachView(view){", view_func, each_view_func, "}")
+      each_view_func <- htmlwidgets::JS(each_view_func)
 
-      g2$x$facet$opts$eachView <- each_view
+      g2$x$facet$opts$eachView <- each_view_func
       g2$x$facet$facet <- NULL
     }
   }
@@ -62,13 +58,44 @@ render_g2r <- function(g2){
 
   g2$x$scales <- NULL
   g2$x$mapping <- NULL
+
+  if(debug_mode()){
+    g2_json <- g2
+    g2_json$preRenderHook <- NULL
+    print(jsonlite::toJSON(g2_json, force = TRUE, auto_unbox = TRUE, pretty = TRUE))
+  }
+
   g2
+}
+
+paste_facet <- function(methods){
+  methods %>% 
+    map(function(x){
+      paste0(
+        x$name, "(", 
+        paste0(
+          convert_to_json(x$args), 
+          collapse = ","), 
+        ")"
+      )
+    }) %>% 
+  paste0(collapse = ".") %>% 
+  paste0(".", .)
+}
+
+convert_to_json <- function(x){
+  map(x, function(x){
+    if(length(x) <= 1)
+      x <- unlist(x)
+
+    jsonlite::toJSON(x, auto_unbox = TRUE)
+  })
 }
 
 .get_method_arg <- function(x, i){
   arg <- tryCatch(x[[i]], error = function(e) NULL)
   if(is.null(arg))
-    x <- ""
+    return(NULL)
   x <- jsonlite::toJSON(unlist(x), auto_unbox = TRUE)
 }
 

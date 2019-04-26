@@ -15,20 +15,22 @@ keep_data <- function(data){
   return(data)
 }
 
-is_quo_sym <- function(x){
-  if(rlang::is_quosure(x) || rlang::is_symbol(x))
-    return(TRUE)
-  return(FALSE)
-}
-
 process_data <- function(data, aes){
-  aes <- keep(aes, is_quo_sym)
+  aes <- keep(aes, rlang::is_quosure)
   select(data, !!!unname(aes))
 }
 
 # JavaScript NULL
 js_null <- function(x){
-  if(is.null(x))
+  if(is.null(x) || x == "NULL")
     x <- htmlwidgets::JS("null")
   return(x)
+}
+
+# print useful messages
+debug_mode <- function(){
+  x <- getOption("g2r_debug")
+  if(is.null(x))
+    return(FALSE)
+  TRUE
 }

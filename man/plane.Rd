@@ -3,19 +3,20 @@
 \name{plane}
 \alias{plane}
 \alias{plane_wrap}
+\alias{planes}
 \title{Plane}
 \usage{
-plane_wrap(g2, facets, type = c("list", "rect", "circle", "tree",
-  "mirror", "matrix"), ...)
+plane_wrap(g2, ..., type = c("list", "rect", "circle", "tree", "mirror",
+  "matrix"))
+
+planes(...)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{facets}{A vector of dimensions, may include \code{NULL}.}
+\item{...}{Planes, bare column names or \code{NULL}.}
 
 \item{type}{The type of facet to user.}
-
-\item{...}{Any other option.}
 }
 \description{
 This function is similar to the \code{facet_*} family of functions from the \code{ggplot2} package.
