@@ -20,19 +20,25 @@ plane_wrap <- function(g2, ..., type = c("list", "rect", "circle", "tree", "mirr
     map(rlang::quo_name) %>% 
     unlist()
 
+  # extract fields
   fields <- plane_names %>% 
     map(js_null) %>% 
     unname() %>% 
     unlist()
 
-  print(fields)
-
+  # options
   g2$x$facet <- list(
     type = match.arg(type),
     opts = list(
       fields = fields
     )
   )
+
+  # remove planes 
+  dots <- rlang::dots_list(...) %>% 
+    discard(inherits, "gaes")
+  dots[[1]] <- NULL
+  g2$x$facet$opts <- append(g2$x$facet$opts, dots)
 
   return(g2)
 }
