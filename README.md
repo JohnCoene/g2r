@@ -1,6 +1,6 @@
 # g2r
 
-A ggplot2-inspired grammar of graphics for interactive visualisations via [g2](https://antv.alipay.com/zh-cn/g2/3.x/).
+A [ggplot2](https://ggplot2.tidyverse.org/)-inspired grammar of graphics for interactive visualisations via [g2](https://antv.alipay.com/zh-cn/g2/3.x/).
 
 ## Installation
 
@@ -8,6 +8,14 @@ A ggplot2-inspired grammar of graphics for interactive visualisations via [g2](h
 # install.packages("remotes")
 remotes::install_github("JohnCoene/g2r")
 ```
+
+## Synthax
+
+From ggplot2 to g2r:
+
+1. `aes` -> `plan`
+2. `geom_*` -> `fig_*`
+3. `scale_*` -> `gauge_*`
 
 ## Example
 
