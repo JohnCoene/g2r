@@ -2,14 +2,14 @@
 % Please edit documentation in R/options.R
 \name{coord}
 \alias{coord}
-\alias{conf_coord}
+\alias{coord_type}
 \alias{coord_rotate}
 \alias{coord_scale}
 \alias{coord_reflect}
 \alias{coord_transpose}
 \title{Coordinates}
 \usage{
-conf_coord(g2, type = c("rect", "polar", "theta", "helix"), ...)
+coord_type(g2, type = c("rect", "polar", "theta", "helix"), ...)
 
 coord_rotate(g2, angle = 90)
 
@@ -38,6 +38,6 @@ Configure chart coordinates axis.
 \examples{
 g2(cars, plan(speed, dist, color = dist)) \%>\% 
   fig_point() \%>\% 
-  conf_coord("helix")
+  coord_type("helix")
 
 }

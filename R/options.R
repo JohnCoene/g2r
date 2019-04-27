@@ -52,11 +52,11 @@ conf_legend <- function(g2, ...){
 #' @examples
 #' g2(cars, plan(speed, dist, color = dist)) %>% 
 #'   fig_point() %>% 
-#'   conf_coord("helix")
+#'   coord_type("helix")
 #' 
 #' @name coord
 #' @export
-conf_coord <- function(g2, type = c("rect", "polar", "theta", "helix"), ...){
+coord_type <- function(g2, type = c("rect", "polar", "theta", "helix"), ...){
   g2$x$coord <- list(
     type = match.arg(type),
     opts = list(...)
@@ -68,7 +68,7 @@ conf_coord <- function(g2, type = c("rect", "polar", "theta", "helix"), ...){
 #' @export
 coord_rotate <- function(g2, angle = 90){
   if(!length(g2$x$coord))
-    g2 <- conf_coord(g2)
+    g2 <- coord_type(g2)
   g2$x$coordRotate <- angle
   return(g2)
 }
@@ -81,7 +81,7 @@ coord_scale <- function(g2, sx, sy){
     stop("missing sx or sy", call. = FALSE)
 
   if(!length(g2$x$coord))
-    g2 <- conf_coord(g2)
+    g2 <- coord_type(g2)
   g2$x$coordScale <- list(sx, sy)
   return(g2)
 }
@@ -90,7 +90,7 @@ coord_scale <- function(g2, sx, sy){
 #' @export
 coord_reflect <- function(g2, axis = "xy"){
   if(!length(g2$x$coord))
-    g2 <- conf_coord(g2)
+    g2 <- coord_type(g2)
   g2$x$coordReflect <- axis
   return(g2)
 }
@@ -99,7 +99,7 @@ coord_reflect <- function(g2, axis = "xy"){
 #' @export
 coord_transpose <- function(g2){
   if(!length(g2$x$coord))
-    g2 <- conf_coord(g2)
+    g2 <- coord_type(g2)
   g2$x$coordTranspose <- TRUE
   return(g2)
 }

@@ -6,8 +6,13 @@
 \usage{
 sync(g2, ...)
 }
+\arguments{
+\item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
+
+\item{...}{Bare Columng names of variables to synchronise.}
+}
 \description{
-Synchronises variables across planes (\code{\link{plane_wrap}}).
+Synchronises variables across planes (\code{\link{plane_wrap}}), in order to have them share scales across
 }
 \examples{
 iris \%>\% 

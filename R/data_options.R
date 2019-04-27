@@ -2,7 +2,7 @@
 #' 
 #' Synchronises variables across planes (\code{\link{plane_wrap}}), in order to have them share scales across 
 #' 
-#' @inheritsParams geoms
+#' @inheritParams geoms
 #' @param ... Bare Columng names of variables to synchronise.
 #' 
 #' @examples
