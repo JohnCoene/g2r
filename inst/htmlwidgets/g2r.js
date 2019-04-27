@@ -9,7 +9,8 @@ HTMLWidgets.widget({
     var view,
         chart,
         geom,
-        coord;
+        coord,
+        slider;
 
     G2.track(false);
 
@@ -86,11 +87,13 @@ HTMLWidgets.widget({
 
         if(x.render)
           chart.render(); // render
+
+        if(x.hasOwnProperty(slider)){
+          chart.interact(x.slider.container, x.slider);
+        }
       },
 
       resize: function(width, height) {
-
-        // TODO: code to re-render the widget with a new size
 
       }
 

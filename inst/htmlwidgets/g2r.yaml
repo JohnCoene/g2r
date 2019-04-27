@@ -4,3 +4,4 @@ dependencies:
     src: htmlwidgets/lib/g2
     script: 
       - g2.min.js
+      - shapes.js

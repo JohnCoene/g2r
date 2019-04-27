@@ -46,3 +46,10 @@ check_g2 <- function(g2){
   
   is_g2(g2)
 }
+
+.generate_id <- function(){
+  LETTERS %>%
+    append(letters) %>%  
+    sample(45) %>% 
+    paste0(collapse = "")
+}
