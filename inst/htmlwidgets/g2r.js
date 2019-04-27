@@ -56,6 +56,12 @@ HTMLWidgets.widget({
               view.source(layer.data);
             else
               view.source(x.data);
+
+            if(x.hasOwnProperty("guides")){
+              x.guides.forEach(function(g){
+                eval("view.guide()." + g.type + "(" + JSON.stringify(g.opts) + ");");
+              })
+            }
   
             // initialise layer
             geom = eval("view." + layer.chart_type + "()");

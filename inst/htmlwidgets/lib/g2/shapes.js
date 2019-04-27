@@ -1,3 +1,4 @@
+// triangle for interval geom
 G2.Shape.registerShape('interval', 'triangle', {
   getPoints(cfg) {
     const x = cfg.x;
