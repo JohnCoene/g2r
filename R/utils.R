@@ -34,3 +34,15 @@ debug_mode <- function(){
     return(FALSE)
   TRUE
 }
+
+is_g2 <- function(g2){
+  if(!inherits(g2, "g2r"))
+    stop("g2 must be an object of class g2 as returned by `g2`", call. = FALSE)
+}
+
+check_g2 <- function(g2){
+  if(missing(g2))
+    stop("missing g2", call. = FALSE)
+  
+  is_g2(g2)
+}

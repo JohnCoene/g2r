@@ -109,7 +109,7 @@ coord_transpose <- function(g2){
 #' Configure the tooltip.
 #' 
 #' @inheritParams geoms
-#' @param ... Configuration options or a logical indicating whether to show the legend.
+#' @param ... Configuration options or a logical indicating whether to show the tooltip.
 #' 
 #' @examples
 #' g2(cars, plan(speed, dist, color = dist)) %>% 

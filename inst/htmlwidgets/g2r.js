@@ -17,6 +17,12 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
+        // theme
+        if(x.hasOwnProperty("theme")){
+          G2.Global.registerTheme('custom', x.theme);
+          G2.Global.setTheme('custom')
+        }
+
         // initialise
         initialOptions = x.opts;
         initialOptions.container = el.id;
@@ -61,6 +67,11 @@ HTMLWidgets.widget({
   
             if(layer.hasOwnProperty("animation"))
               geom.animate(layer.animation);
+
+            if(x.hasOwnProperty("axis"))
+              x.axis.forEach(function(ax){
+                view.axis(ax.var, ax.opts);
+              })
           }); 
         } else {
           chart.source(x.data, x.dataOpts);

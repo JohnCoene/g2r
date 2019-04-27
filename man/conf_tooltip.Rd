@@ -9,7 +9,7 @@ conf_tooltip(g2, ...)
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Configuration options or a logical indicating whether to show the legend.}
+\item{...}{Configuration options or a logical indicating whether to show the tooltip.}
 }
 \description{
 Configure the tooltip.
