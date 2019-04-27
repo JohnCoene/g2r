@@ -38,6 +38,6 @@ Configure chart coordinates axis.
 \examples{
 g2(cars, plan(speed, dist, color = dist)) \%>\% 
   fig_point() \%>\% 
-  conf_coord("polar") 
+  conf_coord("helix")
 
 }

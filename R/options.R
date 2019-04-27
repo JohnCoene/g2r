@@ -52,7 +52,7 @@ conf_legend <- function(g2, ...){
 #' @examples
 #' g2(cars, plan(speed, dist, color = dist)) %>% 
 #'   fig_point() %>% 
-#'   conf_coord("helix") 
+#'   conf_coord("helix")
 #' 
 #' @name coord
 #' @export
@@ -101,5 +101,29 @@ coord_transpose <- function(g2){
   if(!length(g2$x$coord))
     g2 <- conf_coord(g2)
   g2$x$coordTranspose <- TRUE
+  return(g2)
+}
+
+#' Tooltip
+#' 
+#' Configure the tooltip.
+#' 
+#' @inheritParams geoms
+#' @param ... Configuration options or a logical indicating whether to show the legend.
+#' 
+#' @examples
+#' g2(cars, plan(speed, dist, color = dist)) %>% 
+#'   fig_point() %>% 
+#'   conf_tooltip(crosshairs = "path")
+#' 
+#' @export
+conf_tooltip <- function(g2, ...){
+  lgl <- tryCatch(rlang::is_logical(...), error = function(e) NULL)
+
+  if(is.null(lgl))
+    g2$x$tooltip <- list(...)
+  else
+    g2$x$tooltip <- unlist(...)
+
   return(g2)
 }

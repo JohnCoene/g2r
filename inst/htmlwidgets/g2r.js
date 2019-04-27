@@ -70,6 +70,9 @@ HTMLWidgets.widget({
         if(x.hasOwnProperty("legend"))
           chart.legend(x.legend);
 
+        if(x.hasOwnProperty("tooltip"))
+          chart.tooltip(x.tooltip);
+
         if(x.render)
           chart.render(); // render
       },
