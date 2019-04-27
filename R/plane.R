@@ -15,7 +15,7 @@ plane_wrap <- function(g2, ..., type = c("list", "rect", "circle", "tree", "mirr
   if(!length(plane_aes))
     stop("no planes specified, see `planes`", call. = FALSE)
 
-  sync <- sync_planes(plane_aes)
+  sync <- sync_it(plane_aes)
   g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
 
   # add to ensure we select columns
@@ -58,18 +58,4 @@ planes <- function(...){
   exprs <- rlang::enquos(..., .ignore_empty = "all")
   aes <- new_aes(exprs, env = parent.frame())
   .construct_aesthetics(aes, "planes")
-}
-
-sync_planes <- function(plane_aes){
-  vars <- plane_aes %>% 
-    map(rlang::quo_name) %>% 
-    unlist() %>% 
-    unname() %>% 
-    .[. != "NULL"]
-
-  vars %>% 
-    map(function(x){
-      list(sync = TRUE)
-    }) %>% 
-    set_names(vars)
 }

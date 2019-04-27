@@ -1,3 +1,45 @@
+#' Sync
+#' 
+#' Synchronises variables across planes (\code{\link{plane_wrap}}), in order to have them share scales across 
+#' 
+#' @inheritsParams geoms
+#' @param ... Bare Columng names of variables to synchronise.
+#' 
+#' @examples
+#' iris %>% 
+#'   g2(plan(Sepal.Length, Sepal.Width)) %>% 
+#'   fig_point(plan(color = Species)) %>% 
+#'   plane_wrap(planes(Species)) %>% 
+#'   sync(Sepal.Length, Sepal.Width)
+#' 
+#' @export
+sync <- function(g2, ...){
+  
+  exprs <- rlang::enquos(..., .ignore_empty = "all")
+  aes <- new_aes(exprs, env = parent.frame())
+  aes <- .construct_aesthetics(aes, "sync")
+
+  sync <- sync_it(aes)
+  g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
+
+  return(g2)
+}
+
+
+sync_it <- function(vars){
+  vars <- vars %>% 
+    map(rlang::quo_name) %>% 
+    unlist() %>% 
+    unname() %>% 
+    .[. != "NULL"]
+
+  vars %>% 
+    map(function(x){
+      list(sync = TRUE)
+    }) %>% 
+    set_names(vars)
+}
+
 # add data options
 upsert_data_opts <- function(data_opts, sync){
 
