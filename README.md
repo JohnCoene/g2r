@@ -15,7 +15,8 @@ remotes::install_github("JohnCoene/g2r")
 library(g2r)
 
 iris %>%
-  g2(plan(Petal.Length, Petal.Width)) %>% 
-  fig_point(plan(color = Species))
+  g2(plan(Petal.Length, Petal.Width, color = Species)) %>% 
+  fig_point() %>%
+  plane_wrap(planes(Species), type = "tree")
 ```
 
