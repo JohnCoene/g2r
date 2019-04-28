@@ -3,6 +3,6 @@ function get_eval(arr){
     if(typeof arr == "function")
       return eval(arr[0])
     else 
-      return arr[0]
+      return arr
   return arr
 }
