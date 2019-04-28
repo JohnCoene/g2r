@@ -5,3 +5,4 @@ dependencies:
     script: 
       - g2.min.js
       - shapes.js
+      - functions.js

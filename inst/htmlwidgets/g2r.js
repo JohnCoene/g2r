@@ -68,7 +68,9 @@ HTMLWidgets.widget({
   
             // loop through methods of layer
             layer.methods.forEach(function(method){
-              var str = "geom." + method.name + "(" + JSON.stringify(method.args[0]) + "," + JSON.stringify(method.args[1]) + ")";
+              var arg1 = method.args[0];
+              var arg2 = get_eval(method.args[1]);
+              var str = "geom." + method.name + "(arg1, arg2)";
               eval(str);
             });
   

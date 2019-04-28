@@ -92,13 +92,6 @@ convert_to_json <- function(x){
   })
 }
 
-.get_method_arg <- function(x, i){
-  arg <- tryCatch(x[[i]], error = function(e) NULL)
-  if(is.null(arg))
-    return(NULL)
-  x <- jsonlite::toJSON(unlist(x), auto_unbox = TRUE)
-}
-
 # build basic geom method
 build_geom_method <- function(aes, vars){
   is_present <- names(aes) %in% vars
@@ -131,10 +124,14 @@ build_geom_method <- function(aes, vars){
   if(is_relevant_scale){
     is_relevant_to_aes <- sum(name %in% names(aes))
     if(is_relevant_to_aes > 0){
-      scale <- scales[is_relevant_to_aes] %>% unlist() %>% unname()
+      scale <- scales[is_relevant_to_aes]
+      if(!inherits(scale[[1]], "JS_EVAL"))
+        scale <- scale %>% unlist() %>% unname()
+      else
+        scale <- unname(scale)
       arguments <- append(arguments, list(scale))
     }
-  } 
+  }
 
   method <- list(name = name, args = arguments)
 
