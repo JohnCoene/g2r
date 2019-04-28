@@ -25,7 +25,6 @@ sync <- function(g2, ...){
   return(g2)
 }
 
-
 sync_it <- function(vars){
   vars <- vars %>% 
     map(rlang::quo_name) %>% 

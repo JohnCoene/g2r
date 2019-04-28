@@ -41,9 +41,7 @@ render_g2r <- function(g2){
       each_view <- g2$x$layers[[1]]
 
       view_func <- paste0("view.", each_view$chart_type, "()")
-
       each_view_func <- paste_facet(each_view$methods)
-
       each_view_func <- paste0("function eachView(view){", view_func, each_view_func, ";}")
       each_view_func <- htmlwidgets::JS(each_view_func)
 

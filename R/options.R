@@ -76,7 +76,6 @@ coord_rotate <- function(g2, angle = 90){
 #' @rdname coord
 #' @export
 coord_scale <- function(g2, sx, sy){
-
   if(missing(sx) || missing(sy))
     stop("missing sx or sy", call. = FALSE)
 
