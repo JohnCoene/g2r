@@ -1,5 +1,7 @@
 # g2r
 
+<img src="./man/figures/logo.png" align="right"/>
+
 A [ggplot2](https://ggplot2.tidyverse.org/)-inspired grammar of graphics for interactive visualisations via [g2](https://antv.alipay.com/zh-cn/g2/3.x/).
 
 ## Installation
