@@ -12,6 +12,8 @@ gauge_axis(g2, var, ..., figure = NULL)
 \item{var}{Variable to scale.}
 
 \item{...}{Configuration options or a logical indicating whether to show the axis.}
+
+\item{figure}{Name of figure to apply axis to, if \code{NULL} it is applied to all figures.}
 }
 \description{
 Scale and modify axis.

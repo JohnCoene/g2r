@@ -84,8 +84,8 @@ paste_facet <- function(methods){
         ")"
       )
     }) %>% 
-  paste0(collapse = ".") %>% 
-  paste0(".", .)
+    paste0(collapse = ".") %>% 
+    paste0(".", .)
 }
 
 convert_to_json <- function(x){
@@ -104,7 +104,7 @@ build_geom_method <- function(aes, vars){
 
   if(!length(aes)) return(NULL)
 
-  method <- map(aes, function(m){
+  map(aes, function(m){
     if(rlang::is_quosure(m))
       rlang::quo_name(m)
     else

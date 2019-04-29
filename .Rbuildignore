@@ -2,3 +2,5 @@
 ^LICENSE\.md$
 test.html
 test.R
+^.*\.Rproj$
+^\.Rproj\.user$

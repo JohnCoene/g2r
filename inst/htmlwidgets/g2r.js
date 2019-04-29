@@ -27,9 +27,8 @@ HTMLWidgets.widget({
         }
 
         // initialise
-        initialOptions = x.opts;
-        initialOptions.container = el.id;
-        chart = new G2.Chart(initialOptions);
+        x.opts.container = el.id;
+        chart = new G2.Chart(x.opts);
 
         // Coordinates
         if(x.hasOwnProperty("coord"))
@@ -61,17 +60,15 @@ HTMLWidgets.widget({
 
             if(x.hasOwnProperty('axis'))
               x.axis.forEach(function(ax){
-                if(ax.figure == layer.name || ax.figure == ""){
+                if(ax.figure == layer.name || ax.figure == "")
                   view.axis(ax.var, ax.opts);
-                }
-                  
-              })
+              });
 
             if(x.hasOwnProperty("guides")){
               if(!info){
                 x.guides.forEach(function(g){
                   eval("view.guide()." + g.type + "(" + JSON.stringify(g.opts) + ");");
-                })
+                });
               }
               info = true;
             }
@@ -93,7 +90,7 @@ HTMLWidgets.widget({
             if(x.hasOwnProperty("axis"))
               x.axis.forEach(function(ax){
                 view.axis(ax.var, ax.opts);
-              })
+              });
           }); 
         } else {
           chart.source(x.data, x.dataOpts);
