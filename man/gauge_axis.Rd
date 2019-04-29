@@ -4,7 +4,7 @@
 \alias{gauge_axis}
 \title{Axis}
 \usage{
-gauge_axis(g2, var, ...)
+gauge_axis(g2, var, ..., figure = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

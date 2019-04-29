@@ -12,6 +12,8 @@ HTMLWidgets.widget({
         coord,
         slider;
 
+    var info = false;
+
     G2.track(false);
 
     return {
@@ -57,11 +59,21 @@ HTMLWidgets.widget({
             else
               view.source(x.data);
 
-            if(x.hasOwnProperty("guides")){
-              x.guides.forEach(function(g){
-                if(g.name == layer.name)
-                  eval("view.guide()." + g.type + "(" + JSON.stringify(g.opts) + ");");
+            if(x.hasOwnProperty('axis'))
+              x.axis.forEach(function(ax){
+                if(ax.figure == layer.name || ax.figure == ""){
+                  view.axis(ax.var, ax.opts);
+                }
+                  
               })
+
+            if(x.hasOwnProperty("guides")){
+              if(!info){
+                x.guides.forEach(function(g){
+                  eval("view.guide()." + g.type + "(" + JSON.stringify(g.opts) + ");");
+                })
+              }
+              info = true;
             }
   
             // initialise layer

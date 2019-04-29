@@ -104,14 +104,14 @@ build_geom_method <- function(aes, vars){
 
   if(!length(aes)) return(NULL)
 
-  map(aes, function(m){
+  method <- map(aes, function(m){
     if(rlang::is_quosure(m))
       rlang::quo_name(m)
     else
       m
   }) %>% 
     unlist() %>% 
-    .[order(.)] %>% # for position method: x comes before y
+    .[order(names(.))] %>% # for position method: x comes before y
     unname() %>% 
     as.list() %>% 
     list()
