@@ -71,6 +71,8 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
 \item{data}{A \code{data.frame} containing data to chart.}
 
 \item{inherit_plan}{Whether to inherit aesthetics from \code{g2r}.}
+
+\item{name}{Name of figure, useful to apply functions to specific figures.}
 }
 \description{
 Figures, equivalent to \code{ggplot2}'s geometries.

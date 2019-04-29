@@ -72,13 +72,13 @@ g2 <- function(data = NULL, plan = NULL, ..., render = TRUE, width = NULL, heigh
 #' @name g2r-shiny
 #'
 #' @export
-g2rOutput <- function(outputId, width = '100%', height = '400px'){
+g2Output <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'g2r', width, height, package = 'g2r')
 }
 
 #' @rdname g2r-shiny
 #' @export
-renderG2r <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderG2 <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, g2rOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, g2Output, env, quoted = TRUE)
 }

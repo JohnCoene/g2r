@@ -2,13 +2,13 @@
 % Please edit documentation in R/g2.R
 \name{g2r-shiny}
 \alias{g2r-shiny}
-\alias{g2rOutput}
-\alias{renderG2r}
+\alias{g2Output}
+\alias{renderG2}
 \title{Shiny bindings for g2r}
 \usage{
-g2rOutput(outputId, width = "100\%", height = "400px")
+g2Output(outputId, width = "100\%", height = "400px")
 
-renderG2r(expr, env = parent.frame(), quoted = FALSE)
+renderG2(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from.}

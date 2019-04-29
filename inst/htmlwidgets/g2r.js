@@ -59,7 +59,8 @@ HTMLWidgets.widget({
 
             if(x.hasOwnProperty("guides")){
               x.guides.forEach(function(g){
-                eval("view.guide()." + g.type + "(" + JSON.stringify(g.opts) + ");");
+                if(g.name == layer.name)
+                  eval("view.guide()." + g.type + "(" + JSON.stringify(g.opts) + ");");
               })
             }
   

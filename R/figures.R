@@ -6,6 +6,7 @@
 #' @param ... Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).
 #' @param data A \code{data.frame} containing data to chart.
 #' @param inherit_plan Whether to inherit aesthetics from \code{g2r}.
+#' @param name Name of figure, useful to apply functions to specific figures.
 #' 
 #' @examples
 #' iris %>% 
@@ -119,7 +120,7 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
   if(is.null(name))
     name <- ""
 
-  if(!is.null(data) && isTRUE(inherit_aes))
+  if(!is.null(data)) # force FALSE when new dataset passed
     inherit_aes <- FALSE
 
   specs <- list(chart_type = chart_type, inherit_aes = inherit_aes, name = name)

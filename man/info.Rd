@@ -11,24 +11,27 @@
 \alias{info_marker}
 \title{Info}
 \usage{
-info_line(g2, ...)
+info_line(g2, ..., figure = NULL)
 
-info_text(g2, ...)
+info_text(g2, ..., figure = NULL)
 
-info_image(g2, ...)
+info_image(g2, ..., figure = NULL)
 
-info_region(g2, ...)
+info_region(g2, ..., figure = NULL)
 
-info_html(g2, ...)
+info_html(g2, ..., figure = NULL)
 
-info_arc(g2, ...)
+info_arc(g2, ..., figure = NULL)
 
-info_marker(g2, ...)
+info_marker(g2, ..., figure = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
 \item{...}{Info options.}
+
+\item{figure}{A figure name to apply the informational element to, if
+\code{NULL} then it is applied to al.}
 }
 \description{
 Add informational elements to the chart.
