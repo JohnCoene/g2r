@@ -1,6 +1,6 @@
 # g2r
 
-<img src="./man/figures/logo.png" align="right" style="max-height:180px;"/>
+<img src="./man/figures/logo.png" align="right" height:"200px"/>
 
 A [ggplot2](https://ggplot2.tidyverse.org/)-inspired grammar of graphics for interactive visualisations via [g2](https://antv.alipay.com/zh-cn/g2/3.x/).
 
