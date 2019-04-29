@@ -21,39 +21,47 @@
 \alias{fig_schema_dodge}
 \title{Firgures}
 \usage{
-fig_interval(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_interval(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_line(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_line(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_point(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_point(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_path(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_path(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_area(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_area(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_polygon(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_polygon(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_schema(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_schema(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_edge(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_edge(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_heatmap(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_heatmap(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
-fig_point_jitter(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_point_jitter(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 
-fig_point_stack(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_point_stack(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 
-fig_point_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_point_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 
-fig_interval_stack(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_interval_stack(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 
-fig_interval_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_interval_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 
-fig_interval_symmetric(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_interval_symmetric(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 
-fig_area_stack(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_area_stack(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 
-fig_schema_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
+fig_schema_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
+  name = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -62,7 +70,7 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_gaes = TRUE)
 
 \item{data}{A \code{data.frame} containing data to chart.}
 
-\item{inherit_gaes}{Whether to inherit aesthetics from \code{g2r}.}
+\item{inherit_plan}{Whether to inherit aesthetics from \code{g2r}.}
 }
 \description{
 Figures, equivalent to \code{ggplot2}'s geometries.

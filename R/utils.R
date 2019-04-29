@@ -11,6 +11,9 @@ get_data <- function(main_data = NULL, data = NULL){
 }
 
 keep_data <- function(data){
+  if(is.null(data))
+    return(NULL)
+
   row.names(data) <- NULL
   return(data)
 }

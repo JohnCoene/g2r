@@ -73,7 +73,8 @@ paste_facet <- function(methods){
         x$name, "(", 
         paste0(
           convert_to_json(x$args), 
-          collapse = ","), 
+          collapse = ","
+        ), 
         ")"
       )
     }) %>% 
