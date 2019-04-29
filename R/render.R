@@ -40,9 +40,15 @@ render_g2r <- function(g2){
     if(!is.null(g2$x$facet)){
       each_view <- g2$x$layers[[1]]
 
-      view_func <- paste0("view.", each_view$chart_type, "()")
-      each_view_func <- paste_facet(each_view$methods)
-      each_view_func <- paste0("function eachView(view){", view_func, each_view_func, ";}")
+      final_func <- ""
+      for(i in 1:length(g2$x$layers)){
+        type_func <- paste0("view.", g2$x$layers[[i]]$chart_type, "()")
+        method_func <- paste_facet(g2$x$layers[[i]]$methods)
+        view_func <- paste0(type_func, method_func, ";\n")
+        final_func <- paste0(final_func, view_func)
+      }
+
+      each_view_func <- paste0("function eachView(view){", final_func, "}")
       each_view_func <- htmlwidgets::JS(each_view_func)
 
       g2$x$facet$opts$eachView <- each_view_func
