@@ -4,3 +4,6 @@ test.html
 test.R
 ^.*\.Rproj$
 ^\.Rproj\.user$
+docs
+pkgdown
+index.Rmd

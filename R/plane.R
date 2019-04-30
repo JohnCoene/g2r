@@ -5,18 +5,30 @@
 #' @inheritParams geoms
 #' @param type The type of facet to user.
 #' @param ... Planes, bare column names or \code{NULL}.
+#' @param sync Wether to \code{\link{sync}} the \code{planes} and main mapping that were passed \code{\link{g2}}
+#' 
+#' @examples
+#' iris %>%
+#'   g2(plan(Petal.Length, Petal.Width, color = Species)) %>% 
+#'   fig_point() %>%
+#'   plane_wrap(planes(Species)) 
 #' 
 #' @name plane
 #' @export
-plane_wrap <- function(g2, ..., type = c("list", "rect", "circle", "tree", "mirror", "matrix")) {
+plane_wrap <- function(g2, ..., type = c("list", "rect", "circle", "tree", "mirror", "matrix"), sync = TRUE) {
   
   plane_aes <- get_planes(...)
 
   if(!length(plane_aes))
     stop("no planes specified, see `planes`", call. = FALSE)
 
-  sync <- sync_it(plane_aes)
-  g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
+  # sync
+  if(sync){
+    sync <- sync_it(plane_aes)
+    g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
+    sync <- sync_it(g2$x$mapping)
+    g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
+  }
 
   # add to ensure we select columns
   g2$x$mapping <- append(g2$x$mapping, plane_aes) 

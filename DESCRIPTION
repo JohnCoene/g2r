@@ -1,11 +1,19 @@
 Package: g2r
 Title: Powerful Interactive Visualisations
-Version: 0.0.0.9000
+Version: 0.1
 Authors@R: 
-    person(given = "John",
-           family = "Coene",
-           role = c("aut", "cre"),
-           email = "jcoenep@gmail.com")
+    c(
+        person(
+            given = "John",
+            family = "Coene",
+            role = c("aut", "cre"),
+            email = "jcoenep@gmail.com"
+        ),
+        person(
+            given = "Alibaba",
+            role = "cph"
+        )
+    )
 Description: Powerful interactive visualisations.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -21,3 +29,5 @@ Imports:
     jsonlite,
     htmlwidgets
 RoxygenNote: 6.1.1
+URL: http://g2r.dev
+BugReports: https://github.com/JohnCoene/g2r/issues

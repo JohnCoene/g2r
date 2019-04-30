@@ -55,7 +55,8 @@ upsert_data_opts <- function(data_opts, sync){
   # update
   for(i in 1:length(to_change)){
     n <- names(to_change)[i]
-    data_opts[[n]] <- to_change
+    data_opts[[n]] <- NULL
+    data_opts <- append(data_opts, to_change)
   }
 
   return(data_opts)

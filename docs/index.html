@@ -12,20 +12,28 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Powerful Interactive Visualisations">
+<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Powerful Interactive Visualisations">
 <meta property="og:description" content="Powerful interactive visualisations.">
-<meta property="og:image" content="/logo.png">
+<meta property="og:image" content="http://g2r.dev/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74544116-1');
+</script>
 </head>
 <body>
-    <div class="container template-home">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -37,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">g2r</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1</span>
       </span>
     </div>
 
@@ -45,7 +53,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -62,64 +70,92 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="contents col-md-9">
+      </header><script src="index_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="index_files/g2-3.5.3/g2.min.js"></script><script src="index_files/g2-3.5.3/shapes.js"></script><script src="index_files/g2-3.5.3/functions.js"></script><script src="index_files/g2r-binding-0.1/g2r.js"></script><div class="row">
+  <div class="col-md-9 contents">
+    
+
+    
+    
 <div id="g2r" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#g2r" class="anchor"></a>g2r</h1></div>
-<p>A <a href="https://ggplot2.tidyverse.org/">ggplot2</a>-inspired grammar of graphics for interactive visualisations via <a href="https://antv.alipay.com/zh-cn/g2/3.x/">g2</a>.</p>
+<p><img src="../man/figures/logo.png" align="right" height="200px"></p>
+<p>A <a href="https://ggplot2.tidyverse.org/" class="link" target="_blank">ggplot2</a>-inspired grammar of graphics for interactive visualisations via <a href="https://antv.alipay.com/zh-cn/g2/3.x/" class="link" target="_blank">g2</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("remotes")</span>
-remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"JohnCoene/g2r"</span>)</code></pre></div>
+<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"JohnCoene/g2r"</span>)</a></code></pre>
 </div>
 <div id="synthax" class="section level2">
 <h2 class="hasAnchor">
 <a href="#synthax" class="anchor"></a>Synthax</h2>
-<p>From ggplot2 to g2r:</p>
-<ol>
-<li>
-<code>aes</code> -&gt; <code>plan</code>
-</li>
-<li>
-<code>geom_*</code> -&gt; <code>fig_*</code>
-</li>
-<li>
-<code>scale_*</code> -&gt; <code>gauge_*</code>
-</li>
-</ol>
+<p>From ggplot2 to g2r.</p>
+<table class="table table">
+<thead><tr class="header">
+<th align="left">ggplot2</th>
+<th align="left">g2r</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">aes</td>
+<td align="left">plan</td>
+</tr>
+<tr class="even">
+<td align="left">scale_*</td>
+<td align="left">gauge_*</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_*</td>
+<td align="left">fig_*</td>
+</tr>
+<tr class="even">
+<td align="left">facet_*</td>
+<td align="left">plane_*</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>It’s looks familiar to ggplot2.</p>
-<div id="ggplot" class="section level3">
-<h3 class="hasAnchor">
-<a href="#ggplot" class="anchor"></a>ggplot</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)
-
-iris <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(Petal.Length, Petal.Width, <span class="dt">color =</span> Species)) <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(.<span class="op">~</span>Species)</code></pre></div>
+<div class="row">
+<div class="col-md-6">
+<h3 id="ggplot">ggplot</h3>
+<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">iris <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(Petal.Length, Petal.Width, <span class="dt">color =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_point">geom_point</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap">facet_wrap</a></span>(.<span class="op">~</span>Species)</a></code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
-<div id="g2r-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#g2r-1" class="anchor"></a>g2r</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(g2r)
-
-iris <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/g2r.html">g2</a></span>(<span class="kw"><a href="reference/plan.html">plan</a></span>(Petal.Length, Petal.Width, <span class="dt">color =</span> Species)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/geoms.html">fig_point</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/plane.html">plane_wrap</a></span>(<span class="kw"><a href="reference/plane.html">planes</a></span>(Species), <span class="dt">type =</span> <span class="st">"tree"</span>)</code></pre></div>
+<div class="col-md-6">
+<h3 id="g2r-1">g2r</h3>
+<pre class="sourceCode r" id="cb3"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(g2r)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">iris <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="reference/g2r.html">g2</a></span>(<span class="kw"><a href="reference/plan.html">plan</a></span>(Petal.Length, Petal.Width, <span class="dt">color =</span> Species)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="reference/geoms.html">fig_point</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="reference/plane.html">plane_wrap</a></span>(<span class="kw"><a href="reference/plane.html">planes</a></span>(Species)) </a></code></pre>
+<div id="htmlwidget-1c2146b2002614a37e52" style="width:100%;height:500px;" class="g2r html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1c2146b2002614a37e52">{"x":{"opts":{"forceFit":true},"render":true,"data":[{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.1,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.2,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.5,"Species":"setosa"},{"Petal.Length":1.9,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.2,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.6,"Species":"setosa"},{"Petal.Length":1.9,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":4.7,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.9,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":3.3,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":3.5,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":3.6,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.9,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.3,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.8,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":5,"Petal.Width":1.7,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":3.5,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":3.8,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":3.7,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":5.1,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":3.3,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.3,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":3,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":6,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.9,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":6.6,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":4.5,"Petal.Width":1.7,"Species":"virginica"},{"Petal.Length":6.3,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.3,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.3,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":6.7,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":6.9,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":1.5,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":6.7,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":6,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":1.6,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":6.4,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.5,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":1.4,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.4,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.9,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.2,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.2,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.4,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.8,"Species":"virginica"}],"dataOpts":{"Petal.Length":{"sync":true},"Petal.Width":{"sync":true},"Species":{"sync":true}},"layers":[{"chart_type":"point","name":"","methods":[{"name":"position","args":[["Petal.Length","Petal.Width"]]},{"name":"color","args":[["Species"]]}]}],"facet":{"type":"list","opts":{"fields":[["Species"]],"eachView":"function eachView(view){view.point().position([\"Petal.Length\",\"Petal.Width\"]).color(\"Species\");\n}"}}},"evals":["facet.opts.eachView"],"jsHooks":[]}</script>
+</div>
 </div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div class="license">
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Report a bug at <br><a href="https://github.com/JohnCoene/g2r/issues">https://​github.com/​JohnCoene/​g2r/​issues</a>
+</li>
+</ul>
+</div>
+<div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
@@ -130,18 +166,21 @@ iris <span class="op">%&gt;%</span>
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>John Coene <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
-  </div>
+      </div>
+
 </div>
+
 
       <footer><div class="copyright">
   <p>Developed by John Coene.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
 </div>

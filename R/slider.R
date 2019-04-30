@@ -24,12 +24,6 @@ slider <- function(g2, ..., position = c("bottom", "top"), id = NULL) {
     container = id,
     ...
   )
-
-  position <- match.arg(position)
-
-  if(position == "top")
-    g2 %>% htmlwidgets::prependContent(shiny::div(id = id))
-  else
-    g2 %>% htmlwidgets::appendContent(shiny::div(id = id))
+  g2
 
 }

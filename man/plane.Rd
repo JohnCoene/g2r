@@ -7,7 +7,7 @@
 \title{Plane}
 \usage{
 plane_wrap(g2, ..., type = c("list", "rect", "circle", "tree", "mirror",
-  "matrix"))
+  "matrix"), sync = TRUE)
 
 planes(...)
 }
@@ -17,7 +17,16 @@ planes(...)
 \item{...}{Planes, bare column names or \code{NULL}.}
 
 \item{type}{The type of facet to user.}
+
+\item{sync}{Wether to \code{\link{sync}} the \code{planes} and main mapping that were passed \code{\link{g2}}}
 }
 \description{
 This function is similar to the \code{facet_*} family of functions from the \code{ggplot2} package.
+}
+\examples{
+iris \%>\%
+  g2(plan(Petal.Length, Petal.Width, color = Species)) \%>\% 
+  fig_point() \%>\%
+  plane_wrap(planes(Species)) 
+
 }
