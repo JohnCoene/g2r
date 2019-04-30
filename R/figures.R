@@ -116,26 +116,31 @@ fig_schema_dodge <- function(g2, ..., data = NULL, inherit_plan = TRUE, name = N
 }
 
 make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes = TRUE, name = NULL) {
-  
-  if(is.null(name))
-    name <- ""
+  if(is.null(name)) name <- ""
 
-  if(!is.null(data)) # force FALSE when new dataset passed
-    inherit_aes <- FALSE
+  # force FALSE when new dataset passed
+  if(!is.null(data)) inherit_aes <- FALSE
 
-  specs <- list(chart_type = chart_type, inherit_aes = inherit_aes, name = name)
+  view <- list(
+    type = chart_type, 
+    inherit_aes = inherit_aes, 
+    name = name, 
+    opts = list(
+      animate = get_animation(...)
+    )
+  )
 
-  specs$data <- keep_data(data)
+  additional_opts <- rm_anim_aes(...)
+  if(length(additional_opts))
+    view$opts <- append(view$opts, additional_opts)
+
+  view$data <- keep_data(data)
   aes <- get_aes(...)
   
   if(length(aes))
-    specs$mapping <- aes
+    view$mapping <- aes
 
-  anim <- get_animation(...)
-
-  specs$animation <- anim
-
-  g2$x$layers <- append(g2$x$layers, list(specs))
+  g2$x$layers <- append(g2$x$layers, list(view))
   g2
 }
 

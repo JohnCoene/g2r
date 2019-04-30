@@ -4,6 +4,7 @@
 #' 
 #' @inheritParams geoms
 #' @param ... Info options.
+#' @param figures Vector of names or indices of figure(s) to apply the information to, if \code{NULL} applies only to the first figure.
 #' 
 #' @examples
 #' g2(mtcars, plan(mpg, qsec)) %>% 
@@ -15,10 +16,13 @@
 #' 
 #' @name info
 #' @export
-info_line <- function(g2, ...) {
+info_line <- function(g2, ..., figures = NULL) {
   guide <- list(
-    type = "line",
-    opts = list(...)
+    figures = figures,
+    guide = list(
+      type = "line",
+      ...
+    )
   )
   g2$x$guides <- append(g2$x$guides, list(guide))
   return(g2)
@@ -26,10 +30,13 @@ info_line <- function(g2, ...) {
 
 #' @rdname info
 #' @export
-info_text <- function(g2, ...) {
+info_text <- function(g2, ..., figures = NULL) {
   guide <- list(
-    type = "text",
-    opts = list(...)
+    figures = figures,
+    guide = list(
+      type = "text",
+      ...
+    )
   )
   g2$x$guides <- append(g2$x$guides, list(guide))
   return(g2)
@@ -37,10 +44,13 @@ info_text <- function(g2, ...) {
 
 #' @rdname info
 #' @export
-info_image <- function(g2, ...) {
+info_image <- function(g2, ..., figures = NULL) {
   guide <- list(
-    type = "image",
-    opts = list(...)
+    figures = figures,
+    guide = list(
+      type = "image",
+      ...
+    )
   )
   g2$x$guides <- append(g2$x$guides, list(guide))
   return(g2)
@@ -48,10 +58,13 @@ info_image <- function(g2, ...) {
 
 #' @rdname info
 #' @export
-info_region <- function(g2, ...) {
+info_region <- function(g2, ..., figures = NULL) {
   guide <- list(
-    type = "region",
-    opts = list(...)
+    figures = figures,
+    guide = list(
+      type = "region",
+      ...
+    )
   )
   g2$x$guides <- append(g2$x$guides, list(guide))
   return(g2)
@@ -59,10 +72,13 @@ info_region <- function(g2, ...) {
 
 #' @rdname info
 #' @export
-info_html <- function(g2, ...) {
+info_html <- function(g2, ..., figures = NULL) {
   guide <- list(
-    type = "html",
-    opts = list(...)
+    figures = figures,
+    guide = list(
+      type = "html",
+      ...
+    )
   )
   g2$x$guides <- append(g2$x$guides, list(guide))
   return(g2)
@@ -70,10 +86,13 @@ info_html <- function(g2, ...) {
 
 #' @rdname info
 #' @export
-info_arc <- function(g2, ...) {
+info_arc <- function(g2, ..., figures = NULL) {
   guide <- list(
-    type = "arc",
-    opts = list(...)
+    figures = figures,
+    guide = list(
+      type = "arc",
+      ...     
+    )
   )
   g2$x$guides <- append(g2$x$guides, list(guide))
   return(g2)
@@ -81,10 +100,13 @@ info_arc <- function(g2, ...) {
 
 #' @rdname info
 #' @export
-info_marker <- function(g2, ...) {
+info_marker <- function(g2, ..., figures = NULL) {
   guide <- list(
-    type = "dataMarker",
-    opts = list(...)
+    figures = figures,
+    guide = list(
+      type = "dataMarker",
+      ...
+    )
   )
   g2$x$guides <- append(g2$x$guides, list(guide))
   return(g2)

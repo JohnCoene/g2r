@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway|Ubuntu+Mono');
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Ubuntu+Mono');
 
 body{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 code{
   font-family: 'Ubuntu Mono', monospace;
+  background-color: #f5efff;
+}
+
+code a, pre a{
+  color: #F0760F;
 }
 
 p>a {
@@ -16,7 +21,15 @@ li>a {
   color: #F0760F;
 }
 
+small>a{
+  color: #F0760F;
+}
+
 .sourceCode>a{
+  color: #6906FF;
+}
+
+.fl{
   color: #6906FF;
 }
 
@@ -24,16 +37,12 @@ li>a {
   color: #F0760F;
 }
 
-.op{
+.op, .kw{
   color: #666666;
 }
 
 .dv, .dt{
   color: #191919;
-}
-
-small>a{
-  color: #F0760F;
 }
 
 pre {
@@ -78,6 +87,7 @@ pre {
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
   color: #FFF;
+  background-color: #6906FF;
 }
 
 .navbar-default .navbar-nav>li>a{
@@ -90,4 +100,8 @@ pre {
 
 a:hover, a:focus {
   color: #6906FF;
+}
+
+.btn-primary{
+  background-color: #6906FF;
 }

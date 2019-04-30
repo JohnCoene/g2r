@@ -7,9 +7,9 @@ method_and_aes <- dplyr::tribble(
   "shape",              "shape",
   "label",              "label",
   "tooltip",            "tooltip",
-  "label",              "label",
   "style",              "style",
-  "adjust",             "adjust"
+  "adjust",             "adjust",
+  "select",             "select"
 )
 
 usethis::use_data(method_and_aes, internal = TRUE, overwrite = TRUE)

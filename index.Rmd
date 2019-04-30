@@ -1,9 +1,8 @@
-# g2r
-
 ```{r setup, include = FALSE}
 library(g2r)
 library(ggplot2)
 library(htmltools)
+g2r_globals(font = "Quicksand")
 ```
 
 <img src="../man/figures/logo.png" align="right" height="200px"/>
@@ -62,7 +61,7 @@ library(g2r)
 iris %>%
   g2(plan(Petal.Length, Petal.Width, color = Species)) %>% 
   fig_point() %>%
-  plane_wrap(planes(Species)) 
+  plane_wrap(planes(Species))
 ```
 </div>
 </div>

@@ -11,24 +11,26 @@
 \alias{info_marker}
 \title{Info}
 \usage{
-info_line(g2, ...)
+info_line(g2, ..., figures = NULL)
 
-info_text(g2, ...)
+info_text(g2, ..., figures = NULL)
 
-info_image(g2, ...)
+info_image(g2, ..., figures = NULL)
 
-info_region(g2, ...)
+info_region(g2, ..., figures = NULL)
 
-info_html(g2, ...)
+info_html(g2, ..., figures = NULL)
 
-info_arc(g2, ...)
+info_arc(g2, ..., figures = NULL)
 
-info_marker(g2, ...)
+info_marker(g2, ..., figures = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
 \item{...}{Info options.}
+
+\item{figures}{Vector of names or indices of figure(s) to apply the information to, if \code{NULL} applies only to the first figure.}
 }
 \description{
 Add informational elements to the chart.

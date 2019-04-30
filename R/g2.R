@@ -7,7 +7,6 @@
 #' @param elementId ID of \code{DOM} container.
 #' @param ... Any general options.
 #' @param plan Mapping aesthetics as returned by \code{\link{plan}}.
-#' @param render Whether to render the chart.
 #'
 #' @import htmlwidgets
 #' @import purrr
@@ -20,7 +19,7 @@
 #' 
 #' @name g2r
 #' @export
-g2 <- function(data = NULL, plan = NULL, ..., render = TRUE, width = NULL, height = NULL, 
+g2 <- function(data = NULL, plan = NULL, ..., width = NULL, height = NULL, 
   elementId = NULL) {
 
   x = list(
@@ -30,7 +29,6 @@ g2 <- function(data = NULL, plan = NULL, ..., render = TRUE, width = NULL, heigh
     ),
     scales = list(),
     mapping = plan,
-    render = render,
     data = NULL,
     dataOpts = list()
   )
@@ -55,7 +53,7 @@ g2 <- function(data = NULL, plan = NULL, ..., render = TRUE, width = NULL, heigh
   )
 }
 
-#' Shiny bindings for g2r
+#' Shiny bindings
 #'
 #' Output and render functions for using g2r within Shiny
 #' applications and interactive Rmd documents.

@@ -35,7 +35,7 @@ debug_mode <- function(){
   x <- getOption("g2r_debug")
   if(is.null(x))
     return(FALSE)
-  TRUE
+  x
 }
 
 is_g2 <- function(g2){
@@ -55,4 +55,11 @@ check_g2 <- function(g2){
     append(letters) %>%  
     sample(45) %>% 
     paste0(collapse = "")
+}
+
+# remove animation and aes to easily append remaining options
+rm_anim_aes <- function(...){
+  list(...) %>% 
+    discard(is_animation) %>% 
+    discard(is_aes)
 }
