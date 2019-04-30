@@ -28,7 +28,13 @@
     <loc>http://g2r.dev/reference/g2r.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/g2r_globals.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/gauge_axis.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/gauge_color.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/gauge_label.html</loc>
@@ -61,10 +67,16 @@
     <loc>http://g2r.dev/reference/plane.html</loc>
   </url>
   <url>
-    <loc>http://g2r.dev/reference/scale-color.html</loc>
+    <loc>http://g2r.dev/reference/set_font.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/set_renderer.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/slider.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/style.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/sync.html</loc>

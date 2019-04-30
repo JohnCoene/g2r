@@ -33,6 +33,22 @@ HTMLWidgets.widget({
         var data = x.data;
         var opts = x.layers;
 
+        // Coordinates
+        if(x.hasOwnProperty("coord"))
+        coord = chart.coord(x.coord.type, x.coord.opts);
+
+        if(x.hasOwnProperty("coordRotate"))
+        coord.rotate(x.coordRotate);
+
+        if(x.hasOwnProperty("coordScale"))
+        coord.scale(x.coordScale[0], x.coordScale[1]);
+
+        if(x.hasOwnProperty("coordReflect"))
+        coord.reflect(x.coordReflect);
+
+        if(x.hasOwnProperty("coordTranspose"))
+        coord.transpose();
+
         if(!x.hasOwnProperty('facet')){
           opts.forEach(function(v){
             view = chart.view(v.layer);
@@ -45,6 +61,14 @@ HTMLWidgets.widget({
           chart.source(x.data, x.dataOpts);
           chart.facet(x.facet.type, x.facet.opts);
         }
+
+        if(x.hasOwnProperty("legend"))
+          x.legend.forEach(function(leg){
+            chart.legend(leg[0], leg[1]);
+          })
+
+        if(x.hasOwnProperty("tooltip"))
+          chart.tooltip(x.tooltip);
 
         chart.render();
       },

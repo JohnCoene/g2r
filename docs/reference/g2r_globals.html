@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Legend — conf_legend • g2r</title>
+<title>Globals — g2r_globals • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Legend — conf_legend" />
+<meta property="og:title" content="Globals — g2r_globals" />
 
-<meta property="og:description" content="Configure the chart's legend." />
+<meta property="og:description" content="Set global options, all charts in session will use these options." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -115,52 +115,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Legend</h1>
+    <h1>Globals</h1>
     
-    <div class="hidden name"><code>conf_legend.Rd</code></div>
+    <div class="hidden name"><code>g2r_globals.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Configure the chart's legend.</p>
+    <p>Set global options, all charts in session will use these options.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>conf_legend</span>(<span class='no'>g2</span>, <span class='no'>var</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>g2r_globals</span>(<span class='no'>...</span>, <span class='kw'>font</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>renderer</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>g2</th>
-      <td><p>An object of class <code>g2r</code> as returned by <code><a href='g2r.html'>g2r</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>var</th>
-      <td><p>Bare column name of legend to apply changes to.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Configuration options or a logical indicating whether to show the legend.</p></td>
+      <td><p>Passed to <code><a href='theme.html'>custom_style</a></code></p></td>
+    </tr>
+    <tr>
+      <th>font</th>
+      <td><p>Passed to <code><a href='set_font.html'>set_font</a></code></p></td>
+    </tr>
+    <tr>
+      <th>renderer</th>
+      <td><p>Passed to <code><a href='set_renderer.html'>set_renderer</a></code></p></td>
     </tr>
     </table>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>g</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>cars</span>, <span class='fu'><a href='plan.html'>plan</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>dist</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='geoms.html'>fig_point</a></span>()
-
-<span class='no'>g</span> <span class='kw'>%&gt;%</span> <span class='fu'>conf_legend</span>(<span class='no'>dist</span>, <span class='fl'>FALSE</span>)
-
-<span class='no'>g</span> <span class='kw'>%&gt;%</span> <span class='fu'>conf_legend</span>(<span class='no'>dist</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"right"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>
