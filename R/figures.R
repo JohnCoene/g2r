@@ -136,7 +136,10 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
     )
   )
 
-  additional_opts <- rm_anim_aes(...)
+  additional_opts <- rm_anim_aes_opts(...)
+  option <- get_opts(...)
+  if(length(options))
+    additional_opts <- append(additional_opts, option)
   if(length(additional_opts))
     view$opts <- append(view$opts, additional_opts)
 

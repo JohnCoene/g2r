@@ -9,13 +9,13 @@
 #' g <- g2(iris, plan(Sepal.Length, Sepal.Width)) %>% 
 #'   fig_point(plan(color = Species)) 
 #' 
-#' g %>% darken()
+#' g %>% style_dark()
 #' 
-#' g %>% motif(colors = c("red", "green", "blue"))
+#' g %>% custom_style(colors = c("red", "green", "blue"))
 #' 
 #' @name theme
 #' @export
-darken <- function(g2) {
+style_dark <- function(g2) {
   check_g2(g2)
   g2$x$opts$theme <- "dark"
   return(g2)
@@ -23,7 +23,7 @@ darken <- function(g2) {
 
 #' @rdname theme
 #' @export
-motif <- function(g2, ...){
+custom_style <- function(g2, ...){
   check_g2(g2)
   g2$x$theme <- list(...)
   return(g2)
@@ -66,7 +66,7 @@ set_renderer <- function(g2, renderer = c("svg", "canvas")){
 #'
 #' Set global options, all charts in session will use these options.
 #' 
-#' @param ... Passed to \code{\link{motif}}
+#' @param ... Passed to \code{\link{custom_style}}
 #' @param font Passed to \code{\link{set_font}}
 #' @param renderer Passed to \code{\link{set_renderer}}
 #' 

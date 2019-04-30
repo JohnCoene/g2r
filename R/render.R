@@ -163,7 +163,6 @@ add_geom_method <- function(name, aes, scales){
       names(method) <- "field"
       method <- append(method, scl) %>% 
         list()
-      print(method)
     }
   }
 

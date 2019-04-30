@@ -2,13 +2,13 @@
 % Please edit documentation in R/motif.R
 \name{theme}
 \alias{theme}
-\alias{darken}
-\alias{motif}
+\alias{style_dark}
+\alias{custom_style}
 \title{Motif}
 \usage{
-darken(g2)
+style_dark(g2)
 
-motif(g2, ...)
+custom_style(g2, ...)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -22,8 +22,8 @@ Customise the chart motif.
 g <- g2(iris, plan(Sepal.Length, Sepal.Width)) \%>\% 
   fig_point(plan(color = Species)) 
 
-g \%>\% darken()
+g \%>\% style_dark()
 
-g \%>\% motif(colors = c("red", "green", "blue"))
+g \%>\% custom_style(colors = c("red", "green", "blue"))
 
 }

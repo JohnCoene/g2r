@@ -26,3 +26,15 @@ G2.Shape.registerShape('interval', 'triangle', {
     return polygon; // !必须返回 shape
   }
 });
+
+G2.Shape.registerShape('point', 'cloud', {
+  drawShape: function drawShape(cfg, container) {
+    var attrs = getTextAttrs(cfg);
+    return container.addShape('text', {
+      attrs: _.assign(attrs, {
+        x: cfg.x,
+        y: cfg.y
+      })
+    });
+  }
+});

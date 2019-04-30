@@ -5,6 +5,10 @@ library(htmltools)
 g2r_globals(font = "Quicksand")
 ```
 
+<br/>
+<br/>
+<br/>
+
 <img src="../man/figures/logo.png" align="right" height="200px"/>
 
 A <a href="https://ggplot2.tidyverse.org/" class="link" target="_blank">ggplot2</a>-inspired grammar of graphics for interactive visualisations via <a href="https://antv.alipay.com/zh-cn/g2/3.x/" class="link" target="_blank">g2</a>.
@@ -26,7 +30,8 @@ df <- dplyr::tribble(
   "aes",            "plan",
   "scale_*",        "gauge_*",
   "geom_*",         "fig_*",
-  "facet_*",         "plane_*"
+  "facet_*",        "plane_*",
+  "theme_*",        "style_*"
 )
 
 knitr::kable(df)

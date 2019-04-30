@@ -58,8 +58,36 @@ check_g2 <- function(g2){
 }
 
 # remove animation and aes to easily append remaining options
-rm_anim_aes <- function(...){
+rm_anim_aes_opts <- function(...){
   list(...) %>% 
     discard(is_animation) %>% 
-    discard(is_aes)
+    discard(is_aes) %>% 
+    discard(is_opts)
+}
+
+is_opts <- function(x){
+  aes <- FALSE
+  if(inherits(x, "option"))
+    aes <- TRUE
+  return(aes)
+}
+
+# construct options
+.construct_options <- function(option, name = "name"){
+  structure(option, class = c(name, "option", class(option)))
+}
+
+get_opts <- function(...){
+  opts <- list(...) %>% 
+    keep(is_opts)
+
+  names <- opts %>% 
+    map_chr("NAME") %>% 
+    unlist()
+  
+  opts <- opts %>% 
+    map("opts")
+  
+  names(opts) <- names
+  return(opts)
 }

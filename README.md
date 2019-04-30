@@ -21,20 +21,6 @@ From ggplot2 to g2r:
 
 ## Example
 
-It's looks familiar to ggplot2.
-
-### ggplot
-
-``` r
-library(ggplot2)
-
-iris %>%
-  ggplot(aes(Petal.Length, Petal.Width, color = Species)) +
-  geom_point() +
-  facet_wrap(.~Species)
-```
-
-### g2r
 
 ``` r
 library(g2r)
