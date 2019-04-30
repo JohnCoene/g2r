@@ -9,7 +9,7 @@ gauge_tooltip(g2, callback = NULL)
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{tooltip}{A JavaScript function.}
+\item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
 }
 \description{
 Gauge tooltip.

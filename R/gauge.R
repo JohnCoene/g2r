@@ -58,7 +58,7 @@ gauge_shape <- function(g2, shapes = NULL, callback = NULL){
 #' Gauge label.
 #' 
 #' @inheritParams geoms
-#' @param label A configuration list or a JavaScript funtion.
+#' @inheritParams gauge_color
 #' 
 #' @export
 gauge_label <- function(g2, callback, ...){
@@ -71,7 +71,7 @@ gauge_label <- function(g2, callback, ...){
 #' Gauge tooltip.
 #' 
 #' @inheritParams geoms
-#' @param tooltip A JavaScript function.
+#' @inheritParams gauge_color
 #' 
 #' @export
 gauge_tooltip <- function(g2, callback = NULL){

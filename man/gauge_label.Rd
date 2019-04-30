@@ -9,9 +9,9 @@ gauge_label(g2, callback, ...)
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).}
+\item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
 
-\item{label}{A configuration list or a JavaScript funtion.}
+\item{...}{Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).}
 }
 \description{
 Gauge label.
