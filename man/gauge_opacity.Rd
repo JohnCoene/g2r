@@ -4,12 +4,12 @@
 \alias{gauge_opacity}
 \title{Gauge opacity}
 \usage{
-gauge_opacity(g2, opacity)
+gauge_opacity(g2, callback = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{opacity}{A JavaScript function.}
+\item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
 }
 \description{
 Gauge opacity.

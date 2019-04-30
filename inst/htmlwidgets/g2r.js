@@ -36,7 +36,10 @@ HTMLWidgets.widget({
         if(!x.hasOwnProperty('facet')){
           opts.forEach(function(v){
             view = chart.view(v.layer);
-            view.source(data);
+            if(v.hasOwnProperty('data'))
+              view.source(v.data);
+            else
+              view.source(data);
           });
         } else {
           chart.source(x.data, x.dataOpts);

@@ -3,28 +3,13 @@
 #' Gauge colour, similar to the \code{scale_colour_*} family of functions from the \code{ggplot2} package.
 #' 
 #' @inheritParams geoms
-#' @param colors A vector of colors or a JavaScript function.
-#' 
-#' @name scale-color
-#' @export
-gauge_colour <- function(g2, colors){
-  make_scale(g2, vars = colors, method = "color")
-}
-
-#' @rdname scale-color
-#' @export
-gauge_color <- gauge_colour
-
-#' Gauge shape
-#'
-#' Gauge shapes.
-#' 
-#' @inheritParams geoms
-#' @param shapes A vector of shapes or a JavaScript function.
+#' @param colors A vector of colors.
+#' @param callback A JavaScript callback function (see \code{\link{cb}}) which returns a color.
 #' 
 #' @export
-gauge_shape <- function(g2, shapes){
-  make_scale(g2, vars = shapes, method = "shape")
+gauge_color <- function(g2, colors = NULL, callback = NULL){
+  opts <- list(colors = colors, callback = callback)
+  make_scale(g2, vars = opts, method = "color")
 }
 
 #' Gauge size
@@ -32,11 +17,13 @@ gauge_shape <- function(g2, shapes){
 #' Gauge size.
 #' 
 #' @inheritParams geoms
-#' @param size A vector of sizes (\code{min, max}) or a JavaScript function.
+#' @param range A vector indicating the minimum and maximum sizes.
+#' @inheritParams gauge_color
 #' 
 #' @export
-gauge_size <- function(g2, size){
-  make_scale(g2, vars = size, method = "size")
+gauge_size <- function(g2, range = NULL, callback = NULL){
+  opts <- list(range = range, callback = callback)
+  make_scale(g2, vars = opts, method = "size")
 }
 
 #' Gauge opacity
@@ -44,11 +31,26 @@ gauge_size <- function(g2, size){
 #' Gauge opacity.
 #' 
 #' @inheritParams geoms
-#' @param opacity A JavaScript function.
+#' @inheritParams gauge_color
 #' 
 #' @export
-gauge_opacity <- function(g2, opacity){
-  make_scale(g2, vars = opacity, method = "opacity")
+gauge_opacity <- function(g2, callback = NULL){
+  opts <- list(callback = callback)
+  make_scale(g2, vars = opts, method = "opacity")
+}
+
+#' Gauge shape
+#'
+#' Gauge shapes.
+#' 
+#' @inheritParams geoms
+#' @param shapes A vector of shapes.
+#' @inheritParams gauge_color
+#' 
+#' @export
+gauge_shape <- function(g2, shapes = NULL, callback = NULL){
+  opts <- list(shapes = shapes, callback = callback)
+  make_scale(g2, vars = opts, method = "shape")
 }
 
 #' Gauge label
@@ -59,8 +61,9 @@ gauge_opacity <- function(g2, opacity){
 #' @param label A configuration list or a JavaScript funtion.
 #' 
 #' @export
-gauge_label <- function(g2, label){
-  make_scale(g2, vars = label, method = "label")
+gauge_label <- function(g2, callback, ...){
+  opts <- list(callback = callback, cfg = list(...))
+  make_scale(g2, vars = opts, method = "label")
 }
 
 #' Gauge tooltip
@@ -71,26 +74,18 @@ gauge_label <- function(g2, label){
 #' @param tooltip A JavaScript function.
 #' 
 #' @export
-gauge_tooltip <- function(g2, tooltip){
-  make_scale(g2, vars = tooltip, method = "tooltip")
+gauge_tooltip <- function(g2, callback = NULL){
+  make_scale(g2, vars = list(callback = callback), method = "tooltip")
 }
 
 # make scale
 make_scale <- function(g2, vars, method = "color"){
 
-  if(missing(vars))
-    stop("missing arguments", call. = FALSE)
-
-  if(!inherits(vars, "JS_EVAL") && length(vars) > 1)
-    vars <- as.list(vars)
-
-  scale <- list()
-  scale[[method]] <- vars
+  vars <- vars[lapply(vars, length) > 0]
   
-  if(is.null(g2$x$scales[[method]]))
-    g2$x$scales <- append(g2$x$scales, scale)
-  else
-    g2$x$scales[[method]] <- scale
+  # insert or replace
+  g2$x$scales[[method]] <- vars
+    
   
   return(g2)
 }

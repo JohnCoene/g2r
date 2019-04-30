@@ -10,6 +10,7 @@
 \alias{fig_polygon}
 \alias{fig_schema}
 \alias{fig_edge}
+\alias{fig_violin}
 \alias{fig_heatmap}
 \alias{fig_point_jitter}
 \alias{fig_point_stack}
@@ -36,6 +37,8 @@ fig_polygon(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 fig_schema(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
 fig_edge(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+
+fig_violin(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 
 fig_heatmap(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
 

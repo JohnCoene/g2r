@@ -4,10 +4,12 @@
 \alias{gauge_label}
 \title{Gauge label}
 \usage{
-gauge_label(g2, label)
+gauge_label(g2, callback, ...)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
+
+\item{...}{Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).}
 
 \item{label}{A configuration list or a JavaScript funtion.}
 }

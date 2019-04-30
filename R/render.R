@@ -24,9 +24,6 @@ render_g2r <- function(g2){
       geom <- append(geom, meth)
     }
 
-    if(length(layer$opts))
-      geom <- append(geom, layer$opts)
-
     guides <- get_guides(g2$x$guides, layer$name, index = i)
 
     # if data passed, turn to row list
@@ -36,13 +33,18 @@ render_g2r <- function(g2){
         pmap(list)
 
     view <- list(
-      data = layer$data,
       layer = list(
         options = list(
           geoms = list(geom)
         )
       )
     )
+
+    if(length(layer$data))
+      view$data <- layer$data
+
+    if(length(layer$opts))
+      view$layer$options <- append(view$layer$options, layer$opts)
 
     if(length(guides))
       view$layer$options$guides <- guides
@@ -142,32 +144,31 @@ build_geom_method <- function(aes, vars){
     unlist() %>% 
     .[order(names(.))] %>% # for position method: x comes before y
     unname() %>% 
-    as.list() 
+    list()
 }
 
 # add geom
 add_geom_method <- function(name, aes, scales){
 
-  # build arguments based on gaes
+  # build arguments based on plan
   vars <- method_and_aes %>% filter(method == name) %>% pull(aes) %>% unlist()
-  arguments <- build_geom_method(aes, vars)
+  method <- build_geom_method(aes, vars)
 
   # add relevant arguments (from scales) to method
   is_relevant_scale <- name %in% names(scales)
   if(is_relevant_scale){
     is_relevant_to_aes <- sum(name %in% names(aes))
     if(is_relevant_to_aes > 0){
-      scale <- scales[is_relevant_to_aes]
-      if(!inherits(scale[[1]], "JS_EVAL"))
-        scale <- scale %>% unlist() %>% unname()
-      else
-        scale <- unname(scale)
-      arguments <- append(arguments, list(scale))
+      scl <- scales[is_relevant_to_aes] %>% unname() %>% .[[1]]
+      names(method) <- "field"
+      method <- append(method, scl) %>% 
+        list()
+      print(method)
     }
   }
 
-  method <- list(arguments)
-  names(method) <- name
+  if(!is.null(method))
+    names(method) <- name
 
   method
 }

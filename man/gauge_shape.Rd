@@ -4,12 +4,14 @@
 \alias{gauge_shape}
 \title{Gauge shape}
 \usage{
-gauge_shape(g2, shapes)
+gauge_shape(g2, shapes = NULL, callback = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{shapes}{A vector of shapes or a JavaScript function.}
+\item{shapes}{A vector of shapes.}
+
+\item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
 }
 \description{
 Gauge shapes.

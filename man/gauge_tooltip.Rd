@@ -4,7 +4,7 @@
 \alias{gauge_tooltip}
 \title{Gauge tooltip}
 \usage{
-gauge_tooltip(g2, tooltip)
+gauge_tooltip(g2, callback = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

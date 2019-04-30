@@ -27,7 +27,6 @@ g2 <- function(data = NULL, plan = NULL, ..., width = NULL, height = NULL,
       ...,
       forceFit = TRUE
     ),
-    scales = list(),
     mapping = plan,
     data = NULL,
     dataOpts = list()

@@ -63,6 +63,12 @@ fig_edge <- function(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL) {
 
 #' @rdname geoms
 #' @export
+fig_violin <- function(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL) {
+  make_geom(g2, ..., data = data, chart_type = "violin", inherit_aes = inherit_plan, name = name)
+}
+
+#' @rdname geoms
+#' @export
 fig_heatmap <- function(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL) {
   make_geom(g2, ..., data = data, chart_type = "heatmap", inherit_aes = inherit_plan, name = name)
 }

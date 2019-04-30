@@ -4,12 +4,14 @@
 \alias{gauge_size}
 \title{Gauge size}
 \usage{
-gauge_size(g2, size)
+gauge_size(g2, range = NULL, callback = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{size}{A vector of sizes (\code{min, max}) or a JavaScript function.}
+\item{range}{A vector indicating the minimum and maximum sizes.}
+
+\item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
 }
 \description{
 Gauge size.
