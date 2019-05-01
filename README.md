@@ -18,6 +18,8 @@ From ggplot2 to g2r:
 1. `aes` -> `plan`
 2. `geom_*` -> `fig_*`
 3. `scale_*` -> `gauge_*`
+4. `facet_*` -> `plane_*`
+5. `theme_*` -> `style_*`
 
 ## Example
 

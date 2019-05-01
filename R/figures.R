@@ -131,9 +131,7 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
     type = chart_type, 
     inherit_aes = inherit_aes, 
     name = name, 
-    opts = list(
-      animate = get_animation(...)
-    )
+    animate = get_animation(...)
   )
 
   additional_opts <- rm_anim_aes_opts(...)

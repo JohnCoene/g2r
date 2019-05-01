@@ -20,11 +20,15 @@ render_g2r <- function(g2){
     geom <- list(type = layer$type)
     for(method in method_and_aes$method){
       meth <- add_geom_method(method, aes, scales)
-      meth <- meth[lapply(meth, length) > 0]
+      meth <- meth[lapply(meth, length) > 0] # remove empty/unused method
       geom <- append(geom, meth)
     }
 
     guides <- get_guides(g2$x$guides, layer$name, index = i)
+
+    if(length(layer$animate))
+      geom$animate <- layer$animate
+    layer$animate <- NULL
 
     # if data passed, turn to row list
     if(!is.null(layer$data))
