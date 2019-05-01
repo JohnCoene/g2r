@@ -72,7 +72,7 @@ g2(temp, asp(month, temp, color = city)) %>%
 
 There are no fig_boxplot either, yet.
 
-```{r, collapsed=TRUE}
+```{r, collapse=TRUE}
 N <- 8
 
 df <- data.frame(
@@ -124,7 +124,7 @@ df$data <- df$data %>%
   purrr::map(unname)  %>% 
   purrr:::map(round)
 
-df$grp <- LETTERS[1:N]
+df$grp <- letters[1:N]
 
 df$type <- rep(LETTERS[1:2], 4)
 ```
