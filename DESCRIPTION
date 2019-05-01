@@ -1,6 +1,6 @@
 Package: g2r
 Title: Powerful Interactive Visualisations
-Version: 0.1
+Version: 0.1.0
 Authors@R: 
     c(
         person(
@@ -31,3 +31,7 @@ Imports:
 RoxygenNote: 6.1.1
 URL: http://g2r.dev
 BugReports: https://github.com/JohnCoene/g2r/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

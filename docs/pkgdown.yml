@@ -1,7 +1,8 @@
 pandoc: 1.19.2.4
 pkgdown: 1.3.0.9000
 pkgdown_sha: 83f2afb5d2ec85abe29bfd8d67408cdf2bb55f03
-articles: []
+articles:
+  get-started: get-started.html
 urls:
   reference: http://g2r.dev/reference
   article: http://g2r.dev/articles

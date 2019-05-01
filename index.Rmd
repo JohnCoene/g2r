@@ -9,9 +9,19 @@ g2r_globals(font = "Quicksand")
 <br/>
 <br/>
 
-<img src="logo.png" align="right" height="200px"/>
+<div class="row">
 
-A <a href="https://ggplot2.tidyverse.org/" class="link" target="_blank">ggplot2</a>-inspired grammar of graphics for interactive visualisations via <a href="https://antv.alipay.com/zh-cn/g2/3.x/" class="link" target="_blank">g2</a>.
+<div class="jumbotron">
+<img src="logo.png" height="200px" align="right"/>
+<h4>A <a href="https://ggplot2.tidyverse.org/" class="link" target="_blank">ggplot2</a>-inspired grammar of graphics for interactive visualisations using <a href="https://antv.alipay.com/zh-cn/g2/3.x/" class="link" target="_blank">g2</a>.</h4>
+<p>
+<br/>
+<br/>
+<a class="btn btn-primary btn-lg" href="articles/get-started.html" role="button">Get started</a>
+</p>
+</div>
+
+</div>
 
 ## Installation
 
@@ -20,26 +30,9 @@ A <a href="https://ggplot2.tidyverse.org/" class="link" target="_blank">ggplot2<
 remotes::install_github("JohnCoene/g2r")
 ```
 
-## Synthax
-
-From ggplot2 to g2r.
-
-```{r, echo=FALSE}
-df <- dplyr::tribble(
-  ~"ggplot2",       ~"g2r",
-  "aes",            "asp",
-  "scale_*",        "gauge_*",
-  "geom_*",         "fig_*",
-  "facet_*",        "plane_*",
-  "theme_*",        "style_*"
-)
-
-knitr::kable(df)
-```
-
 ## Example
 
-It's looks familiar to ggplot2.
+It's looks similar to ggplot2.
 
 <div class="row">
 <div class="col-md-6">

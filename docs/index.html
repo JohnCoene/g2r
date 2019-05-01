@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">g2r</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -53,15 +53,45 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="LICENSE.html">
+    <span class="fa fa-balance-scale"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="news/index.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="reference/">
+    <span class="fa fa-code"></span>
+     
+    Reference
+  </a>
+</li>
+<li>
+  <a href="articles/">
+    <span class="fa fa-graduation-cap"></span>
+     
+    Guide
+  </a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/JohnCoene/g2r">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -70,58 +100,33 @@
 <!--/.navbar -->
 
       
-      </header><script src="index_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="index_files/g2-3.5.1/g2.min.js"></script><script src="index_files/g2-3.5.1/shapes.js"></script><script src="index_files/g2-3.5.1/functions.js"></script><script src="index_files/g2r-binding-0.1/g2r.js"></script><div class="row">
+      </header><script src="index_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="index_files/g2-3.5.1/g2.min.js"></script><script src="index_files/g2-3.5.1/shapes.js"></script><script src="index_files/g2-3.5.1/functions.js"></script><script src="index_files/g2r-binding-0.1.0/g2r.js"></script><div class="row">
   <div class="col-md-9 contents">
     
 
     
     
 <p><br><br><br></p>
-<p><img src="logo.png" align="right" height="200px"></p>
-<p>A <a href="https://ggplot2.tidyverse.org/" class="link" target="_blank">ggplot2</a>-inspired grammar of graphics for interactive visualisations via <a href="https://antv.alipay.com/zh-cn/g2/3.x/" class="link" target="_blank">g2</a>.</p>
+<div class="row">
+<div class="jumbotron">
+<img src="logo.png" height="200px" align="right"><h4>
+A <a href="https://ggplot2.tidyverse.org/" class="link" target="_blank">ggplot2</a>-inspired grammar of graphics for interactive visualisations using <a href="https://antv.alipay.com/zh-cn/g2/3.x/" class="link" target="_blank">g2</a>.
+</h4>
+<p>
+<br><br><a class="btn btn-primary btn-lg" href="articles/get-started.html" role="button">Get started</a>
+</p>
+</div>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("remotes")</span>
 remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"JohnCoene/g2r"</span>)</code></pre></div>
 </div>
-<div id="synthax" class="section level2">
-<h2 class="hasAnchor">
-<a href="#synthax" class="anchor"></a>Synthax</h2>
-<p>From ggplot2 to g2r.</p>
-<table class="table table">
-<thead><tr class="header">
-<th align="left">ggplot2</th>
-<th align="left">g2r</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">aes</td>
-<td align="left">asp</td>
-</tr>
-<tr class="even">
-<td align="left">scale_*</td>
-<td align="left">gauge_*</td>
-</tr>
-<tr class="odd">
-<td align="left">geom_*</td>
-<td align="left">fig_*</td>
-</tr>
-<tr class="even">
-<td align="left">facet_*</td>
-<td align="left">plane_*</td>
-</tr>
-<tr class="odd">
-<td align="left">theme_*</td>
-<td align="left">style_*</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>It’s looks familiar to ggplot2.</p>
+<p>It’s looks similar to ggplot2.</p>
 <div class="row">
 <div class="col-md-6">
 <h3 id="ggplot">ggplot</h3>
@@ -131,7 +136,7 @@ iris <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span>(Petal.Length, Petal.Width, <span class="dt">color =</span> Species)) <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/ggplot2/man/facet_wrap.html">facet_wrap</a></span>(.<span class="op">~</span>Species)</code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
 </div>
 <div class="col-md-6">
 <h3 id="g2r">g2r</h3>
@@ -141,8 +146,8 @@ iris <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="reference/g2r.html">g2</a></span>(<span class="kw"><a href="reference/asp.html">asp</a></span>(Petal.Length, Petal.Width, <span class="dt">color =</span> Species)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="reference/geoms.html">fig_point</a></span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="reference/plane.html">plane_wrap</a></span>(<span class="kw"><a href="reference/plane.html">planes</a></span>(Species))</code></pre></div>
-<div id="htmlwidget-38dcdcf0b0e516966c0c" style="width:100%;height:500px;" class="g2r html-widget"></div>
-<script type="application/json" data-for="htmlwidget-38dcdcf0b0e516966c0c">{"x":{"opts":{"forceFit":true},"data":[{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.1,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.2,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.5,"Species":"setosa"},{"Petal.Length":1.9,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.2,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.6,"Species":"setosa"},{"Petal.Length":1.9,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":4.7,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.9,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":3.3,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":3.5,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":3.6,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.9,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.3,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.8,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":5,"Petal.Width":1.7,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":3.5,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":3.8,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":3.7,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":5.1,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":3.3,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.3,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":3,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":6,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.9,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":6.6,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":4.5,"Petal.Width":1.7,"Species":"virginica"},{"Petal.Length":6.3,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.3,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.3,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":6.7,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":6.9,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":1.5,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":6.7,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":6,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":1.6,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":6.4,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.5,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":1.4,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.4,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.9,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.2,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.2,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.4,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.8,"Species":"virginica"}],"dataOpts":{"Petal.Length":{"sync":true},"Petal.Width":{"sync":true},"Species":{"sync":true}},"facet":{"type":"list","opts":{"fields":[["Species"]],"eachView":"function eachView(view){view.point().position([\"Petal.Length\",\"Petal.Width\"]).color(\"Species\");\n}"}},"font":"Quicksand"},"evals":["facet.opts.eachView"],"jsHooks":[]}</script>
+<div id="htmlwidget-21783997c00ad9b0149d" style="width:100%;height:500px;" class="g2r html-widget"></div>
+<script type="application/json" data-for="htmlwidget-21783997c00ad9b0149d">{"x":{"opts":{"forceFit":true},"data":[{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.1,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.2,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.7,"Petal.Width":0.5,"Species":"setosa"},{"Petal.Length":1.9,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.2,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.1,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.3,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.6,"Species":"setosa"},{"Petal.Length":1.9,"Petal.Width":0.4,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.3,"Species":"setosa"},{"Petal.Length":1.6,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.5,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":1.4,"Petal.Width":0.2,"Species":"setosa"},{"Petal.Length":4.7,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.9,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":3.3,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":3.5,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":3.6,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.9,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.3,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4.8,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":5,"Petal.Width":1.7,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":3.5,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":3.8,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":3.7,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":3.9,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":5.1,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.5,"Petal.Width":1.6,"Species":"versicolor"},{"Petal.Length":4.7,"Petal.Width":1.5,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.4,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.6,"Petal.Width":1.4,"Species":"versicolor"},{"Petal.Length":4,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":3.3,"Petal.Width":1,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.2,"Species":"versicolor"},{"Petal.Length":4.2,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":4.3,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":3,"Petal.Width":1.1,"Species":"versicolor"},{"Petal.Length":4.1,"Petal.Width":1.3,"Species":"versicolor"},{"Petal.Length":6,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.9,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":6.6,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":4.5,"Petal.Width":1.7,"Species":"virginica"},{"Petal.Length":6.3,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.3,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.3,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":6.7,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":6.9,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":1.5,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":6.7,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":6,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.9,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.8,"Petal.Width":1.6,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":6.4,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.2,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.5,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":1.4,"Species":"virginica"},{"Petal.Length":6.1,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.5,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":4.8,"Petal.Width":1.8,"Species":"virginica"},{"Petal.Length":5.4,"Petal.Width":2.1,"Species":"virginica"},{"Petal.Length":5.6,"Petal.Width":2.4,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.9,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.7,"Petal.Width":2.5,"Species":"virginica"},{"Petal.Length":5.2,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5,"Petal.Width":1.9,"Species":"virginica"},{"Petal.Length":5.2,"Petal.Width":2,"Species":"virginica"},{"Petal.Length":5.4,"Petal.Width":2.3,"Species":"virginica"},{"Petal.Length":5.1,"Petal.Width":1.8,"Species":"virginica"}],"dataOpts":{"Petal.Length":{"sync":true},"Petal.Width":{"sync":true},"Species":{"sync":true}},"facet":{"type":"list","opts":{"fields":[["Species"]],"eachView":"function eachView(view){view.point().position([\"Petal.Length\",\"Petal.Width\"]).color(\"Species\");\n}"}},"font":"Quicksand"},"evals":["facet.opts.eachView"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -166,7 +171,8 @@ iris <span class="op">%&gt;%</span>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>John Coene <br><small class="roles"> Author, maintainer </small>  </li>
+<li>
+<a href="http://john-coene.com">John Coene</a> <br><small class="roles"> Author, maintainer </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -177,7 +183,7 @@ iris <span class="op">%&gt;%</span>
 
 
       <footer><div class="copyright">
-  <p>Developed by John Coene.</p>
+  <p>Developed by <a href="http://john-coene.com">John Coene</a>.</p>
 </div>
 
 <div class="pkgdown">

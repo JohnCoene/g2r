@@ -1,0 +1,137 @@
+---
+title: "Get Started"
+author: "John (JP) Coene"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(g2r)
+```
+
+## Synthax
+
+The synthax of g2r is heavily inspired by ggplot2.
+
+```{r, echo=FALSE}
+df <- dplyr::tribble(
+  ~"ggplot2",       ~"g2r",
+  "aes",            "asp",
+  "scale_*",        "gauge_*",
+  "geom_*",         "fig_*",
+  "facet_*",        "plane_*",
+  "theme_*",        "style_*"
+)
+
+knitr::kable(df, caption = "ggplot2 to g2r synthax map.", format = "html")
+```
+
+## Aspects
+
+In g2r you use aspects (`asp`) instead of aesthetics (`aes`) in ggplot2 but they work in very much the same way.
+
+```{r}
+g2(cars, asp(dist, speed, size = speed)) %>% 
+  fig_point()
+```
+
+Then you can use gauges (instead of scales in ggplot2) to manipulate those aspects.
+
+```{r}
+g2(cars, asp(dist, speed, color = speed, size = 10)) %>% 
+  fig_point() %>% 
+  gauge_color(c("blue", "white", "red"))
+```
+
+It may seem like some some figures (equivalent to geoms) are missing, but technically all are available.
+
+```{r}
+data.frame(
+  label = LETTERS[1:5],
+  value = runif(5)
+) %>% 
+  g2(asp(value, color = label)) %>% 
+  fig_interval_stack() %>% 
+  coord_type("theta")
+```
+
+You won't find `fig_bar` but `fig_interval` does the trick
+
+```{r}
+g2(temp, asp(month, temp, color = city)) %>% 
+  fig_interval_dodge(adjust(c("dodge", "symmetric"))) 
+```
+
+There are no fig_boxplot either, yet.
+
+```{r, collapsed=TRUE}
+N <- 8
+
+df <- data.frame(
+  x = c(
+    rnorm(100),
+    runif(100, -5, 10),
+    rnorm(100, 1, 3),
+    rnorm(100, 10, 3),
+    rnorm(100, 9, 3),
+    runif(100, -6, 9),
+    rnorm(100, 10, 2),
+    runif(100, 0, 12)
+  ),
+  grp = c(
+    rep(1, 100),
+    rep(2, 100),
+    rep(3, 100),
+    rep(4, 100),
+    rep(5, 100),
+    rep(6, 100),
+    rep(7, 100),
+    rep(8, 100)
+  )
+)
+
+df <- purrr::map_df(1:N, function(l, data) {
+  b <- data %>% 
+    dplyr::filter(grp == l) %>% 
+    dplyr::pull(x) %>% 
+    boxplot(plot = FALSE) %>% 
+    unlist(.$stats[,1])
+
+  dplyr::tibble(
+    grp = as.integer(l),
+    mn = b[1],
+    q1 = b[2],
+    q2 = b[3],
+    q3 = b[4],
+    mx = b[5]
+  ) 
+}, df)
+
+df <- df %>% 
+  dplyr::mutate_if(is.character, as.numeric) %>% 
+  tidyr::nest(mn, q1, q2, q3, mx)
+
+df$data <- df$data %>% 
+  purrr::map(unlist) %>%
+  purrr::map(unname)  %>% 
+  purrr:::map(round)
+
+df$grp <- LETTERS[1:N]
+
+df$type <- rep(LETTERS[1:2], 4)
+```
+
+Plot created data
+
+```{r}
+g2(df, asp(type, data, adjust = "dodge", shape = "box", size = 60, color = grp)) %>% 
+  fig_schema()
+```

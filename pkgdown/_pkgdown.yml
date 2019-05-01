@@ -55,3 +55,26 @@ reference:
     contents:
       - cb
       - slider
+
+navbar:
+  title: "g2r"
+  left:
+    - icon: fa-home
+      href: index.html
+    - icon: fa-balance-scale
+      href: LICENSE.html
+    - icon: fa-newspaper-o
+      href: news/index.html
+    - icon: fa-code
+      text: Reference
+      href: "reference/"
+    - icon: fa-graduation-cap
+      text: Guide
+      href: "articles/"
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/JohnCoene/g2r
+
+authors:
+  John Coene:
+    href: http://john-coene.com
