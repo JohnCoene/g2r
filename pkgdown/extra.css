@@ -6,11 +6,11 @@ body{
 
 code{
   font-family: 'Ubuntu Mono', monospace;
-  background-color: #f5efff;
+  background-color: #f9f6fd;
 }
 
 code a, pre a{
-  color: #F0760F;
+  color: rgb(175, 125, 252);
 }
 
 p>a {

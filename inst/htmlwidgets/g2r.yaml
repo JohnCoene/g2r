@@ -1,6 +1,6 @@
 dependencies:
   - name: g2
-    version: 3.5.3
+    version: 3.5.1
     src: htmlwidgets/lib/g2
     script: 
       - g2.min.js

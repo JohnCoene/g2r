@@ -13,7 +13,8 @@ style(g2, coord_type = c("rect", "polar", "theta", "helix"),
   plot_fill_opacity = NULL, plot_stroke = NULL,
   plot_stroke_opacity = NULL, plot_opacity = NULL,
   plot_line_width = NULL, plot_radius = NULL, fit = TRUE,
-  animate = TRUE, pixel_ratio = NULL, renderer = c("canvas", "svg"))
+  animate = TRUE, pixel_ratio = NULL, renderer = c("canvas", "svg"),
+  font = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -35,6 +36,8 @@ style(g2, coord_type = c("rect", "polar", "theta", "helix"),
 \item{pixel_ratio}{Device pixel ratio, defaults to \code{window.devicePixelRatio}.}
 
 \item{renderer}{Renderer, \code{canvas} or \code{svg}.}
+
+\item{font}{Font to use on chart.}
 }
 \description{
 Customise general style of the chart.

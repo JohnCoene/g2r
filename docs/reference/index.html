@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -90,7 +91,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -127,8 +128,28 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-initialisation-shiny" class="hasAnchor"><a href="#section-initialisation-shiny" class="anchor"></a>Initialisation &amp; Shiny</h2>
+          <p class="section-desc"><p>Initialise g2r chart.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="g2r.html">g2()</a></code> </p>
+        </td>
+        <td><p>Initialise</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="g2r-shiny.html">g2Output()</a></code> <code><a href="g2r-shiny.html">renderG2()</a></code> </p>
+        </td>
+        <td><p>Shiny bindings</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-animation" class="hasAnchor"><a href="#section-animation" class="anchor"></a>Animation</h2>
+          <p class="section-desc"><p>Helper functions to easily animate individual figures.</p></p>
         </th>
       </tr>
       <tr>
@@ -137,30 +158,26 @@
           <p><code><a href="G2animation.html">Animation</a></code> <code><a href="G2animation.html">new_animation()</a></code> </p>
         </td>
         <td><p>Animations</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-plan" class="hasAnchor"><a href="#section-plan" class="anchor"></a>Plan</h2>
+          <p class="section-desc"><p>Plan, controls aesthetics of figures.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="plan.html">plan()</a></code> </p>
+        </td>
+        <td><p>Mapping</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="cb.html">cb()</a></code> </p>
+          <p><code><a href="adjust.html">adjust()</a></code> </p>
         </td>
-        <td><p>Callback</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="conf_globals.html">conf_globals()</a></code> </p>
-        </td>
-        <td><p>General Options</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="conf_legend.html">conf_legend()</a></code> </p>
-        </td>
-        <td><p>Legend</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="conf_tooltip.html">conf_tooltip()</a></code> </p>
-        </td>
-        <td><p>Tooltip</p></td>
+        <td><p>Adjust</p></td>
       </tr><tr>
         
         <td>
@@ -170,22 +187,46 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="g2r-shiny.html">g2Output()</a></code> <code><a href="g2r-shiny.html">renderG2()</a></code> </p>
+          <p><code><a href="sync.html">sync()</a></code> </p>
         </td>
-        <td><p>Shiny bindings</p></td>
-      </tr><tr>
+        <td><p>Sync</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-figures" class="hasAnchor"><a href="#section-figures" class="anchor"></a>Figures</h2>
+          <p class="section-desc"><p>All available figures.</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
-          <p><code><a href="g2r.html">g2()</a></code> </p>
+          <p><code><a href="geoms.html">fig_interval()</a></code> <code><a href="geoms.html">fig_line()</a></code> <code><a href="geoms.html">fig_point()</a></code> <code><a href="geoms.html">fig_path()</a></code> <code><a href="geoms.html">fig_area()</a></code> <code><a href="geoms.html">fig_polygon()</a></code> <code><a href="geoms.html">fig_schema()</a></code> <code><a href="geoms.html">fig_edge()</a></code> <code><a href="geoms.html">fig_violin()</a></code> <code><a href="geoms.html">fig_heatmap()</a></code> <code><a href="geoms.html">fig_point_jitter()</a></code> <code><a href="geoms.html">fig_point_stack()</a></code> <code><a href="geoms.html">fig_point_dodge()</a></code> <code><a href="geoms.html">fig_interval_stack()</a></code> <code><a href="geoms.html">fig_interval_dodge()</a></code> <code><a href="geoms.html">fig_interval_symmetric()</a></code> <code><a href="geoms.html">fig_area_stack()</a></code> <code><a href="geoms.html">fig_schema_dodge()</a></code> </p>
         </td>
-        <td><p>Initialise</p></td>
-      </tr><tr>
+        <td><p>Firgures</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-informational-elements" class="hasAnchor"><a href="#section-informational-elements" class="anchor"></a>Informational elements</h2>
+          <p class="section-desc"><p>All available informational elements.</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
-          <p><code><a href="g2r_globals.html">g2r_globals()</a></code> </p>
+          <p><code><a href="info.html">info_line()</a></code> <code><a href="info.html">info_text()</a></code> <code><a href="info.html">info_image()</a></code> <code><a href="info.html">info_region()</a></code> <code><a href="info.html">info_html()</a></code> <code><a href="info.html">info_arc()</a></code> <code><a href="info.html">info_data_marker()</a></code> <code><a href="info.html">info_region_filter()</a></code> <code><a href="info.html">info_data_region()</a></code> </p>
         </td>
-        <td><p>Globals</p></td>
-      </tr><tr>
+        <td><p>Info</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-gauges" class="hasAnchor"><a href="#section-gauges" class="anchor"></a>Gauges</h2>
+          <p class="section-desc"><p>Gauges, similar to scales.</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="gauge_axis.html">gauge_axis()</a></code> </p>
@@ -227,48 +268,44 @@
           <p><code><a href="gauge_tooltip.html">gauge_tooltip()</a></code> </p>
         </td>
         <td><p>Gauge tooltip</p></td>
-      </tr><tr>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-configurations" class="hasAnchor"><a href="#section-configurations" class="anchor"></a>Configurations</h2>
+          <p class="section-desc"><p>Configurations, applies to single or multiple figures.</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
-          <p><code><a href="geoms.html">fig_interval()</a></code> <code><a href="geoms.html">fig_line()</a></code> <code><a href="geoms.html">fig_point()</a></code> <code><a href="geoms.html">fig_path()</a></code> <code><a href="geoms.html">fig_area()</a></code> <code><a href="geoms.html">fig_polygon()</a></code> <code><a href="geoms.html">fig_schema()</a></code> <code><a href="geoms.html">fig_edge()</a></code> <code><a href="geoms.html">fig_violin()</a></code> <code><a href="geoms.html">fig_heatmap()</a></code> <code><a href="geoms.html">fig_point_jitter()</a></code> <code><a href="geoms.html">fig_point_stack()</a></code> <code><a href="geoms.html">fig_point_dodge()</a></code> <code><a href="geoms.html">fig_interval_stack()</a></code> <code><a href="geoms.html">fig_interval_dodge()</a></code> <code><a href="geoms.html">fig_interval_symmetric()</a></code> <code><a href="geoms.html">fig_area_stack()</a></code> <code><a href="geoms.html">fig_schema_dodge()</a></code> </p>
+          <p><code><a href="conf_globals.html">conf_globals()</a></code> </p>
         </td>
-        <td><p>Firgures</p></td>
+        <td><p>General Options</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="info.html">info_line()</a></code> <code><a href="info.html">info_text()</a></code> <code><a href="info.html">info_image()</a></code> <code><a href="info.html">info_region()</a></code> <code><a href="info.html">info_html()</a></code> <code><a href="info.html">info_arc()</a></code> <code><a href="info.html">info_marker()</a></code> </p>
+          <p><code><a href="conf_tooltip.html">conf_tooltip()</a></code> </p>
         </td>
-        <td><p>Info</p></td>
+        <td><p>Tooltip</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="plan.html">plan()</a></code> </p>
-        </td>
-        <td><p>Mapping</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plane.html">plane_wrap()</a></code> <code><a href="plane.html">planes()</a></code> </p>
-        </td>
-        <td><p>Plane</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_font.html">set_font()</a></code> </p>
+          <p><code><a href="conf_font.html">conf_font()</a></code> </p>
         </td>
         <td><p>Font</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="set_renderer.html">set_renderer()</a></code> </p>
+          <p><code><a href="conf_renderer.html">conf_renderer()</a></code> </p>
         </td>
         <td><p>Renderer</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="slider.html">slider()</a></code> </p>
+          <p><code><a href="legend.html">conf_legend()</a></code> <code><a href="legend.html">leg()</a></code> </p>
         </td>
-        <td><p>Slider</p></td>
+        <td><p>Legend</p></td>
       </tr><tr>
         
         <td>
@@ -278,15 +315,49 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="sync.html">sync()</a></code> </p>
-        </td>
-        <td><p>Sync</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="theme.html">style_dark()</a></code> <code><a href="theme.html">custom_style()</a></code> </p>
         </td>
         <td><p>Motif</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="g2r_globals.html">g2r_globals()</a></code> </p>
+        </td>
+        <td><p>Globals</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-planes" class="hasAnchor"><a href="#section-planes" class="anchor"></a>Planes</h2>
+          <p class="section-desc"><p>Planes, similar to facets.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="plane.html">plane_wrap()</a></code> <code><a href="plane.html">planes()</a></code> </p>
+        </td>
+        <td><p>Plane</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-helpers" class="hasAnchor"><a href="#section-helpers" class="anchor"></a>Helpers</h2>
+          <p class="section-desc"><p>Helper functions.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="cb.html">cb()</a></code> </p>
+        </td>
+        <td><p>Callback</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="slider.html">slider()</a></code> </p>
+        </td>
+        <td><p>Slider</p></td>
       </tr>
     </tbody>
     </table>
@@ -295,7 +366,15 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-initialisation-shiny">Initialisation &amp; Shiny</a></li>
+      <li><a href="#section-animation">Animation</a></li>
+      <li><a href="#section-plan">Plan</a></li>
+      <li><a href="#section-figures">Figures</a></li>
+      <li><a href="#section-informational-elements">Informational elements</a></li>
+      <li><a href="#section-gauges">Gauges</a></li>
+      <li><a href="#section-configurations">Configurations</a></li>
+      <li><a href="#section-planes">Planes</a></li>
+      <li><a href="#section-helpers">Helpers</a></li>
     </ul>
   </div>
 </div>
@@ -306,7 +385,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>

@@ -4,3 +4,54 @@ template:
   params:
     bootswatch: paper
     ganalytics: UA-74544116-1
+
+reference:
+  - title: "Initialisation & Shiny"
+    desc: "Initialise g2r chart."
+    contents: 
+      - g2r
+      - g2r-shiny
+  - title: "Animation"
+    desc: >
+      Helper functions to easily animate individual figures.
+    contents: 
+      - Animation
+      - new_animation
+  - title: "Plan"
+    desc: "Plan, controls aesthetics of figures."
+    contents:
+      - plan
+      - adjust
+      - coord
+      - sync
+  - title: "Figures"
+    desc: "All available figures."
+    contents:
+      - starts_with("fig")
+  - title: "Informational elements"
+    desc: "All available informational elements."
+    contents:
+      - starts_with("info")
+  - title: "Gauges"
+    desc: "Gauges, similar to scales."
+    contents:
+      - starts_with("gauge")
+  - title: "Configurations"
+    desc: "Configurations, applies to single or multiple figures."
+    contents:
+      - conf_globals
+      - conf_tooltip
+      - matches("conf")
+      - matches("style")
+      - conf_font
+      - conf_renderer
+      - g2r_globals
+  - title: "Planes"
+    desc: "Planes, similar to facets."
+    contents:
+      - matches("plane")
+  - title: "Helpers"
+    desc: "Helper functions."
+    contents:
+      - cb
+      - slider

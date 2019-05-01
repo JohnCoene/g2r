@@ -27,6 +27,7 @@ conf_globals <- function(g2, ...){
 #' 
 #' g %>% conf_legend(dist, position = "right")
 #' 
+#' @name legend
 #' @export
 conf_legend <- function(g2, var, ...){
   if(missing(var))
@@ -44,6 +45,33 @@ conf_legend <- function(g2, var, ...){
   g2$x$legend <- append(g2$x$legend, list(legend))
 
   return(g2)
+}
+
+#' @rdname legend
+#' @export
+leg <- function(var, ...){
+  
+  if(missing(var))
+    stop("missing variable", call. = FALSE)
+
+  var <- rlang::enquo(var) %>% rlang::quo_name()
+
+  lgl <- tryCatch(rlang::is_logical(...), error = function(e) NULL)
+
+  if(is.null(lgl))
+    leg <- list(list(...))
+  else
+    leg <- list(unlist(...))
+
+  names(leg) <- var
+
+  opts <- list(
+    NAME = "legends"
+  )
+
+  opts$opts <- leg
+
+  .construct_options(opts, "legend")
 }
 
 #' Tooltip
@@ -87,13 +115,14 @@ conf_tooltip <- function(g2, ...){
 #' @param animate Whether to animate the chart.
 #' @param pixel_ratio Device pixel ratio, defaults to \code{window.devicePixelRatio}. 
 #' @param renderer Renderer, \code{canvas} or \code{svg}.
+#' @param font Font to use on chart.
 #' 
 #' @export
 style <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_rotate = NULL, coord_sx = NULL, coord_sy = NULL,
   coord_reflect = NULL, coord_transpose = NULL, width = NULL, height = NULL, padding = NULL, bg_fill = NULL, bg_opacity = NULL, 
   bg_fill_opacity = NULL, bg_stroke = NULL, bg_stroke_opacity = NULL, bg_line_width = NULL, bg_radius = NULL, plot_fill = NULL,
   plot_fill_opacity = NULL, plot_stroke = NULL, plot_stroke_opacity = NULL, plot_opacity = NULL, plot_line_width = NULL, 
-  plot_radius = NULL, fit = TRUE, animate = TRUE, pixel_ratio = NULL, renderer = c("canvas", "svg")){
+  plot_radius = NULL, fit = TRUE, animate = TRUE, pixel_ratio = NULL, renderer = c("canvas", "svg"), font = NULL){
 
   # coord
   g2$x$coord <- list(type = match.arg(coord_type)) 
@@ -136,6 +165,8 @@ style <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_r
   )
   plot <- plot[lapply(plot, length) > 0]
   g2$x$opts$plotBackground <- plot
+
+  if(!is.null(font)) g2$x$font <- font
   
   return(g2)
 }

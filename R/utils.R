@@ -62,7 +62,8 @@ rm_anim_aes_opts <- function(...){
   list(...) %>% 
     discard(is_animation) %>% 
     discard(is_aes) %>% 
-    discard(is_opts)
+    discard(is_opts) %>% 
+    discard(is_adjust)
 }
 
 is_opts <- function(x){

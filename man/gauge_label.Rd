@@ -4,15 +4,21 @@
 \alias{gauge_label}
 \title{Gauge label}
 \usage{
-gauge_label(g2, callback, ...)
+gauge_label(g2, ..., callback = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
-
 \item{...}{Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).}
+
+\item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
 }
 \description{
 Gauge label.
+}
+\examples{
+g2(mtcars, plan(mpg, qsec, shape = drat)) \%>\% 
+  fig_point() \%>\% 
+  gauge_label(textStyle = list(rotate = 30))
+
 }

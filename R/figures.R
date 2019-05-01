@@ -131,9 +131,11 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
     type = chart_type, 
     inherit_aes = inherit_aes, 
     name = name, 
+    data <- keep_data(data),
     animate = get_animation(...)
   )
 
+  # additional options OUTSIDE of geom applied on view
   additional_opts <- rm_anim_aes_opts(...)
   option <- get_opts(...)
   if(length(options))
@@ -141,11 +143,13 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
   if(length(additional_opts))
     view$opts <- append(view$opts, additional_opts)
 
-  view$data <- keep_data(data)
+  # additional options to apply to geom
+  adjust <- get_adjust(...)
+  if(length(adjust)) view$adjust <- adjust
+
+  # aesthetics
   aes <- get_aes(...)
-  
-  if(length(aes))
-    view$mapping <- aes
+  if(length(aes)) view$mapping <- aes
 
   g2$x$layers <- append(g2$x$layers, list(view))
   g2

@@ -14,5 +14,5 @@ gauge_size(g2, range = NULL, callback = NULL)
 \item{callback}{A JavaScript callback function (see \code{\link{cb}}) which returns a color.}
 }
 \description{
-Gauge size.
+Gauge size given a range or a JavaScript callback function.
 }

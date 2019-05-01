@@ -9,7 +9,7 @@
 #' @examples
 #' g2(mtcars, plan(mpg, qsec)) %>% 
 #'   fig_point() %>% 
-#'   info_marker(
+#'   info_data_marker(
 #'     content = "Marker",
 #'     position = c(20, 20)
 #'   )
@@ -100,11 +100,39 @@ info_arc <- function(g2, ..., figures = NULL) {
 
 #' @rdname info
 #' @export
-info_marker <- function(g2, ..., figures = NULL) {
+info_data_marker <- function(g2, ..., figures = NULL) {
   guide <- list(
     figures = figures,
     guide = list(
       type = "dataMarker",
+      ...
+    )
+  )
+  g2$x$guides <- append(g2$x$guides, list(guide))
+  return(g2)
+}
+
+#' @rdname info
+#' @export
+info_region_filter <- function(g2, ..., figures = NULL) {
+  guide <- list(
+    figures = figures,
+    guide = list(
+      type = "regionFilter",
+      ...
+    )
+  )
+  g2$x$guides <- append(g2$x$guides, list(guide))
+  return(g2)
+}
+
+#' @rdname info
+#' @export
+info_data_region <- function(g2, ..., figures = NULL) {
+  guide <- list(
+    figures = figures,
+    guide = list(
+      type = "dataRegion",
       ...
     )
   )

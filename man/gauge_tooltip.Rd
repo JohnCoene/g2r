@@ -14,3 +14,22 @@ gauge_tooltip(g2, callback = NULL)
 \description{
 Gauge tooltip.
 }
+\examples{
+callback <- cb(
+  "function(drat, qsec){
+    percent = qsec / 100 + '\%';
+    return {
+      name: drat,
+      value: percent
+    };
+  }"
+)
+
+template <- '<li>{name}: {value}</li>'
+
+g2(mtcars, plan(mpg, qsec, tooltip = drat, tooltip = qsec, color = qsec)) \%>\% 
+  fig_point() \%>\% 
+  gauge_tooltip(callback) \%>\% 
+  conf_tooltip(itemTpl = template, showTitle = FALSE)
+
+}

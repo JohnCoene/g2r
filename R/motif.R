@@ -37,7 +37,7 @@ custom_style <- function(g2, ...){
 #' @param font Font family to use for chart text.
 #' 
 #' @export
-set_font <- function(g2, font){
+conf_font <- function(g2, font){
   check_g2(g2)
   if(missing(font))
     stop("missing font", call. = FALSE)
@@ -56,7 +56,7 @@ set_font <- function(g2, font){
 #' @note The "g" in g2r stands for svg.
 #' 
 #' @export
-set_renderer <- function(g2, renderer = c("svg", "canvas")){
+conf_renderer <- function(g2, renderer = c("svg", "canvas")){
   check_g2(g2)
   g2$x$renderer <- match.arg(renderer)
   return(g2)

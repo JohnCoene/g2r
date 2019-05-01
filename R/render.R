@@ -26,9 +26,13 @@ render_g2r <- function(g2){
 
     guides <- get_guides(g2$x$guides, layer$name, index = i)
 
+    # aniamtion
     if(length(layer$animate))
       geom$animate <- layer$animate
     layer$animate <- NULL
+
+    if(length(layer$adjust))
+      geom$adjust <- layer$adjust
 
     # if data passed, turn to row list
     if(!is.null(layer$data))

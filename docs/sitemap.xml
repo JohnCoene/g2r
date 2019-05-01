@@ -7,13 +7,13 @@
     <loc>http://g2r.dev/reference/G2animation.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/adjust.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/cb.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/conf_globals.html</loc>
-  </url>
-  <url>
-    <loc>http://g2r.dev/reference/conf_legend.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/conf_tooltip.html</loc>
@@ -56,6 +56,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/info.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/legend.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/pipe.html</loc>

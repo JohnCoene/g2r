@@ -14,3 +14,8 @@ gauge_opacity(g2, callback = NULL)
 \description{
 Gauge opacity.
 }
+\examples{
+g2(mtcars, plan(mpg, qsec, opacity = drat, size = 10)) \%>\% 
+  fig_point()
+
+}

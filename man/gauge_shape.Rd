@@ -16,3 +16,9 @@ gauge_shape(g2, shapes = NULL, callback = NULL)
 \description{
 Gauge shapes.
 }
+\examples{
+g2(mtcars, plan(mpg, qsec, shape = am)) \%>\% 
+  fig_point() \%>\% 
+  gauge_shape(c("hollowDiamond", "hollowBowtie"))
+
+}

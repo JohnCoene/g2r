@@ -8,7 +8,9 @@
 \alias{info_region}
 \alias{info_html}
 \alias{info_arc}
-\alias{info_marker}
+\alias{info_data_marker}
+\alias{info_region_filter}
+\alias{info_data_region}
 \title{Info}
 \usage{
 info_line(g2, ..., figures = NULL)
@@ -23,7 +25,11 @@ info_html(g2, ..., figures = NULL)
 
 info_arc(g2, ..., figures = NULL)
 
-info_marker(g2, ..., figures = NULL)
+info_data_marker(g2, ..., figures = NULL)
+
+info_region_filter(g2, ..., figures = NULL)
+
+info_data_region(g2, ..., figures = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -38,7 +44,7 @@ Add informational elements to the chart.
 \examples{
 g2(mtcars, plan(mpg, qsec)) \%>\% 
   fig_point() \%>\% 
-  info_marker(
+  info_data_marker(
     content = "Marker",
     position = c(20, 20)
   )
