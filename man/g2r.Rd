@@ -5,13 +5,13 @@
 \alias{g2}
 \title{Initialise}
 \usage{
-g2(data = NULL, plan = NULL, ..., width = NULL, height = NULL,
+g2(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
   elementId = NULL)
 }
 \arguments{
 \item{data}{A \code{data.frame} containing data to chart.}
 
-\item{plan}{Mapping aesthetics as returned by \code{\link{plan}}.}
+\item{asp}{Mapping aesthetics as returned by \code{\link{asp}}.}
 
 \item{...}{Any general options.}
 
@@ -23,8 +23,7 @@ g2(data = NULL, plan = NULL, ..., width = NULL, height = NULL,
 Initialise a \code{g2r} chart.
 }
 \examples{
-cars \%>\% 
-  g2(asp(speed, dist)) \%>\% 
+g2(cars, asp(speed, dist)) \%>\% 
   fig_point()
 
 }

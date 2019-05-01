@@ -116,13 +116,18 @@ conf_tooltip <- function(g2, ...){
 #' @param pixel_ratio Device pixel ratio, defaults to \code{window.devicePixelRatio}. 
 #' @param renderer Renderer, \code{canvas} or \code{svg}.
 #' @param font Font to use on chart.
+#'
+#' @examples
+#' g2(cars, asp(speed, dist)) %>% 
+#'   fig_point() %>% 
+#'   style(plot_fill = "grey")
 #' 
 #' @export
 style <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_rotate = NULL, coord_sx = NULL, coord_sy = NULL,
   coord_reflect = NULL, coord_transpose = NULL, width = NULL, height = NULL, padding = NULL, bg_fill = NULL, bg_opacity = NULL, 
   bg_fill_opacity = NULL, bg_stroke = NULL, bg_stroke_opacity = NULL, bg_line_width = NULL, bg_radius = NULL, plot_fill = NULL,
   plot_fill_opacity = NULL, plot_stroke = NULL, plot_stroke_opacity = NULL, plot_opacity = NULL, plot_line_width = NULL, 
-  plot_radius = NULL, fit = TRUE, animate = TRUE, pixel_ratio = NULL, renderer = c("canvas", "svg"), font = NULL){
+  plot_radius = NULL, fit = TRUE, animate = TRUE, pixel_ratio = NULL, renderer = NULL, font = NULL){
 
   # coord
   g2$x$coord <- list(type = match.arg(coord_type)) 
@@ -136,7 +141,7 @@ style <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_r
   if(!is.null(height)) g2$x$opts$height <- height
   if(!is.null(padding)) g2$x$opts$padding <- padding
   if(!is.null(pixel_ratio)) g2$x$opts$pixelRatio <- pixel_ratio
-  g2$x$opts$renderer <- match.arg(renderer)
+  if(!is.null(renderer)) g2$x$opts$renderer <- renderer
   g2$x$opts$forceFit <- fit
   g2$x$opts$animate <- animate
 
@@ -151,20 +156,20 @@ style <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_r
     radius = bg_radius
   )
   bg <- bg[lapply(bg, length) > 0]
-  g2$x$opts$background <- bg
+  if(length(bg)) g2$x$opts$background <- bg
 
   # plot
   plot <- list(
-    fill = bg_fill,
-    fillOpacity = bg_fill_opacity,
-    stroke = bg_stroke,
-    strokeOpacity = bg_stroke_opacity,
-    opacity = bg_opacity,
-    lineWidth = bg_line_width,
-    radius = bg_radius
+    fill = plot_fill,
+    fillOpacity = plot_fill_opacity,
+    stroke = plot_stroke,
+    strokeOpacity = plot_stroke_opacity,
+    opacity = plot_opacity,
+    lineWidth = plot_line_width,
+    radius = plot_radius
   )
   plot <- plot[lapply(plot, length) > 0]
-  g2$x$opts$plotBackground <- plot
+  if(length(plot)) g2$x$opts$plotBackground <- plot
 
   if(!is.null(font)) g2$x$font <- font
   

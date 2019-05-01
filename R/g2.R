@@ -6,20 +6,19 @@
 #' @param width,height Dimensions of chart.
 #' @param elementId ID of \code{DOM} container.
 #' @param ... Any general options.
-#' @param plan Mapping aesthetics as returned by \code{\link{plan}}.
+#' @param asp Mapping aesthetics as returned by \code{\link{asp}}.
 #'
 #' @import htmlwidgets
 #' @import purrr
 #' @import dplyr
 #'
 #' @examples
-#' cars %>% 
-#'   g2(asp(speed, dist)) %>% 
+#' g2(cars, asp(speed, dist)) %>% 
 #'   fig_point()
 #' 
 #' @name g2r
 #' @export
-g2 <- function(data = NULL, plan = NULL, ..., width = NULL, height = NULL, 
+g2 <- function(data = NULL, asp = NULL, ..., width = NULL, height = NULL, 
   elementId = NULL) {
 
   x = list(
@@ -27,7 +26,7 @@ g2 <- function(data = NULL, plan = NULL, ..., width = NULL, height = NULL,
       ...,
       forceFit = TRUE
     ),
-    mapping = plan,
+    mapping = asp,
     data = NULL,
     dataOpts = list()
   )

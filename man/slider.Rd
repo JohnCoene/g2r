@@ -9,7 +9,7 @@ slider(g2, ..., position = c("bottom", "top"), id = NULL)
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).}
+\item{...}{Any option, aesthetic (\code{\link{asp}}), or animation (\code{\link{Animation}}).}
 
 \item{position}{Position of the slider relative to the chart.}
 

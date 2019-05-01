@@ -2,11 +2,11 @@
 #' 
 #' Chart's aspects, similar to \code{ggplot2}'s aesthetics.
 #' 
-#' @param x,y,... List of name value pairs giving aesthetics to map to
-#'  variables. The names for x and y aesthetics are typically omitted because
-#'  they are so common; all other aesthetics must be named.
+#' @param x,y,... List of name value pairs giving aspects to map to
+#'  variables. The names for x and y aspects are typically omitted because
+#'  they are so common; all other aspects must be named.
 #' 
-#' @section Aesthetics:
+#' @section Aspects:
 #' \itemize{
 #'   \item{\code{x}, \code{y}}
 #'   \item{\code{size}}
@@ -19,7 +19,10 @@
 #'   \item{\code{style}}
 #' }
 #' 
-#' @name plan
+#' @examples
+#' g2(temp, asp(month, temp, color = city)) %>% 
+#'   fig_interval(adjust("dodge"))
+#' 
 #' @export
 asp <- function(x, y, ...) {
   exprs <- rlang::enquos(x = x, y = y, ..., .ignore_empty = "all")

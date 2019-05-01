@@ -70,6 +70,9 @@ conf_renderer <- function(g2, renderer = c("svg", "canvas")){
 #' @param font Passed to \code{\link{conf_font}}
 #' @param renderer Passed to \code{\link{conf_renderer}}
 #' 
+#' @examples
+#' g2r_globals(font = "Comic Sans")
+#' 
 #' @export
 g2r_globals <- function(..., font = NULL, renderer = NULL){
   theme <- list(...)

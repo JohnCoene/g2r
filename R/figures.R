@@ -3,15 +3,19 @@
 #' Figures, equivalent to \code{ggplot2}'s geometries.
 #' 
 #' @param g2 An object of class \code{g2r} as returned by \code{\link{g2r}}.
-#' @param ... Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).
+#' @param ... Any option, aesthetic (\code{\link{asp}}), or animation (\code{\link{Animation}}).
 #' @param data A \code{data.frame} containing data to chart.
 #' @param inherit_plan Whether to inherit aesthetics from \code{g2r}.
 #' @param name Name of figure, useful to apply functions to specific figures.
 #' 
 #' @examples
-#' iris %>% 
-#'   g2(asp(Sepal.Length, Sepal.Width, color = Species)) %>% 
-#'   fig_point()
+#' g2(cars, asp(dist, speed)) %>% 
+#'   fig_point() %>% 
+#'   fig_line()
+#' 
+#' g2(fruits, asp(value, color = fruit)) %>% 
+#'   fig_interval_stack() %>% 
+#'   coord_type("theta")
 #' 
 #' @name geoms
 #' @export

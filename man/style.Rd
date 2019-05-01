@@ -13,8 +13,7 @@ style(g2, coord_type = c("rect", "polar", "theta", "helix"),
   plot_fill_opacity = NULL, plot_stroke = NULL,
   plot_stroke_opacity = NULL, plot_opacity = NULL,
   plot_line_width = NULL, plot_radius = NULL, fit = TRUE,
-  animate = TRUE, pixel_ratio = NULL, renderer = c("canvas", "svg"),
-  font = NULL)
+  animate = TRUE, pixel_ratio = NULL, renderer = NULL, font = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -41,4 +40,10 @@ style(g2, coord_type = c("rect", "polar", "theta", "helix"),
 }
 \description{
 Customise general style of the chart.
+}
+\examples{
+g2(cars, asp(speed, dist)) \%>\% 
+  fig_point() \%>\% 
+  style(plot_fill = "grey")
+
 }

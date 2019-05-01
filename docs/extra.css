@@ -88,6 +88,7 @@ pre {
 .nav-pills>li.active>a:focus {
   color: #FFF;
   background-color: #6906FF;
+  font-weight: bold;
 }
 
 .navbar-default .navbar-nav>li>a{

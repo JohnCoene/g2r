@@ -69,7 +69,7 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Any option, aesthetic (\code{\link{plan}}), or animation (\code{\link{Animation}}).}
+\item{...}{Any option, aesthetic (\code{\link{asp}}), or animation (\code{\link{Animation}}).}
 
 \item{data}{A \code{data.frame} containing data to chart.}
 
@@ -81,8 +81,12 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
 Figures, equivalent to \code{ggplot2}'s geometries.
 }
 \examples{
-iris \%>\% 
-  g2(asp(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
-  fig_point()
+g2(cars, asp(dist, speed)) \%>\% 
+  fig_point() \%>\% 
+  fig_line()
+
+g2(fruits, asp(value, color = fruit)) \%>\% 
+  fig_interval_stack() \%>\% 
+  coord_type("theta")
 
 }
