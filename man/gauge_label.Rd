@@ -17,7 +17,7 @@ gauge_label(g2, ..., callback = NULL)
 Gauge label.
 }
 \examples{
-g2(mtcars, plan(mpg, qsec, shape = drat)) \%>\% 
+g2(mtcars, asp(mpg, qsec, shape = drat)) \%>\% 
   fig_point() \%>\% 
   gauge_label(textStyle = list(rotate = 30))
 

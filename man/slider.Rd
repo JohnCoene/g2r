@@ -21,7 +21,7 @@ Create a slider.
 \examples{
 range <- range(cars$speed)
 
-g2(cars, plan(speed, dist)) \%>\% 
+g2(cars, asp(speed, dist)) \%>\% 
   fig_point() \%>\% 
   slider(start = range[1], end = range[2])
 

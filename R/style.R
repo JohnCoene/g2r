@@ -20,7 +20,7 @@ conf_globals <- function(g2, ...){
 #' @param ... Configuration options or a logical indicating whether to show the legend.
 #' 
 #' @examples
-#' g <- g2(cars, plan(speed, dist, color = dist)) %>% 
+#' g <- g2(cars, asp(speed, dist, color = dist)) %>% 
 #'   fig_point()
 #' 
 #' g %>% conf_legend(dist, FALSE)
@@ -82,7 +82,7 @@ leg <- function(var, ...){
 #' @param ... Configuration options or a logical indicating whether to show the tooltip.
 #' 
 #' @examples
-#' g2(cars, plan(speed, dist, color = dist)) %>% 
+#' g2(cars, asp(speed, dist, color = dist)) %>% 
 #'   fig_point() %>% 
 #'   conf_tooltip(crosshairs = "path")
 #' 
@@ -184,11 +184,11 @@ style <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_r
 #' @param ... Any other options.
 #' 
 #' @examples
-#' g2(cars, plan(speed, dist, color = dist)) %>% 
+#' g2(cars, asp(speed, dist, color = dist)) %>% 
 #'   fig_point() %>% 
 #'   coord_type("helix")
 #' 
-#' g2(cars, plan(speed, dist, color = dist)) %>% 
+#' g2(cars, asp(speed, dist, color = dist)) %>% 
 #'   fig_point(coord("helix")) 
 #' 
 #' @name coord

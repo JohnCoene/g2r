@@ -27,7 +27,7 @@ callback <- cb(
 
 template <- '<li>{name}: {value}</li>'
 
-g2(mtcars, plan(mpg, qsec, tooltip = drat, tooltip = qsec, color = qsec)) \%>\% 
+g2(mtcars, asp(mpg, qsec, tooltip = drat, tooltip = qsec, color = qsec)) \%>\% 
   fig_point() \%>\% 
   gauge_tooltip(callback) \%>\% 
   conf_tooltip(itemTpl = template, showTitle = FALSE)

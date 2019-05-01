@@ -9,7 +9,7 @@
 #'   appear(duration = 2000, delay = 500)
 #' 
 #' iris %>% 
-#'   g2(plan(Sepal.Length, Sepal.Width, color = Species)) %>% 
+#'   g2(asp(Sepal.Length, Sepal.Width, color = Species)) %>% 
 #'   fig_point(anim) # pass animation to the geom
 #' 
 #' @name G2animation

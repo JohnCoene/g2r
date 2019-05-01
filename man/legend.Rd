@@ -21,7 +21,7 @@ leg(var, ...)
 Configure the chart's legend.
 }
 \examples{
-g <- g2(cars, plan(speed, dist, color = dist)) \%>\% 
+g <- g2(cars, asp(speed, dist, color = dist)) \%>\% 
   fig_point()
 
 g \%>\% conf_legend(dist, FALSE)

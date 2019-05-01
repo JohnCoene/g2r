@@ -8,7 +8,7 @@
 #' @param figure Name of figure to apply axis to, if \code{NULL} it is applied to all figures.
 #'
 #' @examples
-#' g2(cars, plan(speed, dist)) %>% 
+#' g2(cars, asp(speed, dist)) %>% 
 #'   fig_point() %>% 
 #'   gauge_axis(speed, FALSE) 
 #' 

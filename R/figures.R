@@ -10,7 +10,7 @@
 #' 
 #' @examples
 #' iris %>% 
-#'   g2(plan(Sepal.Length, Sepal.Width, color = Species)) %>% 
+#'   g2(asp(Sepal.Length, Sepal.Width, color = Species)) %>% 
 #'   fig_point()
 #' 
 #' @name geoms

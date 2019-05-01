@@ -27,7 +27,7 @@ From ggplot2 to g2r.
 ```{r, echo=FALSE}
 df <- dplyr::tribble(
   ~"ggplot2",       ~"g2r",
-  "aes",            "plan",
+  "aes",            "asp",
   "scale_*",        "gauge_*",
   "geom_*",         "fig_*",
   "facet_*",        "plane_*",
@@ -64,7 +64,7 @@ iris %>%
 library(g2r)
 
 iris %>%
-  g2(plan(Petal.Length, Petal.Width, color = Species)) %>% 
+  g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
   fig_point() %>%
   plane_wrap(planes(Species))
 ```

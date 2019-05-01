@@ -7,8 +7,8 @@
 #' 
 #' @examples
 #' iris %>% 
-#'   g2(plan(Sepal.Length, Sepal.Width)) %>% 
-#'   fig_point(plan(color = Species)) %>% 
+#'   g2(asp(Sepal.Length, Sepal.Width)) %>% 
+#'   fig_point(asp(color = Species)) %>% 
 #'   plane_wrap(planes(Species)) %>% 
 #'   sync(Sepal.Length, Sepal.Width)
 #' 

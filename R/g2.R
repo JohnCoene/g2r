@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' cars %>% 
-#'   g2(plan(speed, dist)) %>% 
+#'   g2(asp(speed, dist)) %>% 
 #'   fig_point()
 #' 
 #' @name g2r

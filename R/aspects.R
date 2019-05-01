@@ -1,6 +1,6 @@
-#' Mapping
+#' Aspects
 #' 
-#' Mapping aesthetics, similar to \code{ggplot2}'s aesthetics.
+#' Chart's aspects, similar to \code{ggplot2}'s aesthetics.
 #' 
 #' @param x,y,... List of name value pairs giving aesthetics to map to
 #'  variables. The names for x and y aesthetics are typically omitted because
@@ -19,8 +19,9 @@
 #'   \item{\code{style}}
 #' }
 #' 
+#' @name plan
 #' @export
-plan <- function(x, y, ...) {
+asp <- function(x, y, ...) {
   exprs <- rlang::enquos(x = x, y = y, ..., .ignore_empty = "all")
   aes <- new_aes(exprs, env = parent.frame())
   .construct_aesthetics(aes)

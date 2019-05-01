@@ -15,7 +15,7 @@ conf_tooltip(g2, ...)
 Configure the tooltip.
 }
 \examples{
-g2(cars, plan(speed, dist, color = dist)) \%>\% 
+g2(cars, asp(speed, dist, color = dist)) \%>\% 
   fig_point() \%>\% 
   conf_tooltip(crosshairs = "path")
 

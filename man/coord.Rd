@@ -41,11 +41,11 @@ coord(type = c("rect", "polar", "theta", "helix"), rotate = NULL,
 Configure chart coordinates axis.
 }
 \examples{
-g2(cars, plan(speed, dist, color = dist)) \%>\% 
+g2(cars, asp(speed, dist, color = dist)) \%>\% 
   fig_point() \%>\% 
   coord_type("helix")
 
-g2(cars, plan(speed, dist, color = dist)) \%>\% 
+g2(cars, asp(speed, dist, color = dist)) \%>\% 
   fig_point(coord("helix")) 
 
 }

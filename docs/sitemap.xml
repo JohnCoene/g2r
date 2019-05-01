@@ -13,7 +13,13 @@
     <loc>http://g2r.dev/reference/cb.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/conf_font.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/conf_globals.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/conf_renderer.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/conf_tooltip.html</loc>
@@ -68,12 +74,6 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/plane.html</loc>
-  </url>
-  <url>
-    <loc>http://g2r.dev/reference/set_font.html</loc>
-  </url>
-  <url>
-    <loc>http://g2r.dev/reference/set_renderer.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/slider.html</loc>

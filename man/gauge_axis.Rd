@@ -19,7 +19,7 @@ gauge_axis(g2, var, ..., figure = NULL)
 Scale and modify axis.
 }
 \examples{
-g2(cars, plan(speed, dist)) \%>\% 
+g2(cars, asp(speed, dist)) \%>\% 
   fig_point() \%>\% 
   gauge_axis(speed, FALSE) 
 

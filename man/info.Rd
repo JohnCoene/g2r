@@ -42,7 +42,7 @@ info_data_region(g2, ..., figures = NULL)
 Add informational elements to the chart.
 }
 \examples{
-g2(mtcars, plan(mpg, qsec)) \%>\% 
+g2(mtcars, asp(mpg, qsec)) \%>\% 
   fig_point() \%>\% 
   info_data_marker(
     content = "Marker",

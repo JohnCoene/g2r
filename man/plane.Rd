@@ -25,7 +25,7 @@ This function is similar to the \code{facet_*} family of functions from the \cod
 }
 \examples{
 iris \%>\%
-  g2(plan(Petal.Length, Petal.Width, color = Species)) \%>\% 
+  g2(asp(Petal.Length, Petal.Width, color = Species)) \%>\% 
   fig_point() \%>\%
   plane_wrap(planes(Species)) 
 

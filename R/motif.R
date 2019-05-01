@@ -6,8 +6,8 @@
 #' @param ... Motif options.
 #' 
 #' @examples
-#' g <- g2(iris, plan(Sepal.Length, Sepal.Width)) %>% 
-#'   fig_point(plan(color = Species)) 
+#' g <- g2(iris, asp(Sepal.Length, Sepal.Width)) %>% 
+#'   fig_point(asp(color = Species)) 
 #' 
 #' g %>% style_dark()
 #' 
@@ -67,8 +67,8 @@ conf_renderer <- function(g2, renderer = c("svg", "canvas")){
 #' Set global options, all charts in session will use these options.
 #' 
 #' @param ... Passed to \code{\link{custom_style}}
-#' @param font Passed to \code{\link{set_font}}
-#' @param renderer Passed to \code{\link{set_renderer}}
+#' @param font Passed to \code{\link{conf_font}}
+#' @param renderer Passed to \code{\link{conf_renderer}}
 #' 
 #' @export
 g2r_globals <- function(..., font = NULL, renderer = NULL){

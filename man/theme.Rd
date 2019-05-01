@@ -19,8 +19,8 @@ custom_style(g2, ...)
 Customise the chart motif.
 }
 \examples{
-g <- g2(iris, plan(Sepal.Length, Sepal.Width)) \%>\% 
-  fig_point(plan(color = Species)) 
+g <- g2(iris, asp(Sepal.Length, Sepal.Width)) \%>\% 
+  fig_point(asp(color = Species)) 
 
 g \%>\% style_dark()
 

@@ -82,7 +82,7 @@ Figures, equivalent to \code{ggplot2}'s geometries.
 }
 \examples{
 iris \%>\% 
-  g2(plan(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
+  g2(asp(Sepal.Length, Sepal.Width, color = Species)) \%>\% 
   fig_point()
 
 }

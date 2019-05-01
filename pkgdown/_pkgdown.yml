@@ -20,7 +20,7 @@ reference:
   - title: "Plan"
     desc: "Plan, controls aesthetics of figures."
     contents:
-      - plan
+      - asp
       - adjust
       - coord
       - sync

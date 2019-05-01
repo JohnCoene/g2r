@@ -9,7 +9,7 @@
 #' 
 #' @examples
 #' iris %>%
-#'   g2(plan(Petal.Length, Petal.Width, color = Species)) %>% 
+#'   g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
 #'   fig_point() %>%
 #'   plane_wrap(planes(Species)) 
 #' 

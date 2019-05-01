@@ -9,9 +9,9 @@ g2r_globals(..., font = NULL, renderer = NULL)
 \arguments{
 \item{...}{Passed to \code{\link{custom_style}}}
 
-\item{font}{Passed to \code{\link{set_font}}}
+\item{font}{Passed to \code{\link{conf_font}}}
 
-\item{renderer}{Passed to \code{\link{set_renderer}}}
+\item{renderer}{Passed to \code{\link{conf_renderer}}}
 }
 \description{
 Set global options, all charts in session will use these options.

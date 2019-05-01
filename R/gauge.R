@@ -7,7 +7,7 @@
 #' @param callback A JavaScript callback function (see \code{\link{cb}}) which returns a color.
 #' 
 #' @examples
-#' g2(mtcars, plan(mpg, qsec, color = drat)) %>% 
+#' g2(mtcars, asp(mpg, qsec, color = drat)) %>% 
 #'   fig_point() %>% 
 #'   gauge_color(c("red", "white", "blue"))
 #' 
@@ -39,7 +39,7 @@ gauge_size <- function(g2, range = NULL, callback = NULL){
 #' @inheritParams gauge_color
 #' 
 #' @examples
-#' g2(mtcars, plan(mpg, qsec, opacity = drat, size = 10)) %>% 
+#' g2(mtcars, asp(mpg, qsec, opacity = drat, size = 10)) %>% 
 #'   fig_point()
 #' 
 #' @export
@@ -57,7 +57,7 @@ gauge_opacity <- function(g2, callback = NULL){
 #' @inheritParams gauge_color
 #' 
 #' @examples
-#' g2(mtcars, plan(mpg, qsec, shape = am)) %>% 
+#' g2(mtcars, asp(mpg, qsec, shape = am)) %>% 
 #'   fig_point() %>% 
 #'   gauge_shape(c("hollowDiamond", "hollowBowtie"))
 #' 
@@ -75,7 +75,7 @@ gauge_shape <- function(g2, shapes = NULL, callback = NULL){
 #' @inheritParams gauge_color
 #' 
 #' @examples
-#' g2(mtcars, plan(mpg, qsec, shape = drat)) %>% 
+#' g2(mtcars, asp(mpg, qsec, shape = drat)) %>% 
 #'   fig_point() %>% 
 #'   gauge_label(textStyle = list(rotate = 30))
 #' 
@@ -105,7 +105,7 @@ gauge_label <- function(g2, ..., callback = NULL){
 #' 
 #' template <- '<li>{name}: {value}</li>'
 #' 
-#' g2(mtcars, plan(mpg, qsec, tooltip = drat, tooltip = qsec, color = qsec)) %>% 
+#' g2(mtcars, asp(mpg, qsec, tooltip = drat, tooltip = qsec, color = qsec)) %>% 
 #'   fig_point() %>% 
 #'   gauge_tooltip(callback) %>% 
 #'   conf_tooltip(itemTpl = template, showTitle = FALSE)

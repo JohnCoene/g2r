@@ -7,7 +7,7 @@
 #' @param figures Vector of names or indices of figure(s) to apply the information to, if \code{NULL} applies only to the first figure.
 #' 
 #' @examples
-#' g2(mtcars, plan(mpg, qsec)) %>% 
+#' g2(mtcars, asp(mpg, qsec)) %>% 
 #'   fig_point() %>% 
 #'   info_data_marker(
 #'     content = "Marker",

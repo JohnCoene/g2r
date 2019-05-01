@@ -17,7 +17,7 @@ gauge_color(g2, colors = NULL, callback = NULL)
 Gauge colour, similar to the \code{scale_colour_*} family of functions from the \code{ggplot2} package.
 }
 \examples{
-g2(mtcars, plan(mpg, qsec, color = drat)) \%>\% 
+g2(mtcars, asp(mpg, qsec, color = drat)) \%>\% 
   fig_point() \%>\% 
   gauge_color(c("red", "white", "blue"))
 
