@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialise — g2r • g2r</title>
+<title>Temperature — temp • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,9 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Initialise — g2r" />
+<meta property="og:title" content="Temperature — temp" />
 
-<meta property="og:description" content="Initialise a g2r chart." />
+<meta property="og:description" content="Temperatures in London and Berlin, probably made up." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -116,57 +116,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialise</h1>
+    <h1>Temperature</h1>
     
-    <div class="hidden name"><code>g2r.Rd</code></div>
+    <div class="hidden name"><code>temp.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Initialise a <code>g2r</code> chart.</p>
+    <p>Temperatures in London and Berlin, <em>probably made up</em>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>g2</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>asp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='no'>temp</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A <code>tibble</code> of 3 columns and 16 rows.</p><dl class='dl-horizontal'>
+  <dt><code>city</code></dt><dd><p>City where temperature was taken</p></dd>
+  <dt><code>month</code></dt><dd><p>Month</p></dd>
+  <dt><code>temp</code></dt><dd><p>Temperature in Celsius</p></dd>
+</dl>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>A <code>data.frame</code> containing data to chart.</p></td>
-    </tr>
-    <tr>
-      <th>asp</th>
-      <td><p>Mapping aesthetics as returned by <code><a href='asp.html'>asp</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Any general options.</p></td>
-    </tr>
-    <tr>
-      <th>width, height</th>
-      <td><p>Dimensions of chart.</p></td>
-    </tr>
-    <tr>
-      <th>elementId</th>
-      <td><p>ID of <code>DOM</code> container.</p></td>
-    </tr>
-    </table>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://antv.alipay.com/zh-cn/g2/3.x/demo/column/grouped-column.html'>https://antv.alipay.com/zh-cn/g2/3.x/demo/column/grouped-column.html</a></p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>g2</span>(<span class='no'>cars</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='geoms.html'>fig_point</a></span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
+          </ul>
 
   </div>
 </div>

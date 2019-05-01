@@ -31,6 +31,9 @@
     <loc>http://g2r.dev/reference/coord.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/fruits.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/g2r-shiny.html</loc>
   </url>
   <url>
@@ -83,6 +86,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/sync.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/temp.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/theme.html</loc>
