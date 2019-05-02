@@ -28,7 +28,7 @@ df <- dplyr::tribble(
   "scale_*",        "gauge_*",
   "geom_*",         "fig_*",
   "facet_*",        "plane_*",
-  "theme_*",        "style_*"
+  "theme_*",        "motif_*"
 )
 
 knitr::kable(df, caption = "ggplot2 to g2r synthax map.", format = "html")
@@ -168,4 +168,34 @@ diamonds %>%
   count(carat, price) %>% 
   g2(asp(carat, price, color = n)) %>% 
   fig_heatmap()
+```
+
+```{r}
+iris %>%
+  g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
+  fig_point() %>%
+  plane_wrap(planes(Species), type = "tree")
+```
+
+If you navigate the [original examples of the g2 JavaScript](https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html) you will notice that they often make use of the [dataset library](https://github.com/antvis/data-set) to transform the data. This is imprelement as the function `alter`, mainly to easily replicate examples.
+
+```{r}
+fruits %>% 
+  dplyr::mutate(value = value * 100) %>% 
+  dplyr::select(name = fruit, value) %>% 
+  alter(type = "waffle", maxCount = 500, rows = 12)  %>% 
+  g2(asp(x, y, shape = "square", size = 10, color = name)) %>% 
+  fig_point(axes = FALSE) %>% 
+  gauge_axis(x, FALSE) %>% 
+  style(padding = rep(50, 4))
+```
+
+The `alter` function is used internally to processe GeoJSON files.
+
+```{r}
+quakes %>% 
+  dplyr::select(longitude = long, latitude = lat, value = mag) %>% 
+  g2(asp(longitude, latitude, size = value)) %>% 
+  fig_point() %>% 
+  fig_map(style(fill = "grey"))  
 ```
