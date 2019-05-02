@@ -57,11 +57,8 @@ g2(cars, asp(dist, speed, color = speed, size = 10)) %>%
 It may seem like some some figures (equivalent to geoms) are missing, but technically all are available.
 
 ```{r}
-data.frame(
-  label = LETTERS[1:5],
-  value = runif(5)
-) %>% 
-  g2(asp(value, color = label)) %>% 
+fruits %>% 
+  g2(asp(value, color = fruit)) %>% 
   fig_interval_stack() %>% 
   coord_type("theta")
 ```
@@ -134,10 +131,13 @@ library(dplyr)
 
 data("diamonds", package = "ggplot2")
 
+palette <- c("blue", "cyan", "lime", "yellow", "red")
+
 diamonds %>% 
   count(carat, price) %>% 
   g2(asp(carat, price, color = n)) %>% 
-  fig_heatmap()
+  fig_heatmap() %>% 
+  gauge_color(palette)
 ```
 
 ```{r}
