@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Style — style • g2r</title>
+<title>Dataset — alter • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,9 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Style — style" />
+<meta property="og:title" content="Dataset — alter" />
 
-<meta property="og:description" content="Style a figure." />
+<meta property="og:description" content="Dataset with state management https://github.com/antvis/data-set" />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -144,35 +144,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Style</h1>
+    <h1>Dataset</h1>
     
-    <div class="hidden name"><code>style.Rd</code></div>
+    <div class="hidden name"><code>alter.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Style a figure.</p>
+    <p>Dataset with state management <a href='https://github.com/antvis/data-set'>https://github.com/antvis/data-set</a></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>style</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>alter</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.rename</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.rows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>data</th>
+      <td><p>A data.frame to alter.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Any styling options</p></td>
+      <td><p>Altering options.</p></td>
+    </tr>
+    <tr>
+      <th>source</th>
+      <td><p>A <code>list</code> of source options.</p></td>
+    </tr>
+    <tr>
+      <th>.rename</th>
+      <td><p>Whether to rename the columns of the altered data.frame (recommended).</p></td>
+    </tr>
+    <tr>
+      <th>.rows</th>
+      <td><p>Wheter to return the whole altered object or just the rows.</p></td>
     </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>fruits</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 2</span><span>
+#&gt;   fruit   value
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Apples    0.3
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bananas   0.2
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Pears     0.4
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Oranges   0.1</div><div class='input'>
+<span class='no'>fr</span> <span class='kw'>&lt;-</span> <span class='no'>fruits</span> <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>value</span> * <span class='fl'>100</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='no'>fruit</span>, <span class='no'>value</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>alter</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"waffle"</span>, <span class='kw'>maxCount</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>rows</span> <span class='kw'>=</span> <span class='fl'>12</span>)
+
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>fr</span>)</div><div class='output co'>#&gt;     name value          x      y     wStep hStep
+#&gt; 1 Apples    30 0.05555556 0.0375 0.1111111 0.075
+#&gt; 2 Apples    30 0.05555556 0.1125 0.1111111 0.075
+#&gt; 3 Apples    30 0.05555556 0.1875 0.1111111 0.075
+#&gt; 4 Apples    30 0.05555556 0.2625 0.1111111 0.075
+#&gt; 5 Apples    30 0.05555556 0.3375 0.1111111 0.075
+#&gt; 6 Apples    30 0.05555556 0.4125 0.1111111 0.075</div><div class='input'>
+<span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>fr</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='st'>"square"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>name</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='geoms.html'>fig_point</a></span>(<span class='kw'>axes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='gauge_axis.html'>gauge_axis</a></span>(<span class='no'>x</span>, <span class='fl'>FALSE</span>)</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

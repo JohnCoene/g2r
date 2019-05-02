@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Style — style • g2r</title>
+<title>Gauge label — gauge_style • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,9 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Style — style" />
+<meta property="og:title" content="Gauge label — gauge_style" />
 
-<meta property="og:description" content="Style a figure." />
+<meta property="og:description" content="Gauge label." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -144,35 +144,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Style</h1>
+    <h1>Gauge label</h1>
     
-    <div class="hidden name"><code>style.Rd</code></div>
+    <div class="hidden name"><code>gauge_style.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Style a figure.</p>
+    <p>Gauge label.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>style</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>gauge_style</span>(<span class='no'>g2</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>g2</th>
+      <td><p>An object of class <code>g2r</code> as returned by <code><a href='g2r.html'>g2r</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Any styling options</p></td>
+      <td><p>Any option, aesthetic (<code><a href='asp.html'>asp</a></code>), or animation (<code><a href='G2animation.html'>Animation</a></code>).</p></td>
     </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>mtcars</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>mpg</span>, <span class='no'>qsec</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='no'>drat</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='geoms.html'>fig_point</a></span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

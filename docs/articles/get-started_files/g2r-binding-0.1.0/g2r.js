@@ -30,32 +30,34 @@ HTMLWidgets.widget({
         x.opts.container = el.id;
         chart = new G2.Chart(x.opts);
 
-        var data = x.data;
         var opts = x.layers;
 
         // Coordinates
         if(x.hasOwnProperty("coord"))
-        coord = chart.coord(x.coord.type, x.coord.opts);
+          coord = chart.coord(x.coord.type, x.coord.opts);
 
         if(x.hasOwnProperty("coordRotate"))
-        coord.rotate(x.coordRotate);
+          coord.rotate(x.coordRotate);
 
         if(x.hasOwnProperty("coordScale"))
-        coord.scale(x.coordScale[0], x.coordScale[1]);
+          coord.scale(x.coordScale[0], x.coordScale[1]);
 
         if(x.hasOwnProperty("coordReflect"))
-        coord.reflect(x.coordReflect);
+          coord.reflect(x.coordReflect);
 
         if(x.hasOwnProperty("coordTranspose"))
-        coord.transpose();
-        
+          coord.transpose();
+
+        if(!x.hasOwnProperty('facet'))
+          chart.scale(x.dataOpts)
+
         if(!x.hasOwnProperty('facet')){
           opts.forEach(function(v){
             view = chart.view(v.layer);
             if(v.hasOwnProperty('data'))
               view.source(v.data);
             else
-              view.source(data);
+              view.source(x.data);
           });
         } else {
           chart.source(x.data, x.dataOpts);

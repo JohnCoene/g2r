@@ -10,6 +10,9 @@
     <loc>http://g2r.dev/reference/adjust.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/alter.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/asp.html</loc>
   </url>
   <url>
@@ -29,6 +32,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/coord.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/fig_map.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/fruits.html</loc>
@@ -61,6 +67,9 @@
     <loc>http://g2r.dev/reference/gauge_size.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/gauge_style.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/gauge_tooltip.html</loc>
   </url>
   <url>
@@ -71,6 +80,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/legend.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/motif.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/pipe.html</loc>
