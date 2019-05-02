@@ -6,8 +6,6 @@ g2r_globals(font = "Quicksand")
 ```
 
 <br/>
-<br/>
-<br/>
 
 <div class="row">
 

@@ -124,7 +124,7 @@ df$data <- df$data %>%
   purrr::map(unname)  %>% 
   purrr:::map(round)
 
-df$grp <- letters[1:N]
+df$grp <- LETTERS[1:N]
 
 df$type <- rep(LETTERS[1:2], 4)
 ```
@@ -134,4 +134,38 @@ Plot created data
 ```{r}
 g2(df, asp(type, data, adjust = "dodge", shape = "box", size = 60, color = grp)) %>% 
   fig_schema()
+```
+
+There is a `fig_violin` but it expects the data in a specific format.
+
+```{r}
+get_density <- function(k = "A"){
+  density <- runif(100) %>% 
+    density() 
+  df <- dplyr::tibble(key = k)
+  df$x <- list(density$x)
+  df$y <- list(density$y)
+  return(df)
+}
+
+df <- get_density("A") %>% 
+  dplyr::bind_rows(get_density("B")) %>% 
+  dplyr::bind_rows(get_density("C"))
+
+g2(df, asp(key, x, size = y, color = key)) %>% 
+  fig_violin() %>% 
+  conf_tooltip(FALSE)
+```
+
+A heatmap is easier.
+
+```{r}
+library(dplyr)
+
+data("diamonds", package = "ggplot2")
+
+diamonds %>% 
+  count(carat, price) %>% 
+  g2(asp(carat, price, color = n)) %>% 
+  fig_heatmap()
 ```

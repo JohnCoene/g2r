@@ -5,6 +5,9 @@ template:
     bootswatch: paper
     ganalytics: UA-74544116-1
 
+development:
+  mode: release
+
 reference:
   - title: "Initialisation & Shiny"
     desc: "Initialise g2r chart."
@@ -50,6 +53,11 @@ reference:
     desc: "Planes, similar to facets."
     contents:
       - matches("plane")
+  - title: "Data"
+    desc: "Data for examples."
+    contents:
+      - temp
+      - fruits
   - title: "Helpers"
     desc: "Helper functions."
     contents:
