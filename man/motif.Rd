@@ -4,16 +4,16 @@
 \alias{motif}
 \title{Style}
 \usage{
-motif(g2, coord_type = c("rect", "polar", "theta", "helix"),
-  coord_rotate = NULL, coord_sx = NULL, coord_sy = NULL,
-  coord_reflect = NULL, coord_transpose = NULL, width = NULL,
-  height = NULL, padding = NULL, bg_fill = NULL, bg_opacity = NULL,
-  bg_fill_opacity = NULL, bg_stroke = NULL, bg_stroke_opacity = NULL,
-  bg_line_width = NULL, bg_radius = NULL, plot_fill = NULL,
-  plot_fill_opacity = NULL, plot_stroke = NULL,
-  plot_stroke_opacity = NULL, plot_opacity = NULL,
-  plot_line_width = NULL, plot_radius = NULL, fit = TRUE,
-  animate = TRUE, pixel_ratio = NULL, renderer = NULL, font = NULL)
+motif(g2, coord_type = NULL, coord_rotate = NULL, coord_sx = NULL,
+  coord_sy = NULL, coord_reflect = NULL, coord_transpose = NULL,
+  width = NULL, height = NULL, padding = rep(10, 4),
+  bg_fill = NULL, bg_opacity = NULL, bg_fill_opacity = NULL,
+  bg_stroke = NULL, bg_stroke_opacity = NULL, bg_line_width = NULL,
+  bg_radius = NULL, plot_fill = NULL, plot_fill_opacity = NULL,
+  plot_stroke = NULL, plot_stroke_opacity = NULL,
+  plot_opacity = NULL, plot_line_width = NULL, plot_radius = NULL,
+  fit = TRUE, animate = TRUE, pixel_ratio = NULL, renderer = NULL,
+  font = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

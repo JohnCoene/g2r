@@ -1,5 +1,5 @@
 Package: g2r
-Title: Powerful Interactive Visualisations
+Title: Grammar of Graphics for Interactive Visualisations
 Version: 0.1.0
 Authors@R: 
     c(
@@ -14,7 +14,7 @@ Authors@R:
             role = "cph"
         )
     )
-Description: Powerful interactive visualisations.
+Description: Grammar of graphics for interactive visualisations.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -32,6 +32,3 @@ Imports:
 RoxygenNote: 6.1.1
 URL: http://g2r.dev
 BugReports: https://github.com/JohnCoene/g2r/issues
-Suggests: 
-    knitr,
-    rmarkdown
