@@ -7,7 +7,7 @@
 g2r_globals(..., font = NULL, renderer = NULL)
 }
 \arguments{
-\item{...}{Passed to \code{\link{custom_style}}}
+\item{...}{Passed to \code{\link{custom_motif}}}
 
 \item{font}{Passed to \code{\link{conf_font}}}
 

@@ -45,7 +45,8 @@ reference:
       - conf_globals
       - conf_tooltip
       - matches("conf")
-      - matches("style")
+      - matches("motif")
+      - style
       - conf_font
       - conf_renderer
       - g2r_globals
@@ -54,8 +55,9 @@ reference:
     contents:
       - matches("plane")
   - title: "Data"
-    desc: "Data for examples."
+    desc: "Datasets and data manipulation function, namely for examples."
     contents:
+      - alter
       - temp
       - fruits
   - title: "Helpers"

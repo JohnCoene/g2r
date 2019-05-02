@@ -71,7 +71,7 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
 
 \item{...}{Any option, aesthetic (\code{\link{asp}}), or animation (\code{\link{Animation}}).}
 
-\item{data}{A \code{data.frame} containing data to chart.}
+\item{data}{A \code{data.frame} containing data to chart or a \code{list}.}
 
 \item{inherit_plan}{Whether to inherit aesthetics from \code{g2r}.}
 

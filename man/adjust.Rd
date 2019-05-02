@@ -14,7 +14,7 @@ adjust(type, margin = NULL, dodge_by = NULL)
 \item{dodge_by}{Bare column name of}
 }
 \description{
-Adjust figures.
+Adjust a figure.
 }
 \section{Types}{
 
