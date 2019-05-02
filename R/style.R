@@ -123,14 +123,14 @@ conf_tooltip <- function(g2, ...){
 #'   motif(plot_fill = "grey")
 #' 
 #' @export
-motif <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_rotate = NULL, coord_sx = NULL, coord_sy = NULL,
-  coord_reflect = NULL, coord_transpose = NULL, width = NULL, height = NULL, padding = NULL, bg_fill = NULL, bg_opacity = NULL, 
+motif <- function(g2, coord_type = NULL, coord_rotate = NULL, coord_sx = NULL, coord_sy = NULL,
+  coord_reflect = NULL, coord_transpose = NULL, width = NULL, height = NULL, padding = rep(10, 4), bg_fill = NULL, bg_opacity = NULL, 
   bg_fill_opacity = NULL, bg_stroke = NULL, bg_stroke_opacity = NULL, bg_line_width = NULL, bg_radius = NULL, plot_fill = NULL,
   plot_fill_opacity = NULL, plot_stroke = NULL, plot_stroke_opacity = NULL, plot_opacity = NULL, plot_line_width = NULL, 
   plot_radius = NULL, fit = TRUE, animate = TRUE, pixel_ratio = NULL, renderer = NULL, font = NULL){
 
   # coord
-  g2$x$coord <- list(type = match.arg(coord_type)) 
+  if(!is.null(coord)) g2$x$coord <- coord_type
   if(!is.null(coord_rotate)) g2$x$coordRotate <- coord_rotate
   if(!is.null(coord_sx) && !is.null(coord_sy)) g2$x$coordScale <- list(coord_sx, coord_sx)
   if(!is.null(coord_reflect)) g2$x$coordReflect <- coord_reflect

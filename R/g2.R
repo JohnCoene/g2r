@@ -24,6 +24,7 @@ g2 <- function(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
   x = list(
     opts = list(
       ...,
+      padding = "auto",
       forceFit = TRUE
     ),
     mapping = asp,

@@ -14,7 +14,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(dplyr)
 library(g2r)
+g2r_globals(font = "Quicksand")
 ```
 
 ## Synthax
@@ -24,6 +26,7 @@ The synthax of g2r is heavily inspired by ggplot2.
 ```{r, echo=FALSE}
 df <- dplyr::tribble(
   ~"ggplot2",       ~"g2r",
+  "ggplot",         "g2",
   "aes",            "asp",
   "scale_*",        "gauge_*",
   "geom_*",         "fig_*",
@@ -63,76 +66,43 @@ data.frame(
   coord_type("theta")
 ```
 
-You won't find `fig_bar` but `fig_interval` does the trick
+You won't find `fig_bar` but `fig_interval` does the trick. Below we the `adjust` function which is similar to using the `stat` argument in ggplot2.
 
 ```{r}
 g2(temp, asp(month, temp, color = city)) %>% 
-  fig_interval_dodge(adjust(c("dodge", "symmetric"))) 
+  fig_interval_dodge(adjust("dodge")) 
 ```
 
 There are no fig_boxplot either, yet.
 
 ```{r, collapse=TRUE}
-N <- 8
+library(dplyr)
+library(purrr)
 
-df <- data.frame(
-  x = c(
-    rnorm(100),
-    runif(100, -5, 10),
-    rnorm(100, 1, 3),
-    rnorm(100, 10, 3),
-    rnorm(100, 9, 3),
-    runif(100, -6, 9),
-    rnorm(100, 10, 2),
-    runif(100, 0, 12)
-  ),
-  grp = c(
-    rep(1, 100),
-    rep(2, 100),
-    rep(3, 100),
-    rep(4, 100),
-    rep(5, 100),
-    rep(6, 100),
-    rep(7, 100),
-    rep(8, 100)
-  )
-)
-
-df <- purrr::map_df(1:N, function(l, data) {
-  b <- data %>% 
-    dplyr::filter(grp == l) %>% 
-    dplyr::pull(x) %>% 
-    boxplot(plot = FALSE) %>% 
-    unlist(.$stats[,1])
-
-  dplyr::tibble(
-    grp = as.integer(l),
-    mn = b[1],
-    q1 = b[2],
-    q2 = b[3],
-    q3 = b[4],
-    mx = b[5]
-  ) 
-}, df)
-
-df <- df %>% 
-  dplyr::mutate_if(is.character, as.numeric) %>% 
-  tidyr::nest(mn, q1, q2, q3, mx)
+df <- rep(100, 8) %>% 
+  map(runif) %>% 
+  map(boxplot, plot = FALSE) %>% 
+  map_dfr(function(x){
+    x$stats %>% 
+      unlist() %>% 
+      t %>% 
+      as.data.frame
+  }) %>% 
+  mutate(
+    group = LETTERS[1:n()],
+    type = rep(letters[1:2], 4)
+  ) %>% 
+  tidyr::nest(V1, V2, V3, V4, V5)
 
 df$data <- df$data %>% 
-  purrr::map(unlist) %>%
-  purrr::map(unname)  %>% 
-  purrr:::map(round)
-
-df$grp <- LETTERS[1:N]
-
-df$type <- rep(LETTERS[1:2], 4)
+  map(unlist) %>% 
+  map(unname)
 ```
 
 Plot created data
 
 ```{r}
-g2(df, asp(type, data, adjust = "dodge", shape = "box", size = 60, color = grp)) %>% 
+g2(df, asp(type, data, adjust = "dodge", shape = "box", size = 60, color = group)) %>% 
   fig_schema()
 ```
 
@@ -149,8 +119,8 @@ get_density <- function(k = "A"){
 }
 
 df <- get_density("A") %>% 
-  dplyr::bind_rows(get_density("B")) %>% 
-  dplyr::bind_rows(get_density("C"))
+  bind_rows(get_density("B")) %>% 
+  bind_rows(get_density("C"))
 
 g2(df, asp(key, x, size = y, color = key)) %>% 
   fig_violin() %>% 
@@ -196,6 +166,6 @@ The `alter` function is used internally to processe GeoJSON files.
 quakes %>% 
   dplyr::select(longitude = long, latitude = lat, value = mag) %>% 
   g2(asp(longitude, latitude, size = value)) %>% 
-  fig_point() %>% 
+  fig_point(axes = FALSE) %>% 
   fig_map(style(fill = "#d3d3d3"))  
 ```

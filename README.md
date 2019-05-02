@@ -21,16 +21,15 @@ From ggplot2 to g2r:
 2. `geom_*` -> `fig_*`
 3. `scale_*` -> `gauge_*`
 4. `facet_*` -> `plane_*`
-5. `theme_*` -> `style_*`
+5. `theme_*` -> `motif_*`
 
 ## Example
-
 
 ``` r
 library(g2r)
 
 iris %>%
-  g2(plan(Petal.Length, Petal.Width, color = Species)) %>% 
+  g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
   fig_point() %>%
   plane_wrap(planes(Species), type = "tree")
 ```
