@@ -120,10 +120,10 @@ conf_tooltip <- function(g2, ...){
 #' @examples
 #' g2(cars, asp(speed, dist)) %>% 
 #'   fig_point() %>% 
-#'   style(plot_fill = "grey")
+#'   motif(plot_fill = "grey")
 #' 
 #' @export
-style <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_rotate = NULL, coord_sx = NULL, coord_sy = NULL,
+motif <- function(g2, coord_type = c("rect", "polar", "theta", "helix"), coord_rotate = NULL, coord_sx = NULL, coord_sy = NULL,
   coord_reflect = NULL, coord_transpose = NULL, width = NULL, height = NULL, padding = NULL, bg_fill = NULL, bg_opacity = NULL, 
   bg_fill_opacity = NULL, bg_stroke = NULL, bg_stroke_opacity = NULL, bg_line_width = NULL, bg_radius = NULL, plot_fill = NULL,
   plot_fill_opacity = NULL, plot_stroke = NULL, plot_stroke_opacity = NULL, plot_opacity = NULL, plot_line_width = NULL, 

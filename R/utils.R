@@ -1,4 +1,4 @@
-globalVariables(c("."))
+globalVariables(c(".", "longitude", "latitude"))
 
 get_data <- function(main_data = NULL, data = NULL){
   if(is.null(main_data) && is.null(data))
@@ -20,7 +20,9 @@ keep_data <- function(data){
 
 process_data <- function(data, aes){
   aes <- keep(aes, rlang::is_quosure)
-  select(data, !!!unname(aes))
+  if(inherits(data, "data.frame"))
+    data <- select(data, !!!unname(aes)) %>% pmap(list)
+  return(data)
 }
 
 # JavaScript NULL
@@ -63,7 +65,8 @@ rm_anim_aes_opts <- function(...){
     discard(is_animation) %>% 
     discard(is_aes) %>% 
     discard(is_opts) %>% 
-    discard(is_adjust)
+    discard(is_adjust) %>% 
+    discard(is_style)
 }
 
 is_opts <- function(x){

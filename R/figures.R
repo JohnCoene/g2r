@@ -4,7 +4,7 @@
 #' 
 #' @param g2 An object of class \code{g2r} as returned by \code{\link{g2r}}.
 #' @param ... Any option, aesthetic (\code{\link{asp}}), or animation (\code{\link{Animation}}).
-#' @param data A \code{data.frame} containing data to chart.
+#' @param data A \code{data.frame} containing data to chart or a \code{list}.
 #' @param inherit_plan Whether to inherit aesthetics from \code{g2r}.
 #' @param name Name of figure, useful to apply functions to specific figures.
 #' 
@@ -128,14 +128,11 @@ fig_schema_dodge <- function(g2, ..., data = NULL, inherit_plan = TRUE, name = N
 make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes = TRUE, name = NULL) {
   if(is.null(name)) name <- ""
 
-  # force FALSE when new dataset passed
-  if(!is.null(data)) inherit_aes <- FALSE
-
   view <- list(
     type = chart_type, 
     inherit_aes = inherit_aes, 
     name = name, 
-    data <- keep_data(data),
+    data = keep_data(data),
     animate = get_animation(...)
   )
 
@@ -150,6 +147,9 @@ make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes
   # additional options to apply to geom
   adjust <- get_adjust(...)
   if(length(adjust)) view$adjust <- adjust
+
+  style <- get_style(...)
+  if(length(style)) view$style <- style
 
   # aesthetics
   aes <- get_aes(...)

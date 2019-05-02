@@ -85,6 +85,23 @@ gauge_label <- function(g2, ..., callback = NULL){
   make_scale(g2, vars = opts, method = "label")
 }
 
+#' Gauge label
+#'
+#' Gauge label.
+#' 
+#' @inheritParams geoms
+#' @inheritParams gauge_color
+#' 
+#' @examples
+#' g2(mtcars, asp(mpg, qsec, shape = drat)) %>% 
+#'   fig_point() 
+#' 
+#' @export
+gauge_style <- function(g2, ...){
+  opts <- list(cfg = list(...))
+  make_scale(g2, vars = opts, method = "style")
+}
+
 #' Gauge tooltip
 #'
 #' Gauge tooltip.

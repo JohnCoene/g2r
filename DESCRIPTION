@@ -21,6 +21,7 @@ LazyData: true
 Depends: R (>= 2.10)
 Imports:
     R6,
+    V8,
     shiny,
     purrr,
     rlang,
@@ -34,4 +35,3 @@ BugReports: https://github.com/JohnCoene/g2r/issues
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr

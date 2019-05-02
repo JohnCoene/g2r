@@ -34,11 +34,13 @@ render_g2r <- function(g2){
     if(length(layer$adjust))
       geom$adjust <- layer$adjust
 
+    if(length(layer$style))
+      geom$style <- layer$style
+
     # if data passed, turn to row list
     if(!is.null(layer$data))
       layer$data <- layer$data %>% 
-        process_data(aes) %>% 
-        pmap(list)
+        process_data(aes) 
 
     view <- list(
       layer = list(
@@ -82,8 +84,7 @@ render_g2r <- function(g2){
 
   # data as list
   g2$x$data <- g2$x$data %>% 
-    process_data(combined_mapping) %>% 
-    pmap(list)
+    process_data(combined_mapping)
 
   if(debug_mode())
     print(jsonlite::toJSON(g2$x, auto_unbox = TRUE, pretty = TRUE, force = TRUE))
