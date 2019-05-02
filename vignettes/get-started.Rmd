@@ -197,5 +197,5 @@ quakes %>%
   dplyr::select(longitude = long, latitude = lat, value = mag) %>% 
   g2(asp(longitude, latitude, size = value)) %>% 
   fig_point() %>% 
-  fig_map(style(fill = "grey"))  
+  fig_map(style(fill = "#d3d3d3"))  
 ```
