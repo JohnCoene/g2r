@@ -123,7 +123,7 @@ df <- get_density("A") %>%
   bind_rows(get_density("C"))
 
 g2(df, asp(key, x, size = y, color = key)) %>% 
-  fig_violin() %>% 
+  fig_violin(style(fillOpacity = .3)) %>% 
   conf_tooltip(FALSE)
 ```
 
@@ -150,14 +150,15 @@ iris %>%
 If you navigate the [original examples of the g2 JavaScript](https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html) you will notice that they often make use of the [dataset library](https://github.com/antvis/data-set) to transform the data. This is imprelement as the function `alter`, mainly to easily replicate examples.
 
 ```{r}
-fruits %>% 
-  dplyr::mutate(value = value * 100) %>% 
-  dplyr::select(name = fruit, value) %>% 
-  alter(type = "waffle", maxCount = 500, rows = 12)  %>% 
-  g2(asp(x, y, shape = "square", size = 10, color = name)) %>% 
+aletered_fruits <- fruits %>% 
+  mutate(value = value * 100) %>% 
+  select(name = fruit, value) %>% 
+  alter(type = "waffle", maxCount = 500, rows = 12) 
+ 
+g2(aletered_fruits, asp(x, y, shape = "square", color = name, size = 10)) %>% 
   fig_point(axes = FALSE) %>% 
   gauge_axis(x, FALSE) %>% 
-  style(padding = rep(50, 4))
+  motif(padding = rep(50, 4)) 
 ```
 
 The `alter` function is used internally to processe GeoJSON files.
