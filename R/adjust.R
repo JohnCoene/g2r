@@ -1,6 +1,6 @@
 #' Adjust
 #' 
-#' Adjust figures.
+#' Adjust a figure.
 #' 
 #' @param type A vector of types of adjustement to apply to the figure, see the "types" section below for valid values.
 #' @param margin Margin, between \code{0} and \code{1}.
@@ -47,4 +47,30 @@ is_adjust <- function(x){
 get_adjust <- function(...){
   list(...) %>% 
     keep(is_adjust)
+}
+
+#' Style
+#' 
+#' Style a figure.
+#' 
+#' @param ... Any styling options
+#' 
+#' @export
+style <- function(...) {
+  options <- list(...)
+  structure(options, class = c("style", class(options)))
+}
+
+is_style <- function(x){
+  aes <- FALSE
+  if(inherits(x, "style"))
+    aes <- TRUE
+  return(aes)
+}
+
+get_style <- function(...){
+  list(...) %>% 
+    keep(is_style) %>% 
+    unlist() %>% 
+    as.list()
 }
