@@ -164,9 +164,11 @@ g2(aletered_fruits, asp(x, y, shape = "square", color = name, size = 10)) %>%
 The `alter` function is used internally to processe GeoJSON files.
 
 ```{r}
-quakes %>% 
-  dplyr::select(longitude = long, latitude = lat, value = mag) %>% 
-  g2(asp(longitude, latitude, size = value)) %>% 
-  fig_point(axes = FALSE) %>% 
-  fig_map(style(fill = "#d3d3d3"))  
+data("airports", package = "nycflights13")
+
+airports %>% 
+  dplyr::select(longitude = lon, latitude = lat) %>% 
+  g2(asp(longitude, latitude)) %>% 
+  fig_map(map = "usa", style(fill = "#d3d3d3")) %>% 
+  fig_point(axes = FALSE)  
 ```
