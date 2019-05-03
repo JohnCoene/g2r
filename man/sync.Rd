@@ -2,23 +2,29 @@
 % Please edit documentation in R/data_options.R
 \name{sync}
 \alias{sync}
-\title{Sync}
+\alias{unsync}
+\title{Sync & Unsync}
 \usage{
 sync(g2, ...)
+
+unsync(g2, ...)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Bare Columng names of variables to synchronise.}
+\item{...}{Bare Column names of variables to synchronise.}
 }
 \description{
-Synchronises variables across planes (\code{\link{plane_wrap}}), in order to have them share scales across
+Synchronises variables across planes (\code{\link{plane_wrap}}), in order to have them share scales.
+}
+\details{
+By default \code{plane_wrap} will sync variables. You can unsync them if undesired.
 }
 \examples{
 iris \%>\% 
   g2(asp(Sepal.Length, Sepal.Width)) \%>\% 
   fig_point(asp(color = Species)) \%>\% 
   plane_wrap(planes(Species)) \%>\% 
-  sync(Sepal.Length, Sepal.Width)
+  unsync(Petal.Length)
 
 }

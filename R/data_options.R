@@ -1,17 +1,20 @@
-#' Sync
+#' Sync & Unsync
 #' 
-#' Synchronises variables across planes (\code{\link{plane_wrap}}), in order to have them share scales across 
+#' Synchronises variables across planes (\code{\link{plane_wrap}}), in order to have them share scales.
 #' 
 #' @inheritParams geoms
-#' @param ... Bare Columng names of variables to synchronise.
+#' @param ... Bare Column names of variables to synchronise.
+#' 
+#' @details By default \code{plane_wrap} will sync variables. You can unsync them if undesired.
 #' 
 #' @examples
 #' iris %>% 
 #'   g2(asp(Sepal.Length, Sepal.Width)) %>% 
 #'   fig_point(asp(color = Species)) %>% 
 #'   plane_wrap(planes(Species)) %>% 
-#'   sync(Sepal.Length, Sepal.Width)
+#'   unsync(Petal.Length)
 #' 
+#' @name sync
 #' @export
 sync <- function(g2, ...){
   
@@ -19,13 +22,27 @@ sync <- function(g2, ...){
   aes <- new_aes(exprs, env = parent.frame())
   aes <- .construct_aesthetics(aes, "sync")
 
-  sync <- sync_it(aes)
+  sync <- sync_it(aes, TRUE)
   g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
 
   return(g2)
 }
 
-sync_it <- function(vars){
+#' @name sync
+#' @export
+unsync <- function(g2, ...){
+  
+  exprs <- rlang::enquos(..., .ignore_empty = "all")
+  aes <- new_aes(exprs, env = parent.frame())
+  aes <- .construct_aesthetics(aes, "sync")
+
+  sync <- sync_it(aes, FALSE)
+  g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
+
+  return(g2)
+}
+
+sync_it <- function(vars, v = TRUE){
   vars <- vars %>% 
     map(rlang::quo_name) %>% 
     unlist() %>% 
@@ -33,9 +50,9 @@ sync_it <- function(vars){
     .[. != "NULL"]
 
   vars %>% 
-    map(function(x){
-      list(sync = TRUE)
-    }) %>% 
+    map(function(x, v){
+      list(sync = v)
+    }, v) %>% 
     set_names(vars)
 }
 
