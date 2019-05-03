@@ -78,7 +78,7 @@ motif <- function(g2, coord_type = NULL, coord_rotate = NULL, coord_sx = NULL, c
   plot_radius = NULL, fit = TRUE, animate = TRUE, pixel_ratio = NULL, renderer = NULL, font = NULL){
 
   # coord
-  if(!is.null(coord)) g2$x$coord <- coord_type
+  if(!is.null(coord_type)) g2$x$coord <- coord_type
   if(!is.null(coord_rotate)) g2$x$coordRotate <- coord_rotate
   if(!is.null(coord_sx) && !is.null(coord_sy)) g2$x$coordScale <- list(coord_sx, coord_sx)
   if(!is.null(coord_reflect)) g2$x$coordReflect <- coord_reflect
