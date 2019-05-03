@@ -20,8 +20,8 @@ reference:
     contents: 
       - Animation
       - new_animation
-  - title: "Plan"
-    desc: "Plan, controls aesthetics of figures."
+  - title: "Aspects"
+    desc: "Controls aspects of figures."
     contents:
       - asp
       - adjust
