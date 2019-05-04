@@ -170,5 +170,7 @@ airports %>%
   dplyr::select(longitude = lon, latitude = lat) %>% 
   g2(asp(longitude, latitude)) %>% 
   fig_map(map = "usa", style(fill = "#d3d3d3")) %>% 
-  fig_point(axes = FALSE)  
+  fig_point(axes = FALSE) %>% 
+  gauge_x_linear(min = -125, max = -66) %>% 
+  gauge_y_linear(min = 24, max = 50)
 ```
