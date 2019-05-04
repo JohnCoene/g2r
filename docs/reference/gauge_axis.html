@@ -195,21 +195,19 @@
   <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tick_count</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>tick_interval</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>gauge_x_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='st'>"yyyy-mm-dd"</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>gauge_x_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tick_count</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>tick_interval</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>gauge_y_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='st'>"yyyy-mm-dd"</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>gauge_y_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tick_count</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>tick_interval</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>gauge_x_discrete_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='st'>"yyyy-mm-dd"</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tick_count</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>figure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>gauge_x_discrete_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tick_count</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>gauge_y_discrete_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='st'>"yyyy-mm-dd"</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tick_count</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>figure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>gauge_y_discrete_time</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>mask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nice</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>formatter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>tick_count</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figure</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -291,7 +289,7 @@ See type section for details.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>cars</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='geoms.html'>fig_point</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>gauge_axis</span>(<span class='no'>speed</span>, <span class='fl'>FALSE</span>)</div></pre>
+  <span class='fu'>gauge_x_linear</span>(<span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

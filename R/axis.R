@@ -84,7 +84,7 @@ gauge_y_identity <- function(g2, ..., figure = NULL){
 gauge_x_linear <- function(g2, ..., nice = TRUE, range = NULL, ticks = NULL, tick_count = NULL, tick_interval = NULL, 
   min = NULL, max = NULL, formatter = NULL, sync = TRUE, figure = NULL){
 
-  var <- .get_map(g2$x$mapping, "y")
+  var <- .get_map(g2$x$mapping, "x")
   
   for(v in var){
     g2 <- axes(g2, v, ..., type = "linear", nice = nice, range = range, ticks = ticks, tick_count = tick_count, tick_interval = tick_interval, 
