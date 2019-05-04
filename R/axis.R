@@ -31,9 +31,12 @@
 #' }
 #'
 #' @examples
-#' g2(cars, asp(speed, dist)) %>% 
-#'   fig_point() %>% 
-#'   gauge_x_linear(min = 0) 
+#' g <- g2(cars, asp(speed, dist)) %>% 
+#'   fig_point() 
+#' 
+#' g %>% gauge_x_linear(min = 0) 
+#' g %>% gauge_y_log()
+#' g %>% gauge_x_linear(tick_count = 4) 
 #' 
 #' @name gauge_axis
 #' @export
