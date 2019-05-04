@@ -25,6 +25,17 @@ gauge_color <- function(g2, colors = NULL, callback = NULL){
 #' @param range A vector indicating the minimum and maximum sizes.
 #' @inheritParams gauge_color
 #' 
+#' @examples
+#' func <- cb("function(dist){
+#'   if(dist > 60)
+#'     return 20
+#'   return 5
+#' }")
+#' 
+#' g2(cars, asp(speed, dist, size = dist)) %>% 
+#'   fig_point() %>% 
+#'   gauge_size(callback = func)
+#' 
 #' @export
 gauge_size <- function(g2, range = NULL, callback = NULL){
   opts <- list(range = range, callback = callback)
@@ -39,8 +50,15 @@ gauge_size <- function(g2, range = NULL, callback = NULL){
 #' @inheritParams gauge_color
 #' 
 #' @examples
-#' g2(mtcars, asp(mpg, qsec, opacity = drat, size = 10)) %>% 
-#'   fig_point()
+#' func <- cb("function(dist){
+#'   if(dist > 60)
+#'     return 1
+#'   return .3
+#' }")
+#' 
+#' g2(cars, asp(speed, dist, opacity = dist)) %>% 
+#'   fig_point() %>% 
+#'   gauge_opacity(callback = func)
 #' 
 #' @export
 gauge_opacity <- function(g2, callback = NULL){
@@ -93,8 +111,9 @@ gauge_label <- function(g2, ..., callback = NULL){
 #' @inheritParams gauge_color
 #' 
 #' @examples
-#' g2(mtcars, asp(mpg, qsec, shape = drat)) %>% 
-#'   fig_point() 
+#' g2(mtcars, asp(mpg, qsec, style = qsec)) %>% 
+#'   fig_point() %>% 
+#'   gauge_style(fill = "red")
 #' 
 #' @export
 gauge_style <- function(g2, ...){

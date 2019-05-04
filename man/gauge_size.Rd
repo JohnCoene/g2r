@@ -16,3 +16,15 @@ gauge_size(g2, range = NULL, callback = NULL)
 \description{
 Gauge size given a range or a JavaScript callback function.
 }
+\examples{
+func <- cb("function(dist){
+  if(dist > 60)
+    return 20
+  return 5
+}")
+
+g2(cars, asp(speed, dist, size = dist)) \%>\% 
+  fig_point() \%>\% 
+  gauge_size(callback = func)
+
+}

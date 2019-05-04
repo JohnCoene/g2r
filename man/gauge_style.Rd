@@ -15,7 +15,8 @@ gauge_style(g2, ...)
 Gauge label.
 }
 \examples{
-g2(mtcars, asp(mpg, qsec, shape = drat)) \%>\% 
-  fig_point() 
+g2(mtcars, asp(mpg, qsec, style = qsec)) \%>\% 
+  fig_point() \%>\% 
+  gauge_style(fill = "red")
 
 }

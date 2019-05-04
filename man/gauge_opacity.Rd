@@ -15,7 +15,14 @@ gauge_opacity(g2, callback = NULL)
 Gauge opacity.
 }
 \examples{
-g2(mtcars, asp(mpg, qsec, opacity = drat, size = 10)) \%>\% 
-  fig_point()
+func <- cb("function(dist){
+  if(dist > 60)
+    return 1
+  return .3
+}")
+
+g2(cars, asp(speed, dist, opacity = dist)) \%>\% 
+  fig_point() \%>\% 
+  gauge_opacity(callback = func)
 
 }
