@@ -17,6 +17,6 @@ g2r_globals(..., font = NULL, renderer = NULL)
 Set global options, all charts in session will use these options.
 }
 \examples{
-g2r_globals(font = "Comic Sans")
+\dontrun{g2r_globals(font = "Comic Sans")}
 
 }

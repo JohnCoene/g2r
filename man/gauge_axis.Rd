@@ -2,9 +2,76 @@
 % Please edit documentation in R/axis.R
 \name{gauge_axis}
 \alias{gauge_axis}
+\alias{gauge_x_identity}
+\alias{gauge_y_identity}
+\alias{gauge_x_linear}
+\alias{gauge_y_linear}
+\alias{gauge_x_discrete}
+\alias{gauge_y_discrete}
+\alias{gauge_x_log}
+\alias{gauge_y_log}
+\alias{gauge_x_pow}
+\alias{gauge_y_pow}
+\alias{gauge_x_time}
+\alias{gauge_y_time}
+\alias{gauge_x_discrete_time}
+\alias{gauge_y_discrete_time}
 \title{Axis}
 \usage{
-gauge_axis(g2, var, ..., figure = NULL)
+gauge_axis(g2, var, ..., nice = TRUE, range = NULL, ticks = NULL,
+  tick_count = NULL, tick_interval = NULL, min = NULL, max = NULL,
+  type = NULL, formatter = NULL, sync = TRUE, values = NULL,
+  base = NULL, exponent = NULL, mask = NULL, figure = NULL)
+
+gauge_x_identity(g2, ..., figure = NULL)
+
+gauge_y_identity(g2, ..., figure = NULL)
+
+gauge_x_linear(g2, ..., nice = TRUE, range = NULL, ticks = NULL,
+  tick_count = NULL, tick_interval = NULL, min = NULL, max = NULL,
+  formatter = NULL, sync = TRUE, figure = NULL)
+
+gauge_y_linear(g2, ..., nice = TRUE, range = NULL, ticks = NULL,
+  tick_count = NULL, tick_interval = NULL, min = NULL, max = NULL,
+  formatter = NULL, sync = TRUE, figure = NULL)
+
+gauge_x_discrete(g2, ..., sync = TRUE, range = NULL,
+  formatter = NULL, ticks = NULL, tick_count = NULL, values = NULL,
+  figure = NULL)
+
+gauge_y_discrete(g2, ..., sync = TRUE, range = NULL,
+  formatter = NULL, ticks = NULL, tick_count = NULL, values = NULL,
+  figure = NULL)
+
+gauge_x_log(g2, ..., base = 2, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL,
+  tick_interval = NULL, figure = NULL)
+
+gauge_y_log(g2, ..., base = 2, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL,
+  tick_interval = NULL, figure = NULL)
+
+gauge_x_pow(g2, ..., exponent = 2, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL,
+  tick_interval = NULL, figure = NULL)
+
+gauge_y_pow(g2, ..., exponent = 2, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL,
+  tick_interval = NULL, figure = NULL)
+
+gauge_x_time(g2, ..., mask = NULL, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL,
+  tick_interval = NULL, figure = NULL)
+
+gauge_y_time(g2, ..., mask = NULL, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL,
+  tick_interval = NULL, figure = NULL)
+
+gauge_x_discrete_time(g2, ..., mask = NULL, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL, figure = NULL)
+
+gauge_y_discrete_time(g2, ..., mask = NULL, nice = TRUE, sync = TRUE,
+  formatter = NULL, ticks = NULL, tick_count = NULL, figure = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -13,14 +80,49 @@ gauge_axis(g2, var, ..., figure = NULL)
 
 \item{...}{Configuration options or a logical indicating whether to show the axis.}
 
+\item{nice}{The default is \code{TRUE}, which is used to optimize the range of values so that the plotted axe is evenly distributed. 
+For example, the range of raw data is \code{c(3, 97)}, and if nice is true, the range of values is adjusted to \code{c(0, 100]}.}
+
+\item{range}{The range of output data, defaults to \code{c(0, 1)}.}
+
+\item{ticks, tick_count, tick_interval}{Number of ticks to show or interval between ticks, only one of those can be set.}
+
+\item{min, max}{Minimum and Maximum of axes.}
+
+\item{type}{Type of data plotted against the axis \code{identity}, \code{linear}, \code{cat}, \code{time}, \code{timeCat}, \code{log}, \code{pow}. 
+See type section for details.}
+
+\item{formatter}{A callback function as returned by \code{\link{cb}}.}
+
+\item{sync}{Wehter to unify axes scales across \code{\link{planes}}.}
+
+\item{values}{Values of axes to use for categorical variables.}
+
+\item{base, exponent}{Used for \code{type} \code{log} and \code{pow}.}
+
+\item{mask}{Date time format.}
+
 \item{figure}{Name of figure to apply axis to, if \code{NULL} it is applied to all figures.}
 }
 \description{
 Scale and modify axis.
 }
+\section{Type}{
+
+\itemize{
+  \item{\code{identity}: Constant.}
+  \item{\code{linear}: Continuous variable.}
+  \item{\code{cat}: Categorical variable.}
+  \item{\code{time}: Continous time variable.}
+  \item{\code{timeCat}: Non-continuous time variable.}
+  \item{\code{log}: Logarithmic data.}
+  \item{\code{pow}: Exponential data.}  
+}
+}
+
 \examples{
 g2(cars, asp(speed, dist)) \%>\% 
   fig_point() \%>\% 
-  gauge_axis(speed, FALSE) 
+  gauge_x_linear(min = 0) 
 
 }

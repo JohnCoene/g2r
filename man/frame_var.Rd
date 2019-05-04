@@ -16,3 +16,10 @@ frame_var(g2, var, ...)
 \description{
 Frame a variable.
 }
+\examples{
+iris \%>\% 
+  g2(asp(Sepal.Length, Sepal.Width)) \%>\% 
+  fig_point(asp(color = Species)) \%>\% 
+  frame_var(Sepal.Width, min = 0)
+
+}

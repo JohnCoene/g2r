@@ -89,6 +89,13 @@ render_g2r <- function(g2){
   if(debug_mode())
     print(jsonlite::toJSON(g2$x, auto_unbox = TRUE, pretty = TRUE, force = TRUE))
 
+  if(length(g2$x$dataOpts))
+    g2$x$dataOpts <- map(g2$x$dataOpts, function(x){
+      keep(x, function(y){
+        length(y) >= 1
+      })
+    })
+
   # remove unwanted
   g2$x$scales <- NULL
   g2$x$mapping <- NULL

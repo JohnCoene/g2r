@@ -95,3 +95,9 @@ get_opts <- function(...){
   names(opts) <- names
   return(opts)
 }
+
+.get_map <- function(mapping, var){
+  mapping[names(mapping) %in% var] %>% 
+    map_chr(rlang::quo_name) %>% 
+    unname
+}

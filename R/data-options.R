@@ -72,7 +72,10 @@ frame_var <- function(g2, var, ...){
 upsert_scale <- function(col, scale, opts){
   for(i in 1:length(opts)){
     n <- names(opts)[i]
-    scale[[col]][[n]] <- as.list(opts[[i]])
+    if(!length(scale[[col]][[n]]))
+      scale[[col]] <- append(scale[[col]], opts[i])
+    else
+      scale[[col]][[n]] <- opts[[i]]
   }
   scale
 }
