@@ -17,7 +17,7 @@
 #' @name sync
 #' @export
 sync <- function(g2, ...){
-  
+  check_g2(g2)
   exprs <- rlang::enquos(..., .ignore_empty = "all")
   aes <- new_aes(exprs, env = parent.frame())
   aes <- .construct_aesthetics(aes, "sync")
@@ -31,7 +31,7 @@ sync <- function(g2, ...){
 #' @name sync
 #' @export
 unsync <- function(g2, ...){
-  
+  check_g2(g2)
   exprs <- rlang::enquos(..., .ignore_empty = "all")
   aes <- new_aes(exprs, env = parent.frame())
   aes <- .construct_aesthetics(aes, "sync")
@@ -40,6 +40,41 @@ unsync <- function(g2, ...){
   g2$x$dataOpts <- upsert_data_opts(g2$x$dataOpts, sync)
 
   return(g2)
+}
+
+#' Frame
+#' 
+#' Frame a variable.
+#' 
+#' @inheritParams geoms
+#' @param var Bare column name of variable to frame.
+#' @param ... setting .
+#' 
+#' @examples
+#' iris %>% 
+#'   g2(asp(Sepal.Length, Sepal.Width)) %>% 
+#'   fig_point(asp(color = Species)) %>% 
+#'   frame_var(Sepal.Width, min = 0)
+#' 
+#' @export
+frame_var <- function(g2, var, ...){
+  check_g2(g2)
+
+  var <- rlang::enquo(var) %>% 
+    rlang::quo_name() %>% 
+    unlist() %>% 
+    unname() 
+
+  g2$x$dataOpts <- upsert_scale(var, g2$x$dataOpts, list(...))
+  return(g2)
+}
+
+upsert_scale <- function(col, scale, opts){
+  for(i in 1:length(opts)){
+    n <- names(opts)[i]
+    scale[[col]][[n]] <- as.list(opts[[i]])
+  }
+  scale
 }
 
 sync_it <- function(vars, v = TRUE){
@@ -56,7 +91,6 @@ sync_it <- function(vars, v = TRUE){
     set_names(vars)
 }
 
-# add data options
 upsert_data_opts <- function(data_opts, sync){
 
   # split
