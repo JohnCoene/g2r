@@ -22,48 +22,47 @@
 \alias{fig_schema_dodge}
 \title{Firgures}
 \usage{
-fig_interval(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_interval(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_line(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_line(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_point(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_point(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_path(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_path(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_area(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_area(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_polygon(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_polygon(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_schema(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_schema(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_edge(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_edge(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_violin(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_violin(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_heatmap(g2, ..., data = NULL, inherit_plan = TRUE, name = NULL)
+fig_heatmap(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_point_jitter(g2, ..., data = NULL, inherit_plan = TRUE,
+fig_point_jitter(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
 
-fig_point_stack(g2, ..., data = NULL, inherit_plan = TRUE,
+fig_point_stack(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
 
-fig_point_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
+fig_point_dodge(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
 
-fig_interval_stack(g2, ..., data = NULL, inherit_plan = TRUE,
+fig_interval_stack(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
 
-fig_interval_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
+fig_interval_dodge(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
 
-fig_interval_symmetric(g2, ..., data = NULL, inherit_plan = TRUE,
+fig_interval_symmetric(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
 
-fig_area_stack(g2, ..., data = NULL, inherit_plan = TRUE,
-  name = NULL)
+fig_area_stack(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
-fig_schema_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
+fig_schema_dodge(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
 }
 \arguments{
@@ -73,7 +72,7 @@ fig_schema_dodge(g2, ..., data = NULL, inherit_plan = TRUE,
 
 \item{data}{A \code{data.frame} containing data to chart or a \code{list}.}
 
-\item{inherit_plan}{Whether to inherit aesthetics from \code{g2r}.}
+\item{inherit_asp}{Whether to inherit aspects from \code{g2r}.}
 
 \item{name}{Name of figure, useful to apply functions to specific figures.}
 }

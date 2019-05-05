@@ -5,7 +5,7 @@
 \title{Histogram}
 \usage{
 fig_histogram(g2, ..., bin_width = 1, data = NULL,
-  inherit_plan = TRUE, name = NULL)
+  inherit_asp = TRUE, name = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -16,10 +16,15 @@ fig_histogram(g2, ..., bin_width = 1, data = NULL,
 
 \item{data}{A \code{data.frame} containing data to chart or a \code{list}.}
 
-\item{inherit_plan}{Whether to inherit aesthetics from \code{g2r}.}
+\item{inherit_asp}{Whether to inherit aspects from \code{g2r}.}
 
 \item{name}{Name of figure, useful to apply functions to specific figures.}
 }
 \description{
 Create a histogram.
+}
+\examples{
+g2(iris, asp(Sepal.Length, color = Species))  \%>\% 
+  fig_histogram(bin_width = .3)
+
 }

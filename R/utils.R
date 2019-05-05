@@ -1,4 +1,11 @@
-globalVariables(c(".", "longitude", "latitude"))
+globalVariables(
+  c(
+    ".", 
+    "x", "y",
+    "longitude", 
+    "latitude"
+  )
+)
 
 get_data <- function(main_data = NULL, data = NULL){
   if(is.null(main_data) && is.null(data))
@@ -14,7 +21,7 @@ keep_data <- function(data){
   if(is.null(data))
     return(NULL)
 
-  row.names(data) <- NULL
+  if(inherits(data, "data.frame")) row.names(data) <- NULL
   return(data)
 }
 
@@ -100,4 +107,14 @@ get_opts <- function(...){
   mapping[names(mapping) %in% var] %>% 
     map_chr(rlang::quo_name) %>% 
     unname
+}
+
+tidy_histogram <- function(h){
+  hist <- tibble()
+  for(i in 1:length(h$counts)){
+    t <- tibble(y = h$counts[i])
+    t$x <- list(c(h$breaks[i], h$breaks[i + 1]))
+    hist <- bind_rows(hist, t)
+  }
+  return(hist)
 }
