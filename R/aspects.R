@@ -171,3 +171,13 @@ combine_aes <- function(main_mapping, layers){
     append(main_mapping) %>% 
     unique()
 }
+
+# custom figures mapping
+combine_aes_for_geom <- function(main, inherit, ...){
+
+  aes <- get_aes(...)
+
+  if(inherit) aes <- append(aes, main)
+  
+  return(aes)
+}
