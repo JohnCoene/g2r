@@ -12,6 +12,7 @@
 #' @import purrr
 #' @import dplyr
 #' @importFrom graphics hist
+#' @importFrom stats density
 #'
 #' @examples
 #' g2(cars, asp(speed, dist)) %>% 
