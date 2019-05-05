@@ -32,3 +32,7 @@ Imports:
 RoxygenNote: 6.1.1
 URL: http://g2r.dev
 BugReports: https://github.com/JohnCoene/g2r/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

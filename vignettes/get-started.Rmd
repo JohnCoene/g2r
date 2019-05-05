@@ -1,7 +1,5 @@
 ---
 title: "Get Started"
-author: "John (JP) Coene"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get Started}
@@ -67,7 +65,7 @@ You won't find `fig_bar` but `fig_interval` does the trick. Below we the `adjust
 
 ```{r}
 g2(temp, asp(month, temp, color = city)) %>% 
-  fig_interval_dodge(adjust("dodge")) 
+  fig_interval_dodge() 
 ```
 
 There are no fig_boxplot either, yet.
@@ -161,16 +159,4 @@ g2(aletered_fruits, asp(x, y, shape = "square", color = name, size = 10)) %>%
   motif(padding = rep(50, 4)) 
 ```
 
-The `alter` function is used internally to processe GeoJSON files.
-
-```{r}
-data("airports", package = "nycflights13")
-
-airports %>% 
-  dplyr::select(longitude = lon, latitude = lat) %>% 
-  g2(asp(longitude, latitude)) %>% 
-  fig_map(map = "usa", style(fill = "#d3d3d3")) %>% 
-  fig_point(axes = FALSE) %>% 
-  gauge_x_linear(min = -125, max = -66) %>% 
-  gauge_y_linear(min = 24, max = 50)
-```
+The `alter` function is used internally by `get_map` to process GeoJSON files.

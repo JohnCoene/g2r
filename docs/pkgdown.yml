@@ -3,6 +3,7 @@ pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
   get-started: get-started.html
+  maps: maps.html
 urls:
   reference: http://g2r.dev/reference
   article: http://g2r.dev/articles

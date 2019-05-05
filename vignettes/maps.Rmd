@@ -1,0 +1,57 @@
+---
+title: "Maps"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Maps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(g2r)
+```
+
+The `fig_map` function will download the appropriate GeoJSON.
+
+```{r}
+data("airports", package = "nycflights13")
+
+airports %>% 
+  dplyr::select(longitude = lon, latitude = lat) %>% 
+  g2(asp(longitude, latitude)) %>% 
+  fig_map(map = "usa", style(fill = "#d3d3d3")) %>% 
+  fig_point(axes = FALSE) %>% 
+  gauge_x_linear(min = -125, max = -66) %>% 
+  gauge_y_linear(min = 24, max = 50)
+```
+
+Everytime you call `fig_map` the function downloads the map, may therefore want to use `get_map` to download the map just once then plot the map using `fig_polygon`, which is what `fig_map` does internally
+
+```{r}
+world <- get_map() # no map name returns world map.
+
+countries <- countrycode::codelist$country.name.en
+
+countries <- dplyr::tibble(
+  name = countries,
+  value = runif(length(countries), 1, 100)
+)  %>% 
+  dplyr::mutate(
+    name = dplyr::case_when(
+      name == "United States" ~ "United States of America",
+      TRUE ~ name
+    )
+  ) %>% 
+  dplyr::left_join(world, by = "name") 
+
+g2(asp(longitude, latitude, color = value), data = countries) %>% 
+  fig_polygon(axes = FALSE, tooltip = FALSE) %>% 
+  gauge_color(c("red", "white", "blue"))
+```
