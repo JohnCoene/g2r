@@ -1,0 +1,46 @@
+---
+title: "Planes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{facet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(g2r)
+```
+
+Planes are like facets in ggplot2. You use `plane_wrap` and specify the planes, unname using the `planes` function. 
+
+```{r}
+iris %>%
+  g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
+  fig_point() %>%
+  plane_wrap(planes(Species))
+```
+
+There are different types of planes, the default is `list`.
+
+```{r}
+g2(temp, asp(city, temp, color = city)) %>% 
+  fig_interval() %>%
+  plane_wrap(planes(month), type = "circle")
+```
+
+```{r}
+g2(temp, asp(month, temp, color = city)) %>% 
+  fig_interval() %>%
+  plane_wrap(planes(city), type = "mirror")
+```
+
+```{r}
+iris %>%
+  g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
+  fig_point() %>%
+  plane_wrap(planes(Species), type = "tree")
+```

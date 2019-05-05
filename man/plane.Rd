@@ -23,6 +23,18 @@ planes(...)
 \description{
 This function is similar to the \code{facet_*} family of functions from the \code{ggplot2} package.
 }
+\section{Type}{
+
+\itemize{
+  \item{\code{list}}
+  \item{\code{rect}}
+  \item{\code{circle}}
+  \item{\code{mirror}}
+  \item{\code{tree}}
+  \item{\code{mirror}}  
+}
+}
+
 \examples{
 iris \%>\%
   g2(asp(Petal.Length, Petal.Width, color = Species)) \%>\% 

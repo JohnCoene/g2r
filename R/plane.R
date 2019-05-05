@@ -7,6 +7,16 @@
 #' @param ... Planes, bare column names or \code{NULL}.
 #' @param sync Wether to \code{\link{sync}} the \code{planes} and main mapping that were passed \code{\link{g2}}
 #' 
+#' @section Type:
+#' \itemize{
+#'   \item{\code{list}}
+#'   \item{\code{rect}}
+#'   \item{\code{circle}}
+#'   \item{\code{mirror}}
+#'   \item{\code{tree}}
+#'   \item{\code{mirror}}  
+#' }
+#' 
 #' @examples
 #' iris %>%
 #'   g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
