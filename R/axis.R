@@ -64,7 +64,7 @@ gauge_x_identity <- function(g2, ..., figure = NULL){
   
   for(v in var){
     g2 <- axes(g2, v, ..., type = "identity", figure = figure)
-  }
+  } 
 
   return(g2)
 }
