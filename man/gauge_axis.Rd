@@ -125,7 +125,7 @@ g <- g2(cars, asp(speed, dist)) \%>\%
   fig_point() 
 
 g \%>\% gauge_x_linear(min = 0) 
-g \%>\% gauge_y_log()
+g \%>\% gauge_y_log(title = "Log")
 g \%>\% gauge_x_linear(tick_count = 4) 
 
 }

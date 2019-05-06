@@ -34,8 +34,12 @@ g2 <- function(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
     dataOpts = list()
   )
 
-  if(!is.null(data))
-    x$data <- keep_data(data)
+  if(!is.null(data)) x$data <- keep_data(data)
+
+  if(!is.null(asp)){
+    sync <- sync_it(asp, TRUE)
+    x$dataOpts <- upsert_data_opts(list(), sync)
+  }
 
   htmlwidgets::createWidget(
     name = 'g2r',
