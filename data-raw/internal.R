@@ -22,7 +22,8 @@ info_and_aes <- dplyr::tribble(
   "offsetY",          "offset_y",
   "html",             "html",
   "zIndex",           "z_index",
-  "align_x",          "align_y",
+  "alignX",           "align_x",
+  "alignY",           "align_y",
   "top",              "top",
   "color",            "color"
 )

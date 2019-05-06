@@ -4,6 +4,7 @@ pkgdown_sha: ~
 articles:
   get-started: get-started.html
   maps: maps.html
+  planes: planes.html
 urls:
   reference: http://g2r.dev/reference
   article: http://g2r.dev/articles

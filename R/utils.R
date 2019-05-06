@@ -32,6 +32,43 @@ process_data <- function(data, aes){
   return(data)
 }
 
+modify_guide_data <- function(data){
+  data %>% 
+    pmap(list) %>% 
+    map(function(x){
+      pos <- x[names(x) %in% c("x", "y")] %>% unname %>% unlist
+      if(length(pos) == 2) x$position <- list(pos[[1]], pos[[2]])
+      st <- x[names(x) %in% c("x", "xend")] %>% unname %>% unlist
+      if(length(st) == 2) x$start <- list(st[[1]], st[[2]])
+      nd <- x[names(x) %in% c("y", "yend")] %>% unname %>% unlist
+      if(length(nd) == 2) x$end <- list(nd[[1]], nd[[2]])
+      x$x <- NULL
+      x$y <- NULL
+      x$xend <- NULL
+      x$yend <- NULL
+      return(x)
+    })
+}
+
+bind_aes <- function(data, aes){
+  aes_keep <- keep(aes, rlang::is_quosure)
+  if(inherits(data, "data.frame"))
+    data <- select(data, !!!aes_keep) 
+
+  aes <- discard(aes, rlang::is_quosure)
+  if(length(aes)){
+    x <- as.character(aes)
+    names(x) <- names(aes)
+    data <- cbind.data.frame(data, dplyr::as_tibble(t(x)))
+  }
+  
+  modify_guide_data(data)
+}
+
+process_info_data <- function(data, aes){
+  bind_aes(data, aes)
+}
+
 # JavaScript NULL
 js_null <- function(x){
   if(is.null(x) || x == "NULL")

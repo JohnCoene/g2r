@@ -13,28 +13,30 @@
 \alias{info_data_region}
 \title{Info}
 \usage{
-info_line(g2, ..., figures = NULL)
+info_line(g2, ..., data = NULL, figures = NULL)
 
-info_text(g2, ..., figures = NULL)
+info_text(g2, ..., data = NULL, figures = NULL)
 
-info_image(g2, ..., figures = NULL)
+info_image(g2, ..., data = NULL, figures = NULL)
 
-info_region(g2, ..., figures = NULL)
+info_region(g2, ..., data = NULL, figures = NULL)
 
-info_html(g2, ..., figures = NULL)
+info_html(g2, ..., data = NULL, figures = NULL)
 
-info_arc(g2, ..., figures = NULL)
+info_arc(g2, ..., data = NULL, figures = NULL)
 
-info_data_marker(g2, ..., figures = NULL)
+info_data_marker(g2, ..., data = NULL, figures = NULL)
 
-info_region_filter(g2, ..., figures = NULL)
+info_region_filter(g2, ..., data = NULL, figures = NULL)
 
-info_data_region(g2, ..., figures = NULL)
+info_data_region(g2, ..., data = NULL, figures = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
 
-\item{...}{Info options.}
+\item{...}{Info options and \code{\link{asp}}.}
+
+\item{data}{A \code{data.frame} containing data for \code{\link{asp}} if \code{NULL} is inherited from \code{\link{g2}}.}
 
 \item{figures}{Vector of names or indices of figure(s) to apply the information to, if \code{NULL} applies only to the first figure.}
 }
@@ -49,4 +51,11 @@ g2(mtcars, asp(mpg, qsec)) \%>\%
     position = c(20, 20)
   )
 
+newcars <- cars[1:26,]
+newcars$text <- LETTERS
+
+g2(cars, asp(speed, dist)) \%>\% 
+  fig_point() \%>\% 
+  info_text(asp(speed, dist, content = text), data = newcars, offsetY = -20)
+ 
 }

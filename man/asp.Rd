@@ -14,7 +14,10 @@ they are so common; all other aspects must be named.}
 \description{
 Chart's aspects, similar to \code{ggplot2}'s aesthetics.
 }
-\section{Aspects}{
+\details{
+Aspects can be applied to \code{figures} and to \code{info}, note that those can be inherited in the former but not the latter.
+}
+\section{Figures}{
 
 \itemize{
   \item{\code{x}, \code{y}}
@@ -26,6 +29,23 @@ Chart's aspects, similar to \code{ggplot2}'s aesthetics.
   \item{\code{tooltip}}
   \item{\code{label}}
   \item{\code{style}}
+}
+}
+
+\section{Info}{
+
+\itemize{
+  \item{\code{x}, \code{y}}
+  \item{\code{xend}, \code{yend}}
+  \item{\code{content}}
+  \item{\code{offset_x}}
+  \item{\code{offset_y}}
+  \item{\code{html }}
+  \item{\code{z_index}}
+  \item{\code{align_x}}
+  \item{\code{align_y}}
+  \item{\code{top}}
+  \item{\code{color}}
 }
 }
 

@@ -154,23 +154,23 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>info_line</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>info_line</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_text</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>info_text</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_image</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>info_image</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_region</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>info_region</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_html</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>info_html</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_arc</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>info_arc</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_data_marker</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>info_data_marker</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_region_filter</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>info_region_filter</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>info_data_region</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>info_data_region</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,7 +181,11 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Info options.</p></td>
+      <td><p>Info options and <code><a href='asp.html'>asp</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>A <code>data.frame</code> containing data for <code><a href='asp.html'>asp</a></code> if <code>NULL</code> is inherited from <code><a href='g2r.html'>g2</a></code>.</p></td>
     </tr>
     <tr>
       <th>figures</th>
@@ -196,7 +200,14 @@
   <span class='fu'>info_data_marker</span>(
     <span class='kw'>content</span> <span class='kw'>=</span> <span class='st'>"Marker"</span>,
     <span class='kw'>position</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>20</span>, <span class='fl'>20</span>)
-  )</div></pre>
+  )
+
+<span class='no'>newcars</span> <span class='kw'>&lt;-</span> <span class='no'>cars</span>[<span class='fl'>1</span>:<span class='fl'>26</span>,]
+<span class='no'>newcars</span>$<span class='no'>text</span> <span class='kw'>&lt;-</span> <span class='no'>LETTERS</span>
+
+<span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>cars</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='geoms.html'>fig_point</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>info_text</span>(<span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>, <span class='kw'>content</span> <span class='kw'>=</span> <span class='no'>text</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>newcars</span>, <span class='kw'>offsetY</span> <span class='kw'>=</span> -<span class='fl'>20</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

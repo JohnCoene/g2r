@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aspects — asp • g2r</title>
+<title>Title &amp; Subtitle — chart-title • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Aspects — asp" />
+<meta property="og:title" content="Title &amp; Subtitle — chart-title" />
 
-<meta property="og:description" content="Chart's aspects, similar to ggplot2's aesthetics." />
+<meta property="og:description" content="Add a chart title and subtitle." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -143,82 +143,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Aspects</h1>
+    <h1>Title &amp; Subtitle</h1>
     
-    <div class="hidden name"><code>asp.Rd</code></div>
+    <div class="hidden name"><code>chart-title.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Chart's aspects, similar to <code>ggplot2</code>'s aesthetics.</p>
+    <p>Add a chart title and subtitle.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>asp</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>add_title</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"top"</span>, <span class='st'>"bottom"</span>), <span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw pkg'>htmltools</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/htmltools/topics/builder'>h1</a></span>,
+  <span class='kw'>inherit_padding</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>font_family</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>add_subtitle</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"top"</span>, <span class='st'>"bottom"</span>),
+  <span class='kw'>tag</span> <span class='kw'>=</span> <span class='kw pkg'>htmltools</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/htmltools/topics/builder'>h4</a></span>, <span class='kw'>inherit_padding</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>font_family</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x, y, ...</th>
-      <td><p>List of name value pairs giving aspects to map to
-variables. The names for x and y aspects are typically omitted because
-they are so common; all other aspects must be named.</p></td>
+      <th>g2</th>
+      <td><p>An object of class <code>g2r</code> as returned by <code><a href='g2r.html'>g2r</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Title or subtitle content and style, passed to <code>tag</code>.</p></td>
+    </tr>
+    <tr>
+      <th>position</th>
+      <td><p>Position of title or subtitle, <code>top</code> or <code>bottom</code>.</p></td>
+    </tr>
+    <tr>
+      <th>tag</th>
+      <td><p>A valid html tag <a href='https://www.rdocumentation.org/packages/htmltools/topics/tag'>tag</a>.</p></td>
+    </tr>
+    <tr>
+      <th>inherit_padding</th>
+      <td><p>Whether to inherits the <code>left</code> padding set on chart object (<code>g2</code>).</p></td>
+    </tr>
+    <tr>
+      <th>font_family</th>
+      <td><p>Font family to use, if <code>NULL</code> sets to default set by <code><a href='conf_font.html'>conf_font</a></code>.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Aspects can be applied to <code>figures</code> and to <code>info</code>, note that those can be inherited in the former but not the latter.</p>
-    
-    <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
-
-    
-    <ul>
-<li><p><code>x</code>, <code>y</code></p></li>
-<li><p><code>size</code></p></li>
-<li><p><code>color</code></p></li>
-<li><p><code>shape</code></p></li>
-<li><p><code>opacity</code></p></li>
-<li><p><code>adjust</code></p></li>
-<li><p><code>tooltip</code></p></li>
-<li><p><code>label</code></p></li>
-<li><p><code>style</code></p></li>
-</ul>
-    
-    <h2 class="hasAnchor" id="info"><a class="anchor" href="#info"></a>Info</h2>
-
-    
-    <ul>
-<li><p><code>x</code>, <code>y</code></p></li>
-<li><p><code>xend</code>, <code>yend</code></p></li>
-<li><p><code>content</code></p></li>
-<li><p><code>offset_x</code></p></li>
-<li><p><code>offset_y</code></p></li>
-<li><p><code>html </code></p></li>
-<li><p><code>z_index</code></p></li>
-<li><p><code>align_x</code></p></li>
-<li><p><code>align_y</code></p></li>
-<li><p><code>top</code></p></li>
-<li><p><code>color</code></p></li>
-</ul>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>temp</span>, <span class='fu'>asp</span>(<span class='no'>month</span>, <span class='no'>temp</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>city</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='geoms.html'>fig_interval</a></span>(<span class='fu'><a href='adjust.html'>adjust</a></span>(<span class='st'>"dodge"</span>))</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>fruits</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>fruit</span>, <span class='no'>value</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='geoms.html'>fig_interval</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>add_title</span>(<span class='st'>"Fruits"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#figures">Figures</a></li>
-
-      <li><a href="#info">Info</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

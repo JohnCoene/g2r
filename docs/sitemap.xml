@@ -19,6 +19,9 @@
     <loc>http://g2r.dev/reference/cb.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/chart-title.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/conf_font.html</loc>
   </url>
   <url>
@@ -32,6 +35,12 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/coord.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/fig_density.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/fig_histogram.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/fig_map.html</loc>
@@ -113,5 +122,8 @@
   </url>
   <url>
     <loc>http://g2r.dev/articles/maps.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/articles/planes.html</loc>
   </url>
 </urlset>
