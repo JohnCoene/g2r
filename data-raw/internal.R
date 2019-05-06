@@ -12,8 +12,19 @@ method_and_aes <- dplyr::tribble(
   "select",             "select"
 )
 
-map_names <- system.file("maps", package = "g2r")
-map_names <- list.files(map_names)
-map_names <- gsub("\\.json", "", map_names)
+info_and_aes <- dplyr::tribble(
+  ~"name",            ~"aes",
+  "start",            c("x", "xend"),
+  "end",              c("y", "yend"),
+  "position",         c("x", "y"),
+  "content",          "content",
+  "offsetX",          "offset_x",
+  "offsetY",          "offset_y",
+  "html",             "html",
+  "zIndex",           "z_index",
+  "align_x",          "align_y",
+  "top",              "top",
+  "color",            "color"
+)
 
-usethis::use_data(method_and_aes, map_names, internal = TRUE, overwrite = TRUE)
+usethis::use_data(method_and_aes, info_and_aes, internal = TRUE, overwrite = TRUE)
