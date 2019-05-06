@@ -1,164 +1,100 @@
-#' Firgures
+#' Histogram
 #' 
-#' Figures, equivalent to \code{ggplot2}'s geometries.
+#' Create a histogram.
 #' 
-#' @param g2 An object of class \code{g2r} as returned by \code{\link{g2r}}.
-#' @param ... Any option, aesthetic (\code{\link{asp}}), or animation (\code{\link{Animation}}).
-#' @param data A \code{data.frame} containing data to chart or a \code{list}.
-#' @param inherit_asp Whether to inherit aspects from \code{g2r}.
-#' @param name Name of figure, useful to apply functions to specific figures.
+#' @inheritParams geoms
+#' @param bin_width Width of bins.
 #' 
 #' @examples
-#' g2(cars, asp(dist, speed)) %>% 
-#'   fig_point() %>% 
-#'   fig_line()
+#' g2(iris, asp(Sepal.Length, color = Species))  %>% 
+#'   fig_histogram(bin_width = .3)
 #' 
-#' g2(fruits, asp(value, color = fruit)) %>% 
-#'   fig_interval_stack() %>% 
-#'   coord_type("theta")
+#' @export
+fig_histogram <- function(g2, ..., bin_width = 1, data = NULL, inherit_asp = TRUE, name = NULL) {
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  aes <- aes[names(aes) %in% c("x", "color")]
+
+  if(rlang::is_empty(aes))
+    stop("no `x` or `color` aspect", call. = FALSE)
+
+  if(is.null(data))
+    data <- g2$x$data
+
+  if(length(aes$color))
+    data <- alter(
+      data,
+      type = "bin.histogram",
+      field = rlang::quo_name(aes$x),
+      groupBy = list(rlang::quo_name(aes$color)),
+      binWidth = bin_width,
+      as = list("x", "y")
+    )
+  else
+    data <- alter(
+      data,
+      type = "bin.histogram",
+      field = rlang::quo_name(aes$x),
+      binWidth = bin_width,
+      as = list("x", "y")
+    )
+
+  aes$x <- "x"
+  aes$y <- "y"
+
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "intervalStack", inherit_aes = TRUE, name = name, mapping = aes)
+
+}
+
+#' Density
 #' 
-#' @name geoms
+#' Create a density plot.
+#' 
+#' @inheritParams geoms
+#' 
+#' @examples
+#' g2(iris, asp(Petal.Length, color = Species))  %>% 
+#'   fig_density()
+#'  
 #' @export
-fig_interval <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "interval", inherit_aes = inherit_asp, name = name)
-}
+fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
 
-#' @rdname geoms
-#' @export
-fig_line <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "line", inherit_aes = inherit_asp, name = name)
-}
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  aes <- aes[names(aes) %in% c("x", "color")]
 
-#' @rdname geoms
-#' @export
-fig_point <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "point", inherit_aes = inherit_asp, name = name)
-}
+  if(rlang::is_empty(aes))
+    stop("no `x` or `color` aspect", call. = FALSE)
 
-#' @rdname geoms
-#' @export
-fig_path <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "path", inherit_aes = inherit_asp, name = name)
-}
+  if(is.null(data))
+    data <- g2$x$data
 
-#' @rdname geoms
-#' @export
-fig_area <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "area", inherit_aes = inherit_asp, name = name)
-}
+  if(length(aes$color))
+    data <- group_split(data, !!aes$color)
+  else
+    data <- list(data)
 
-#' @rdname geoms
-#' @export
-fig_polygon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "polygon", inherit_aes = inherit_asp, name = name)
-}
+  data <- data %>% 
+    map(function(x, val, col = NULL){
+      dens <- x %>% 
+        pull(!!val) %>% 
+        density()
+      
+      t <- tibble(
+        x = dens$x,
+        y = dens$y
+      )
 
-#' @rdname geoms
-#' @export
-fig_schema <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "schema", inherit_aes = inherit_asp, name = name)
-}
+      if(!is.null(col))
+        t[[rlang::quo_name(col)]] <- x %>% pull(!!col) %>% unique()
+      
+      return(t)
+    }, val = aes$x, col = aes$color) %>% 
+    map_dfr(bind_rows)
 
-#' @rdname geoms
-#' @export
-fig_edge <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "edge", inherit_aes = inherit_asp, name = name)
-}
+  aes$x <- "x"
+  aes$y <- "y"
 
-#' @rdname geoms
-#' @export
-fig_violin <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "violin", inherit_aes = inherit_asp, name = name)
-}
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "area", inherit_aes = TRUE, name = name, mapping = aes)
 
-#' @rdname geoms
-#' @export
-fig_heatmap <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "heatmap", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_point_jitter <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "pointJitter", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_point_stack <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "pointStack", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_point_dodge <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "pointDodge", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_interval_stack <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "intervalStack", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_interval_dodge <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "intervalDodge", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_interval_symmetric <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "intervalSymmetric", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_area_stack <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "areaStack", inherit_aes = inherit_asp, name = name)
-}
-
-#' @rdname geoms
-#' @export
-fig_schema_dodge <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
-  make_geom(g2, ..., data = data, chart_type = "schemaDodge", inherit_aes = inherit_asp, name = name)
-}
-
-make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes = TRUE, name = NULL, mapping = NULL) {
-  if(is.null(name)) name <- ""
-
-  view <- list(
-    type = chart_type, 
-    inherit_aes = inherit_aes, 
-    name = name, 
-    data = keep_data(data),
-    animate = get_animation(...)
-  )
-
-  # additional options OUTSIDE of geom applied on view
-  additional_opts <- rm_anim_aes_opts(...)
-  option <- get_opts(...)
-  if(length(options))
-    additional_opts <- append(additional_opts, option)
-  if(length(additional_opts))
-    view$opts <- append(view$opts, additional_opts)
-
-  # additional options to apply to geom
-  adjust <- get_adjust(...)
-  if(length(adjust)) view$adjust <- adjust
-
-  style <- get_style(...)
-  if(length(style)) view$style <- style
-
-  # aesthetics
-  aes <- get_aes(...)
-  if(length(aes)) view$mapping <- aes
-
-  if(!is.null(mapping))
-    view$mapping <- mapping
-
-  g2$x$layers <- append(g2$x$layers, list(view))
-  g2
 }
 
