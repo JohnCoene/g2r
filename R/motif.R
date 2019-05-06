@@ -133,17 +133,22 @@ motif <- function(g2, coord_type = NULL, coord_rotate = NULL, coord_sx = NULL, c
 #' @param position Position of title or subtitle, \code{top} or \code{bottom}.
 #' @param tag A valid html tag \link[htmltools]{tag}.
 #' @param inherit_padding Whether to inherits the \code{left} padding set on chart object (\code{g2}).
-#' @param font_family Font family to use, if \code{NULL} sets to g2 default.
+#' @param font_family Font family to use, if \code{NULL} sets to default set by \code{\link{conf_font}}.
+#' 
+#' @examples
+#' g2(fruits, asp(fruit, value)) %>% 
+#'   fig_interval() %>% 
+#'   add_title("Fruits")
 #' 
 #' @name chart-title
 #' @export
-chart_title <- function(g2, ..., position = c("top", "bottom"), tag = htmltools::h1, inherit_padding = TRUE, font_family = NULL){
+add_title <- function(g2, ..., position = c("top", "bottom"), tag = htmltools::h1, inherit_padding = TRUE, font_family = NULL){
   .title(g2, ..., position = position, tag = tag, inherit_padding = inherit_padding, font_family = font_family)
 }
 
 #' @rdname chart-title
 #' @export
-chart_subtitle <- function(g2, ..., position = c("top", "bottom"), tag = htmltools::h4, inherit_padding = TRUE, font_family = NULL){
+add_subtitle <- function(g2, ..., position = c("top", "bottom"), tag = htmltools::h4, inherit_padding = TRUE, font_family = NULL){
   .title(g2, ..., position = position, tag = tag, inherit_padding = inherit_padding, font_family = font_family)
 }
 
@@ -152,6 +157,9 @@ chart_subtitle <- function(g2, ..., position = c("top", "bottom"), tag = htmltoo
 
   if(is.null(font_family))
     font_family <- '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;'
+
+  if(length(g2$x$font))
+    font_family <- g2$x$font
 
   func <- htmlwidgets::prependContent
   if(pos == "bottom") func <- htmlwidgets::appendContent

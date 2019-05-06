@@ -37,6 +37,8 @@ g2 <- function(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
   if(!is.null(data)) x$data <- keep_data(data)
 
   if(!is.null(asp)){
+    asp <- asp %>% 
+      keep(rlang::is_quosure)
     sync <- sync_it(asp, TRUE)
     x$dataOpts <- upsert_data_opts(list(), sync)
   }

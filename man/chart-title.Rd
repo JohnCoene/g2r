@@ -2,14 +2,14 @@
 % Please edit documentation in R/motif.R
 \name{chart-title}
 \alias{chart-title}
-\alias{chart_title}
-\alias{chart_subtitle}
+\alias{add_title}
+\alias{add_subtitle}
 \title{Title & Subtitle}
 \usage{
-chart_title(g2, ..., position = c("top", "bottom"),
-  tag = htmltools::h1, inherit_padding = TRUE, font_family = NULL)
+add_title(g2, ..., position = c("top", "bottom"), tag = htmltools::h1,
+  inherit_padding = TRUE, font_family = NULL)
 
-chart_subtitle(g2, ..., position = c("top", "bottom"),
+add_subtitle(g2, ..., position = c("top", "bottom"),
   tag = htmltools::h4, inherit_padding = TRUE, font_family = NULL)
 }
 \arguments{
@@ -23,8 +23,14 @@ chart_subtitle(g2, ..., position = c("top", "bottom"),
 
 \item{inherit_padding}{Whether to inherits the \code{left} padding set on chart object (\code{g2}).}
 
-\item{font_family}{Font family to use, if \code{NULL} sets to g2 default.}
+\item{font_family}{Font family to use, if \code{NULL} sets to default set by \code{\link{conf_font}}.}
 }
 \description{
 Add a chart title and subtitle.
+}
+\examples{
+g2(fruits, asp(fruit, value)) \%>\% 
+  fig_interval() \%>\% 
+  add_title("Fruits")
+
 }
