@@ -28,6 +28,7 @@ Imports:
     dplyr,
     magrittr,
     jsonlite,
+    htmltools,
     htmlwidgets
 RoxygenNote: 6.1.1
 URL: http://g2r.dev

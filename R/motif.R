@@ -123,3 +123,49 @@ motif <- function(g2, coord_type = NULL, coord_rotate = NULL, coord_sx = NULL, c
   
   return(g2)
 }
+
+#' Title & Subtitle
+#' 
+#' Add a chart title and subtitle.
+#' 
+#' @inheritParams geoms
+#' @param ... Title or subtitle content and style, passed to \code{tag}.
+#' @param position Position of title or subtitle, \code{top} or \code{bottom}.
+#' @param tag A valid html tag \link[htmltools]{tag}.
+#' @param inherit_padding Whether to inherits the \code{left} padding set on chart object (\code{g2}).
+#' @param font_family Font family to use, if \code{NULL} sets to g2 default.
+#' 
+#' @name chart-title
+#' @export
+chart_title <- function(g2, ..., position = c("top", "bottom"), tag = htmltools::h1, inherit_padding = TRUE, font_family = NULL){
+  .title(g2, ..., position = position, tag = tag, inherit_padding = inherit_padding, font_family = font_family)
+}
+
+#' @rdname chart-title
+#' @export
+chart_subtitle <- function(g2, ..., position = c("top", "bottom"), tag = htmltools::h4, inherit_padding = TRUE, font_family = NULL){
+  .title(g2, ..., position = position, tag = tag, inherit_padding = inherit_padding, font_family = font_family)
+}
+
+.title <- function(g2, ..., position = c("top", "bottom"), tag = htmltools::h1, inherit_padding = TRUE, font_family = NULL){
+  pos <- match.arg(position)
+
+  if(is.null(font_family))
+    font_family <- '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;'
+
+  func <- htmlwidgets::prependContent
+  if(pos == "bottom") func <- htmlwidgets::appendContent
+
+  style <- paste0("font-family:", font_family)
+  if(inherit_padding)
+    padding <- paste0("padding-left:", g2$x$opts$padding[[1]], "px;")
+  style <- paste0(style, padding)
+
+  func(
+    g2,
+    htmltools::div(
+      style = style,
+      tag(...)
+    )
+  )
+}
