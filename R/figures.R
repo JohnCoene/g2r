@@ -142,39 +142,3 @@ fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
   make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
 
 }
-
-#' Sankey
-#' 
-#' Create a sankey plot.
-#' 
-#' @inheritParams geoms
-#' 
-#' @export
-fig_sankey <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
-
-  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
-  aes <- aes[names(aes) %in% c("x", "y", "color")]
-
-  if(rlang::is_empty(aes))
-    stop("no `x`, `y` or `color` aspect", call. = FALSE)
-
-  if(is.null(data)) data <- g2$x$data
-  x <- tryCatch(pull(data, !!aes$x), error = function(e) e)
-  y <- tryCatch(pull(data, !!aes$y), error = function(e) e)
-  if(!inherits(x, "error"))
-    maxX <- x %>% max()
-  else
-    maxX <- aes$x
-  if(!inherits(y, "error"))
-    maxY <- y %>% max()
-  else
-    maxY <- aes$y
-
-  data <- alter(data, type = "diagram.voronoi", fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y)), size = list(maxX, maxY), as = list("x_", "y_"), .rename = FALSE)
-
-  aes$x <- "x_"
-  aes$y <- "y_"
-
-  make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
-
-}
