@@ -32,6 +32,7 @@
 #' @param .rename Whether to rename the columns of the altered data.frame (recommended).
 #' @param source A \code{list} of source options.
 #' @param .rows Wheter to return the whole altered object or just the rows.
+#' @param .return Method to return, i.e.\code{"rows"}.
 #' 
 #' @examples
 #' head(fruits)
@@ -47,7 +48,7 @@
 #'   fig_point(axes = FALSE) %>% 
 #'   gauge_axis(x, FALSE)
 #' @export
-alter <- function(data, ..., source = NULL, .rename = TRUE, .rows = TRUE){
+alter <- function(data, ..., source = NULL, .rename = TRUE, .rows = TRUE, .return = NULL){
   if(missing(data))
     stop(" missing data", call. = FALSE)
   ctx <- V8::new_context()
@@ -66,6 +67,9 @@ alter <- function(data, ..., source = NULL, .rename = TRUE, .rows = TRUE){
     ctx$assign("opts", opts)
     ctx$eval("var dv = dv.transform(opts);")
   }
+
+  if(!is.null(.return))
+    return(ctx$get(paste0("dv.", .return)))
   
   if(.rows)
     transformed <- ctx$get("dv.rows")

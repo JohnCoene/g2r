@@ -16,6 +16,7 @@
 \alias{gauge_y_time}
 \alias{gauge_x_discrete_time}
 \alias{gauge_y_discrete_time}
+\alias{gauge_all_axis}
 \title{Axis}
 \usage{
 gauge_axis(g2, var, ..., nice = TRUE, range = NULL, ticks = NULL,
@@ -72,6 +73,8 @@ gauge_x_discrete_time(g2, ..., mask = NULL, nice = TRUE, sync = TRUE,
 
 gauge_y_discrete_time(g2, ..., mask = NULL, nice = TRUE, sync = TRUE,
   formatter = NULL, ticks = NULL, tick_count = NULL, figure = NULL)
+
+gauge_all_axis(g2, ...)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

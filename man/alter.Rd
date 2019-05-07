@@ -4,7 +4,8 @@
 \alias{alter}
 \title{Dataset}
 \usage{
-alter(data, ..., source = NULL, .rename = TRUE, .rows = TRUE)
+alter(data, ..., source = NULL, .rename = TRUE, .rows = TRUE,
+  .return = NULL)
 }
 \arguments{
 \item{data}{A data.frame to alter.}
@@ -16,6 +17,8 @@ alter(data, ..., source = NULL, .rename = TRUE, .rows = TRUE)
 \item{.rename}{Whether to rename the columns of the altered data.frame (recommended).}
 
 \item{.rows}{Wheter to return the whole altered object or just the rows.}
+
+\item{.return}{Method to return, i.e.\code{"rows"}.}
 }
 \description{
 Dataset with state management \url{https://github.com/antvis/data-set}

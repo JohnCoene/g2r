@@ -250,6 +250,18 @@ gauge_y_discrete_time <- function(g2, ..., mask = NULL, nice = TRUE, sync = TRUE
   return(g2)
 }
 
+#' @rdname gauge_axis
+#' @export
+gauge_all_axis <- function(g2, ...){
+  lgl <- tryCatch(rlang::is_logical(...), error = function(e) NULL)
+
+  if(is.null(lgl))
+    g2$x$axes <- list(...)
+  else
+    g2$x$axes <- unlist(...)
+  g2
+}
+
 axes <- function(g2, var, ..., nice = TRUE, range = NULL, ticks = NULL, tick_count = NULL, tick_interval = NULL, 
   min = NULL, max = NULL, type = NULL, formatter = NULL, sync = TRUE, values = NULL, 
   base = NULL, exponent = NULL, mask = NULL, figure = NULL){
