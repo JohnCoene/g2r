@@ -65,8 +65,7 @@ fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
   if(rlang::is_empty(aes))
     stop("no `x` or `color` aspect", call. = FALSE)
 
-  if(is.null(data))
-    data <- g2$x$data
+  if(is.null(data)) data <- g2$x$data
 
   if(length(aes$color))
     data <- group_split(data, !!aes$color)
@@ -98,3 +97,40 @@ fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
 
 }
 
+#' Voronoi
+#' 
+#' Create a voronoi plot.
+#' 
+#' @inheritParams geoms
+#'
+#' @examples
+#' df <- dplyr::tibble(
+#'   x = runif(25, 1, 500),
+#'   y = runif(25, 1, 500),
+#'   value = runif(25, 1, 500)
+#' )
+#' 
+#' g2(df, asp(x, y, color = value)) %>% 
+#'   fig_voronoi()
+#' 
+#' @export
+fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  aes <- aes[names(aes) %in% c("x", "y", "color")]
+
+  if(rlang::is_empty(aes))
+    stop("no `x`, `y` or `color` aspect", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+  maxX <- data %>% pull(!!aes$x) %>% max()
+  maxY <- data %>% pull(!!aes$y) %>% max()
+
+  data <- alter(data, type = "diagram.voronoi", fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y)), size = list(maxX, maxY), as = list("x_", "y_"), .rename = FALSE)
+
+  aes$x <- "x_"
+  aes$y <- "y_"
+
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
+
+}
