@@ -13,23 +13,26 @@
 \alias{info_data_region}
 \title{Info}
 \usage{
-info_line(g2, ..., data = NULL, figures = NULL)
+info_line(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
-info_text(g2, ..., data = NULL, figures = NULL)
+info_text(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
-info_image(g2, ..., data = NULL, figures = NULL)
+info_image(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
-info_region(g2, ..., data = NULL, figures = NULL)
+info_region(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
-info_html(g2, ..., data = NULL, figures = NULL)
+info_html(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
-info_arc(g2, ..., data = NULL, figures = NULL)
+info_arc(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
-info_data_marker(g2, ..., data = NULL, figures = NULL)
+info_data_marker(g2, ..., data = NULL, figures = NULL,
+  inherit_asp = TRUE)
 
-info_region_filter(g2, ..., data = NULL, figures = NULL)
+info_region_filter(g2, ..., data = NULL, figures = NULL,
+  inherit_asp = TRUE)
 
-info_data_region(g2, ..., data = NULL, figures = NULL)
+info_data_region(g2, ..., data = NULL, figures = NULL,
+  inherit_asp = TRUE)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -39,6 +42,8 @@ info_data_region(g2, ..., data = NULL, figures = NULL)
 \item{data}{A \code{data.frame} containing data for \code{\link{asp}} if \code{NULL} is inherited from \code{\link{g2}}.}
 
 \item{figures}{Vector of names or indices of figure(s) to apply the information to, if \code{NULL} applies only to the first figure.}
+
+\item{inherit_asp}{Whether to inherit aspects from \code{g2r}.}
 }
 \description{
 Add informational elements to the chart.

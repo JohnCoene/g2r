@@ -24,9 +24,12 @@
 #'  
 #' @name info
 #' @export
-info_line <- function(g2, ..., data = NULL, figures = NULL) {
+info_line <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
+
+ if(inherit_asp && (length(g2$x$mapping) || length(data)))
+    aes <- append(aes, g2$x$mapping)
 
   if(is.null(data)) data <- g2$x$data
 
@@ -40,7 +43,7 @@ info_line <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_text <- function(g2, ..., data = NULL, figures = NULL) {
+info_text <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
@@ -56,7 +59,7 @@ info_text <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_image <- function(g2, ..., data = NULL, figures = NULL) {
+info_image <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
@@ -72,7 +75,7 @@ info_image <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_region <- function(g2, ..., data = NULL, figures = NULL) {
+info_region <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
@@ -88,7 +91,7 @@ info_region <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_html <- function(g2, ..., data = NULL, figures = NULL) {
+info_html <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
@@ -104,7 +107,7 @@ info_html <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_arc <- function(g2, ..., data = NULL, figures = NULL) {
+info_arc <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
@@ -120,7 +123,7 @@ info_arc <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_data_marker <- function(g2, ..., data = NULL, figures = NULL) {
+info_data_marker <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
@@ -136,7 +139,7 @@ info_data_marker <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_region_filter <- function(g2, ..., data = NULL, figures = NULL) {
+info_region_filter <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
@@ -152,7 +155,7 @@ info_region_filter <- function(g2, ..., data = NULL, figures = NULL) {
 
 #' @rdname info
 #' @export
-info_data_region <- function(g2, ..., data = NULL, figures = NULL) {
+info_data_region <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- get_aes(...)
   opts <- rm_anim_aes_opts(...)
 
