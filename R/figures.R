@@ -123,8 +123,16 @@ fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
     stop("no `x`, `y` or `color` aspect", call. = FALSE)
 
   if(is.null(data)) data <- g2$x$data
-  maxX <- data %>% pull(!!aes$x) %>% max()
-  maxY <- data %>% pull(!!aes$y) %>% max()
+  x <- tryCatch(pull(data, !!aes$x), error = function(e) e)
+  y <- tryCatch(pull(data, !!aes$y), error = function(e) e)
+  if(!inherits(x, "error"))
+    maxX <- x %>% max()
+  else
+    maxX <- aes$x
+  if(!inherits(y, "error"))
+    maxY <- y %>% max()
+  else
+    maxY <- aes$y
 
   data <- alter(data, type = "diagram.voronoi", fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y)), size = list(maxX, maxY), as = list("x_", "y_"), .rename = FALSE)
 
