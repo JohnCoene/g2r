@@ -43,8 +43,7 @@ info_line <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) 
 info_text <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
-  print(aes)
-
+  
   if(is.null(data)) data <- g2$x$data
 
   if(!length(data) && length(aes)) stop("missing data", call. = FALSE)
