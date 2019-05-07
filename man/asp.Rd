@@ -29,6 +29,7 @@ Aspects can be applied to \code{figures} and to \code{info}, note that those can
   \item{\code{tooltip}}
   \item{\code{label}}
   \item{\code{style}}
+  \item{\code{group}}
 }
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/figures.R
 \name{fig_smooth}
 \alias{fig_smooth}
-\title{Linear Regression}
+\title{Smooth}
 \usage{
 fig_smooth(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE,
   name = NULL)
@@ -23,7 +23,7 @@ fig_smooth(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE,
 \item{name}{Name of figure, useful to apply functions to specific figures.}
 }
 \description{
-Add a regression line.
+Add smoothing methods based on \code{x} and \code{y} and, optionally \code{group} aspects.
 }
 \examples{
 g2(cars, asp(speed, dist)) \%>\% 

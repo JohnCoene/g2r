@@ -22,6 +22,7 @@ Depends: R (>= 2.10)
 Imports:
     R6,
     V8,
+    tidyr,
     shiny,
     purrr,
     rlang,

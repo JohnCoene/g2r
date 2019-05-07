@@ -18,10 +18,10 @@ fig_density(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 \item{name}{Name of figure, useful to apply functions to specific figures.}
 }
 \description{
-Create a density plot.
+Create a density plot based on \code{x} and optionally \code{group} aspects.
 }
 \examples{
-g2(iris, asp(Petal.Length, color = Species))  \%>\% 
+g2(iris, asp(Petal.Length, color = Species)) \%>\% 
   fig_density()
  
 }

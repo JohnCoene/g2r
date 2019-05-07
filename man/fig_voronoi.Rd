@@ -18,7 +18,7 @@ fig_voronoi(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 \item{name}{Name of figure, useful to apply functions to specific figures.}
 }
 \description{
-Create a voronoi plot.
+Create a voronoi plot based on \code{x} and \code{y} aspects.
 }
 \examples{
 df <- dplyr::tibble(

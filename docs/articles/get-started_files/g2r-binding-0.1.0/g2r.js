@@ -58,6 +58,9 @@ HTMLWidgets.widget({
               view.source(v.data);
             else
               view.source(x.data);
+
+            if(x.hasOwnProperty("axes"))
+              view.axis(x.axes);
           });
         } else {
           chart.source(x.data, x.dataOpts);

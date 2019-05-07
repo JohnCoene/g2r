@@ -19,6 +19,7 @@
 #'   \item{\code{tooltip}}
 #'   \item{\code{label}}
 #'   \item{\code{style}}
+#'   \item{\code{group}}
 #' }
 #' 
 #' @section Info:
