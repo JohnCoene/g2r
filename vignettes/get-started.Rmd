@@ -160,3 +160,13 @@ g2(aletered_fruits, asp(x, y, shape = "square", color = name, size = 10)) %>%
 ```
 
 The `alter` function is used internally by `get_map` to process GeoJSON files.
+
+```{r}
+dist <- jsonlite::fromJSON("https://raw.githubusercontent.com/antvis/g2/master/demos/data/gaussion-distribution.json")
+
+bins <- alter(dist, type = "bin.rectangle", fields = list("x", "y"), binds = list(10, 10), sizeByCount = TRUE)
+
+g2(bins, asp(x, y, color = count, opacity = count)) %>% 
+  fig_polygon(tooltip = FALSE) %>% 
+  gauge_color("#BAE7FF-#1890FF-#0050B3")
+```
