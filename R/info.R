@@ -25,11 +25,8 @@
 #' @name info
 #' @export
 info_line <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
-
- if(inherit_asp && (length(g2$x$mapping) || length(data)))
-    aes <- append(aes, g2$x$mapping)
 
   if(is.null(data)) data <- g2$x$data
 
@@ -44,8 +41,9 @@ info_line <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) 
 #' @rdname info
 #' @export
 info_text <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
+  print(aes)
 
   if(is.null(data)) data <- g2$x$data
 
@@ -60,7 +58,7 @@ info_text <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) 
 #' @rdname info
 #' @export
 info_image <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
 
   if(is.null(data)) data <- g2$x$data
@@ -76,7 +74,7 @@ info_image <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 #' @rdname info
 #' @export
 info_region <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
 
   if(is.null(data)) data <- g2$x$data
@@ -92,7 +90,7 @@ info_region <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE
 #' @rdname info
 #' @export
 info_html <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
 
   if(is.null(data)) data <- g2$x$data
@@ -108,7 +106,7 @@ info_html <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) 
 #' @rdname info
 #' @export
 info_arc <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
 
   if(is.null(data)) data <- g2$x$data
@@ -124,7 +122,7 @@ info_arc <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
 #' @rdname info
 #' @export
 info_data_marker <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
 
   if(is.null(data)) data <- g2$x$data
@@ -140,7 +138,7 @@ info_data_marker <- function(g2, ..., data = NULL, figures = NULL, inherit_asp =
 #' @rdname info
 #' @export
 info_region_filter <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
 
   if(is.null(data)) data <- g2$x$data
@@ -156,7 +154,7 @@ info_region_filter <- function(g2, ..., data = NULL, figures = NULL, inherit_asp
 #' @rdname info
 #' @export
 info_data_region <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
-  aes <- get_aes(...)
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   opts <- rm_anim_aes_opts(...)
 
   if(is.null(data)) data <- g2$x$data

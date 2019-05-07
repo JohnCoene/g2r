@@ -194,7 +194,7 @@ combine_aes_for_geom <- function(main, inherit, ...){
 
   aes <- get_aes(...)
 
-  if(inherit) aes <- append(aes, main)
+  if(inherit) aes <- append(main, aes)
   
   return(aes)
 }
