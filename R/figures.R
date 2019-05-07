@@ -142,3 +142,59 @@ fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
   make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
 
 }
+
+#' Linear Regression
+#' 
+#' Add a regression line.
+#' 
+#' @inheritParams geoms
+#' @param method Smoothing method (function) to use, accepts either a character vector, e.g. 
+#'   \code{"lm"}, \code{"glm"}, \code{"gam"}, \code{"loess"} or a function, e.g. \code{MASS::rlm}
+#'    or \code{mgcv::gam}, \code{base::lm}, or \code{base::loess}.
+#' 
+#' @examples
+#' g2(cars, asp(speed, dist)) %>% 
+#'   fig_point() %>% 
+#'   fig_smooth()
+#' 
+#' @export
+fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, name = NULL){
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  aes <- aes[names(aes) %in% c("x", "y")]
+
+  if(rlang::is_empty(aes))
+    stop("no `x`, `y` aspects", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+  
+  formula <- aes %>% 
+    map(rlang::quo_name) %>% 
+    unlist() %>%
+    .[names(.) %in% c("x", "y")] %>% 
+    .[order(names(.), decreasing = TRUE)] %>% 
+    unname() %>% 
+    paste0(collapse = "~")
+
+  model <- tryCatch(
+    do.call(method, list(formula, data = data)),
+    error = function(e) e
+  )
+
+  if(inherits(model, "error"))
+    stop("can't fit model", call. = FALSE)
+  
+  y <- fitted(model)
+  x <- pull(data, !!unname(aes$x))
+
+  data <- dplyr::tibble(
+    x = x,
+    y = y
+  )
+
+  aes$x <- "x"
+  aes$y <- "y"
+
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "line", inherit_aes = TRUE, name = name, mapping = aes)
+
+}

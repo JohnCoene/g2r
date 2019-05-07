@@ -20,7 +20,7 @@
 \alias{fig_interval_symmetric}
 \alias{fig_area_stack}
 \alias{fig_schema_dodge}
-\title{Firgures}
+\title{Primitive Firgures}
 \usage{
 fig_interval(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 

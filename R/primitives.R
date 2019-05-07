@@ -1,4 +1,4 @@
-#' Firgures
+#' Primitive Firgures
 #' 
 #' Figures, equivalent to \code{ggplot2}'s geometries.
 #' 
