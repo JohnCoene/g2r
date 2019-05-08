@@ -195,7 +195,16 @@ combine_aes_for_geom <- function(main, inherit, ...){
 
   aes <- get_aes(...)
 
-  if(inherit) aes <- append(main, aes)
+  if(inherit){
+    for(i in 1:length(aes)){
+      aes_name <- names(aes)[i]
+      if(length(aes_name))
+        main[[aes_name]] <- aes[[i]]
+      else
+        main <- append(main, aes)
+    }
+    aes <- main
+  }
   
   return(aes)
 }

@@ -162,28 +162,29 @@ g2(aletered_fruits, asp(x, y, shape = "square", color = name, size = 10)) %>%
 The `alter` function is used internally by `get_map` to process GeoJSON files. It'll enable you to easily build otherwise difficult charts. Though there is a `fig_hex` helper now.
 
 ```{r}
-dist <- jsonlite::fromJSON("https://raw.githubusercontent.com/antvis/g2/master/demos/data/gaussion-distribution.json")
-
-bins <- alter(dist, type = "bin.hexagon", fields = list("x", "y"), bins = list(10, 5), sizeByCount = TRUE)
-
-g2(bins, asp(x, y, color = count, opacity = count)) %>% 
-  fig_polygon(tooltip = FALSE) %>% 
+g2(gaus, asp(x, y)) %>% 
+  fig_bin() %>% 
   gauge_color("#BAE7FF-#1890FF-#0050B3")
 ```
-
-Though there is a `fig_voronoi` helper now.
 
 ```{r}
 df <- dplyr::tibble(
   x = runif(25, 1, 500),
   y = runif(25, 1, 500),
   value = runif(25, 1, 500)
-) %>% 
-  map_df(round)
+)
 
-v <- alter(df, type = "diagram.voronoi", fields = list("x", "y"), size = list(500, 500), as = list("x_", "y_"), .rename = FALSE)
+g2(df, asp(x, y, color = value)) %>%
+  fig_voronoi()
+```
 
-g2(v, asp(x_, y_, color = value)) %>% 
-  fig_polygon(tooltip = FALSE) %>% 
-  gauge_x_linear(min = 0) 
+```{r}
+fruits %>% 
+  arrange(value) %>% 
+  mutate(label = fruit) %>%  
+  g2(asp(fruit, value)) %>% 
+  fig_interval(asp(shape = "line")) %>%
+  fig_point(asp(shape = "circle")) %>%  
+  coord_type("theta", innerRadius = .2, endAngle = pi) %>% 
+  info_text(asp(fruit, 0, content = label), style = list(textAlign = "right"))
 ```
