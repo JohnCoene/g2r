@@ -23,6 +23,18 @@
 #' @source Totally made up
 "fruits"
 
+#' Gaus
+#'
+#' Gaussian distribution.
+#'
+#' @format A \code{tibble} of 2 columns and 2000 rows.
+#' \describe{
+#'   \item{\code{x}}{ X Axis}
+#'   \item{\code{y}}{ Y Axis}
+#' }
+#' @source Somewhere mysterious
+"gaus"
+
 #' Dataset
 #' 
 #' Dataset with state management \url{https://github.com/antvis/data-set}

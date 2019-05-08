@@ -37,6 +37,9 @@
     <loc>http://g2r.dev/reference/coord.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/fig_bin.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/fig_density.html</loc>
   </url>
   <url>
@@ -95,6 +98,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/gauge_tooltip.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/gaus.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/geoms.html</loc>

@@ -74,4 +74,7 @@ fruits <- dplyr::tibble(
   value = c(.3, .2, .4, .1)
 )
 
-usethis::use_data(temp, fruits, internal = FALSE, overwrite = TRUE)
+gaus <- jsonlite::fromJSON("https://raw.githubusercontent.com/antvis/g2/master/demos/data/gaussion-distribution.json")
+gaus <- tibble::as_tibble(gaus)
+
+usethis::use_data(temp, fruits, gaus, internal = FALSE, overwrite = TRUE)

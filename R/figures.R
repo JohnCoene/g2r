@@ -13,9 +13,9 @@
 fig_histogram <- function(g2, ..., bin_width = 1, data = NULL, inherit_asp = TRUE, name = NULL) {
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
-  aes <- aes[names(aes) %in% c("x", "group")]
+  has_aes <- aes[names(aes) %in% c("x", "group")]
 
-  if(rlang::is_empty(aes))
+  if(rlang::is_empty(has_aes))
     stop("no `x` or `group` aspect", call. = FALSE)
 
   if(is.null(data))
@@ -60,9 +60,9 @@ fig_histogram <- function(g2, ..., bin_width = 1, data = NULL, inherit_asp = TRU
 fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
-  aes <- aes[names(aes) %in% c("x", "group")]
+  has_aes <- aes[names(aes) %in% c("x", "group")]
 
-  if(rlang::is_empty(aes))
+  if(rlang::is_empty(has_aes))
     stop("no `x` or `group` aspect", call. = FALSE)
 
   if(is.null(data)) data <- g2$x$data
@@ -117,9 +117,9 @@ fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
 fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
-  aes <- aes[names(aes) %in% c("x", "y")]
+  has_aes <- aes[names(aes) %in% c("x", "y")]
 
-  if(rlang::is_empty(aes))
+  if(rlang::is_empty(has_aes))
     stop("no `x`, or `y` aspect", call. = FALSE)
 
   if(is.null(data)) data <- g2$x$data
@@ -161,9 +161,9 @@ fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
 fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
-  aes <- aes[names(aes) %in% c("x", "y", "group")]
+  has_aes <- aes[names(aes) %in% c("x", "y", "group")]
 
-  if(rlang::is_empty(aes))
+  if(rlang::is_empty(has_aes))
     stop("no `x`, `y` aspects", call. = FALSE)
 
   if(is.null(data)) data <- g2$x$data
@@ -261,9 +261,9 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
 fig_ribbon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
-  aes <- aes[names(aes) %in% c("x", "ymin", "ymax", "group")]
+  has_aes <- aes[names(aes) %in% c("x", "ymin", "ymax", "group")]
 
-  if(rlang::is_empty(aes))
+  if(rlang::is_empty(has_aes))
     stop("no `x`, `ymin`, or `ymax` aspects", call. = FALSE)
 
   if(is.null(data)) data <- g2$x$data
@@ -295,7 +295,7 @@ fig_ribbon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
 
 #' Error bar
 #' 
-#' Add error bars based \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
+#' Add error bars based \code{y}, \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
 #' 
 #' @inheritParams geoms
 #' @param line_size,tip_size Defines size of error bars.
@@ -353,44 +353,44 @@ fig_error_bar <- function(g2, ..., line_size = 1, tip_size = 5, data = NULL, inh
   sync(g2, error)
 }
 
-#' Error bar
+#' Bins
 #' 
-#' Add error bars based \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
+#' Add bins based on \code{x}, and \code{y}.
 #' 
 #' @inheritParams geoms
+#' @param type Type of bins to create.
+#' @param bins A vector or list defining the bin size.
+#' @param size_count Whether to size the bins by count.
+#' 
+#' @details Note that the function adds an aspect \code{count} which can be used, (see example). 
+#' 
+#' @examples
+#' # issues warning in interactive session 
+#' \dontrun{
+#' g2(gaus, asp(x, y)) %>% 
+#'   fig_bin(type = "hexagon")
+#' }
 #' 
 #' @export
-fig_hex <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
+fig_bin <- function(g2, ..., type = c("rectangle", "hexagon"), bins = c(10, 5), size_count = TRUE, data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
-  aes <- aes[names(aes) %in% c("x", "ymin", "ymax", "group")]
+  has_aes <- aes[names(aes) %in% c("x", "y")]
 
-  if(rlang::is_empty(aes))
-    stop("no `x`, `ymin`, or `ymax` aspects", call. = FALSE)
+  if(rlang::is_empty(has_aes))
+    stop("no `x`, or `y` aspect", call. = FALSE)
 
   if(is.null(data)) data <- g2$x$data
+  type <- match.arg(type)
+  type <- paste0("bin.", type)
 
-  if(length(aes$group))
-    data <- group_split(data, !!aes$group)
-  else 
-    data <- list(data)
+  data <- alter(data, type = type, fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y)), bins = bins, sizeByCount = size_count, as = c(rlang::quo_name(aes$x), rlang::quo_name(aes$y), "count"), .rename = FALSE)
 
-  data <- data %>% 
-    map(function(x, aes){
-      x <- x %>% 
-        tidyr::nest(!!aes$ymin, !!aes$ymax, .key = "ribbon")
-      
-      x$ribbon <- x$ribbon %>% 
-        map(unlist) %>% 
-        map(unname)
-      return(x)
-    }, aes)
+  if(interactive())
+    warning("Adding `count` aspect")
 
-  aes$y <- "ribbon"
+  aes$count <- "count"
 
-  for(i in 1:length(data)){
-    g2 <- make_geom(g2, ..., data = pmap(data[[i]], list), chart_type = "area", inherit_aes = TRUE, name = name, mapping = aes)
-  }
- 
-  return(g2)
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
+
 }

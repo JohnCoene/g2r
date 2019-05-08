@@ -60,6 +60,7 @@ reference:
       - alter
       - temp
       - fruits
+      - gaus
   - title: "Helpers"
     desc: "Helper functions."
     contents:

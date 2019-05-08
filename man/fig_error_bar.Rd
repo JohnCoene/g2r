@@ -21,7 +21,7 @@ fig_error_bar(g2, ..., line_size = 1, tip_size = 5, data = NULL,
 \item{name}{Name of figure, useful to apply functions to specific figures.}
 }
 \description{
-Add error bars based \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
+Add error bars based \code{y}, \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
 }
 \examples{
 df <- data.frame(

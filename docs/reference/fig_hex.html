@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Error bar — fig_error_bar • g2r</title>
+<title>Hex — fig_hex • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,9 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Error bar — fig_error_bar" />
+<meta property="og:title" content="Hex — fig_hex" />
 
-<meta property="og:description" content="Add error bars based y, ymin, ymax, and optionally group aspects." />
+<meta property="og:description" content="Add hex bins based on x, and y." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -144,18 +144,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Error bar</h1>
+    <h1>Hex</h1>
     
-    <div class="hidden name"><code>fig_error_bar.Rd</code></div>
+    <div class="hidden name"><code>fig_hex.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Add error bars based <code>y</code>, <code>ymin</code>, <code>ymax</code>, and optionally <code>group</code> aspects.</p>
+    <p>Add hex bins based on <code>x</code>, and <code>y</code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fig_error_bar</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>line_size</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>tip_size</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>fig_hex</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>bins</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>5</span>), <span class='kw'>size_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>inherit_asp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -170,8 +170,12 @@
       <td><p>Any option, aesthetic (<code><a href='asp.html'>asp</a></code>), or animation (<code><a href='G2animation.html'>Animation</a></code>).</p></td>
     </tr>
     <tr>
-      <th>line_size, tip_size</th>
-      <td><p>Defines size of error bars.</p></td>
+      <th>bins</th>
+      <td><p>A vector or list defining the bin size.</p></td>
+    </tr>
+    <tr>
+      <th>size_count</th>
+      <td><p>Whether to size the bins by count.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -187,24 +191,24 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Note that the function adds an aspect <code>count</code> which can be used, (see example).</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(
-  <span class='kw'>trt</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>)),
-  <span class='kw'>resp</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>, <span class='fl'>3</span>, <span class='fl'>4</span>),
-  <span class='kw'>group</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>2</span>)),
-  <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1.1</span>, <span class='fl'>5.3</span>, <span class='fl'>3.3</span>, <span class='fl'>4.2</span>),
-  <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0.8</span>, <span class='fl'>4.6</span>, <span class='fl'>2.4</span>, <span class='fl'>3.6</span>)
-)
-
-<span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>df</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>trt</span>, <span class='kw'>ymin</span> <span class='kw'>=</span> <span class='no'>lower</span>, <span class='kw'>ymax</span> <span class='kw'>=</span> <span class='no'>upper</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>group</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'>fig_error_bar</span>()</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># issues warning in interactive session </span>
+<span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>gaus</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>x</span>, <span class='no'>y</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>fig_hex</span>(<span class='fu'><a href='asp.html'>asp</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"count"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Adding `count` aspect</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#details">Details</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
