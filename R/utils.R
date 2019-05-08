@@ -1,6 +1,7 @@
 globalVariables(
   c(
     ".", 
+    "error",
     "x", "y",
     "longitude", 
     "latitude"

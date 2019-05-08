@@ -238,7 +238,7 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
 
 #' Ribbon
 #' 
-#' Add a ribbon based ojn \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
+#' Add a ribbon based on \code{x}, \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
 #' 
 #' @inheritParams geoms
 #' 
@@ -291,4 +291,64 @@ fig_ribbon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
   }
  
   return(g2)
+}
+
+#' Error bar
+#' 
+#' Add error bars based \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
+#' 
+#' @inheritParams geoms
+#' @param line_size,tip_size Defines size of error bars.
+#' 
+#' @examples
+#' df <- data.frame(
+#'   trt = factor(c(1, 1, 2, 2)),
+#'   resp = c(1, 5, 3, 4),
+#'   group = factor(c(1, 2, 1, 2)),
+#'   upper = c(1.1, 5.3, 3.3, 4.2),
+#'   lower = c(0.8, 4.6, 2.4, 3.6)
+#' )
+#' 
+#' g2(df, asp(trt, ymin = lower, ymax = upper, color = group)) %>% 
+#'   fig_error_bar()
+#'
+#' @export
+fig_error_bar <- function(g2, ..., line_size = 1, tip_size = 5, data = NULL, inherit_asp = TRUE, name = NULL){
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  has_aes <- aes[names(aes) %in% c("x", "ymin", "ymax", "group")]
+
+  if(rlang::is_empty(has_aes))
+    stop("no `x`, `ymin`, or `ymax` aspects", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+
+  if(length(aes$group))
+    data <- group_split(data, !!aes$group)
+  else 
+    data <- list(data)
+
+  data <- data %>% 
+    map(function(x, aes){
+      x <- x %>% 
+        tidyr::nest(!!aes$ymin, !!aes$ymax, .key = "error")
+      
+      x$error <- x$error %>% 
+        map(unlist) %>% 
+        map(unname)
+      return(x)
+    }, aes)
+
+  aes$y <- "error"
+  aes$size <- line_size
+  aes_point <- aes
+  aes_point$shape <- "line"
+  aes_point$size <- tip_size
+
+  for(i in 1:length(data)){
+    g2 <- make_geom(g2, ..., style(rotate = 90), data = pmap(data[[i]], list), chart_type = "point", inherit_aes = TRUE, name = name, mapping = aes_point)
+    g2 <- make_geom(g2, ..., data = pmap(data[[i]], list), chart_type = "interval", inherit_aes = TRUE, name = name, mapping = aes)
+  }
+ 
+  sync(g2, error)
 }

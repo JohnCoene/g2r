@@ -18,7 +18,7 @@ fig_ribbon(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 \item{name}{Name of figure, useful to apply functions to specific figures.}
 }
 \description{
-Add a ribbon based ojn \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
+Add a ribbon based on \code{x}, \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
 }
 \examples{
 df <- dplyr::tibble(
