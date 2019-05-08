@@ -352,3 +352,45 @@ fig_error_bar <- function(g2, ..., line_size = 1, tip_size = 5, data = NULL, inh
  
   sync(g2, error)
 }
+
+#' Error bar
+#' 
+#' Add error bars based \code{ymin}, \code{ymax}, and optionally \code{group} aspects.
+#' 
+#' @inheritParams geoms
+#' 
+#' @export
+fig_hex <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  aes <- aes[names(aes) %in% c("x", "ymin", "ymax", "group")]
+
+  if(rlang::is_empty(aes))
+    stop("no `x`, `ymin`, or `ymax` aspects", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+
+  if(length(aes$group))
+    data <- group_split(data, !!aes$group)
+  else 
+    data <- list(data)
+
+  data <- data %>% 
+    map(function(x, aes){
+      x <- x %>% 
+        tidyr::nest(!!aes$ymin, !!aes$ymax, .key = "ribbon")
+      
+      x$ribbon <- x$ribbon %>% 
+        map(unlist) %>% 
+        map(unname)
+      return(x)
+    }, aes)
+
+  aes$y <- "ribbon"
+
+  for(i in 1:length(data)){
+    g2 <- make_geom(g2, ..., data = pmap(data[[i]], list), chart_type = "area", inherit_aes = TRUE, name = name, mapping = aes)
+  }
+ 
+  return(g2)
+}
