@@ -35,6 +35,19 @@
 #' @source Somewhere mysterious
 "gaus"
 
+#' State
+#'
+#' State and age data on something probably random.
+#'
+#' @format A \code{tibble} of 3 columns and 49 rows.
+#' \describe{
+#'   \item{\code{state}}{ US State}
+#'   \item{\code{name}}{ A grouping variable}
+#'   \item{\code{value}}{ Some count}
+#' }
+#' @source Somewhere mysterious
+"gaus"
+
 #' Dataset
 #' 
 #' Dataset with state management \url{https://github.com/antvis/data-set}

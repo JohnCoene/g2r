@@ -310,10 +310,10 @@ fig_ribbon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
 #' )
 #' 
 #' g2(df, asp(trt, ymin = lower, ymax = upper, color = group)) %>% 
-#'   fig_error_bar()
+#'   fig_errorbar()
 #'
 #' @export
-fig_error_bar <- function(g2, ..., line_size = 1, tip_size = 5, data = NULL, inherit_asp = TRUE, name = NULL){
+fig_errorbar <- function(g2, ..., line_size = 1, tip_size = 5, data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   has_aes <- aes[names(aes) %in% c("x", "ymin", "ymax", "group")]
@@ -390,6 +390,52 @@ fig_bin <- function(g2, ..., type = c("rectangle", "hexagon"), bins = c(10, 5), 
     warning("Adding `count` aspect")
 
   aes$count <- "count"
+
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
+
+}
+
+#' Dot plot
+#' 
+#' Create a dot plot based on \code{x}, \code{y}, and optionally \code{group} aspects.
+#' 
+#' @inheritParams geoms
+#'
+#' @examples
+#' df <- dplyr::tibble(
+#'   x = runif(25, 1, 500),
+#'   y = runif(25, 1, 500),
+#'   value = runif(25, 1, 500)
+#' )
+#' 
+#' g2(df, asp(x, y, color = value)) %>% 
+#'   fig_voronoi()
+#' 
+#' @export
+fig_dotplot <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  has_aes <- aes[names(aes) %in% c("x", "y")]
+
+  if(rlang::is_empty(has_aes))
+    stop("no `x`, or `y` aspect", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+  x <- tryCatch(pull(data, !!aes$x), error = function(e) e)
+  y <- tryCatch(pull(data, !!aes$y), error = function(e) e)
+  if(!inherits(x, "error"))
+    maxX <- x %>% max()
+  else
+    maxX <- aes$x
+  if(!inherits(y, "error"))
+    maxY <- y %>% max()
+  else
+    maxY <- aes$y
+
+  data <- alter(data, type = "diagram.voronoi", fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y)), size = list(maxX, maxY), as = list("x_", "y_"), .rename = FALSE)
+
+  aes$x <- "x_"
+  aes$y <- "y_"
 
   make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
 
