@@ -93,8 +93,9 @@ fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
   aes$x <- "x"
   aes$y <- "y"
 
-  make_geom(g2, ..., data = pmap(data, list), chart_type = "area", inherit_aes = TRUE, name = name, mapping = aes)
+  g2 <- make_geom(g2, ..., data = pmap(data, list), chart_type = "area", inherit_aes = TRUE, name = name, mapping = aes)
 
+  g2
 }
 
 #' Boxplot
@@ -285,8 +286,7 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
     )
   }
 
-  aes$x <- "x"
-  aes$y <- "y"
+  names(data) <- c(rlang::quo_name(aes$x), rlang::quo_name(aes$y))
 
   if(length(aes$group)){
     grouped <- group_split(data, !!aes$group)
@@ -331,6 +331,9 @@ fig_ribbon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
 
   if(is.null(data)) data <- g2$x$data
 
+  if(rlang::is_quosure(aes$y))
+    data <- select(data, -!!aes$y)
+
   if(length(aes$group))
     data <- group_split(data, !!aes$group)
   else 
@@ -339,17 +342,21 @@ fig_ribbon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
   data <- data %>% 
     map(function(x, aes){
       x <- x %>% 
-        tidyr::nest(!!aes$ymin, !!aes$ymax, .key = "ribbon")
+        tidyr::nest(!!aes$ymin, !!aes$ymax)
       
-      x$ribbon <- x$ribbon %>% 
+      x$data <- x$data %>% 
         map(unlist) %>% 
         map(unname)
       return(x)
     }, aes)
 
-  aes$y <- "ribbon"
+  ribbon_name <- "data"
+  if(length(aes$y)) ribbon_name <- rlang::quo_name(aes$y)
+
+  aes$y <- ribbon_name
 
   for(i in 1:length(data)){
+    names(data[[i]])[ncol(data[[i]])] <- ribbon_name
     g2 <- make_geom(g2, ..., data = pmap(data[[i]], list), chart_type = "area", inherit_aes = TRUE, name = name, mapping = aes)
   }
  
