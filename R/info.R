@@ -38,6 +38,52 @@ info_line <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) 
   return(g2)
 }
 
+#' @name info
+#' @export
+info_vline <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  opts <- rm_anim_aes_opts(...)
+
+  if(length(aes)){
+    aes$xend <- "min"
+    aes$yend <- "max"
+    aes$y <- rlang::quo_name(aes$x)
+  }
+
+  if(is.null(data)) data <- g2$x$data
+
+  if(!length(data) && length(aes)) stop("missing data", call. = FALSE)
+
+  guide <- make_guide(data = data, aes = aes, opts = opts, figures = figures, type = "line")
+
+  g2$x$guides <- append(g2$x$guides, guide)
+  return(g2)
+}
+
+#' @name info
+#' @export
+info_hline <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  opts <- rm_anim_aes_opts(...)
+
+  if(length(aes)){
+    y <- aes$y
+    aes$x <- "min"
+    aes$y <- "max"
+    aes$xend <- y
+    aes$yend <- rlang::quo_name(y)
+  }
+
+  if(is.null(data)) data <- g2$x$data
+
+  if(!length(data) && length(aes)) stop("missing data", call. = FALSE)
+
+  guide <- make_guide(data = data, aes = aes, opts = opts, figures = figures, type = "line")
+
+  g2$x$guides <- append(g2$x$guides, guide)
+  return(g2)
+}
+
 #' @rdname info
 #' @export
 info_text <- function(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE) {

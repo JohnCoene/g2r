@@ -3,6 +3,8 @@
 \name{info}
 \alias{info}
 \alias{info_line}
+\alias{info_vline}
+\alias{info_hline}
 \alias{info_text}
 \alias{info_image}
 \alias{info_region}
@@ -14,6 +16,10 @@
 \title{Info}
 \usage{
 info_line(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
+
+info_vline(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
+
+info_hline(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
 info_text(g2, ..., data = NULL, figures = NULL, inherit_asp = TRUE)
 
