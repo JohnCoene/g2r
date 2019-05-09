@@ -46,7 +46,7 @@
 #'   \item{\code{value}}{ Some count}
 #' }
 #' @source Somewhere mysterious
-"gaus"
+"states"
 
 #' Dataset
 #' 

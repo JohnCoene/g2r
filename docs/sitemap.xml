@@ -43,7 +43,10 @@
     <loc>http://g2r.dev/reference/fig_density.html</loc>
   </url>
   <url>
-    <loc>http://g2r.dev/reference/fig_error_bar.html</loc>
+    <loc>http://g2r.dev/reference/fig_dotplot.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/fig_errorbar.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/fig_histogram.html</loc>
@@ -59,6 +62,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/fig_voronoi.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/fig_waffle.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/frame_var.html</loc>
@@ -122,6 +128,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/slider.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/states.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/style.html</loc>

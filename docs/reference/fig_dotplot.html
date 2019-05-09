@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Style — style • g2r</title>
+<title>Dot plot — fig_dotplot • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,9 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Style — style" />
+<meta property="og:title" content="Dot plot — fig_dotplot" />
 
-<meta property="og:description" content="Style a figure." />
+<meta property="og:description" content="Create a dot plot based on x, y, and optionally color aspects." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -144,35 +144,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Style</h1>
+    <h1>Dot plot</h1>
     
-    <div class="hidden name"><code>style.Rd</code></div>
+    <div class="hidden name"><code>fig_dotplot.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Style a figure.</p>
+    <p>Create a dot plot based on <code>x</code>, <code>y</code>, and optionally <code>color</code> aspects.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>style</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fig_dotplot</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>inherit_asp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>g2</th>
+      <td><p>An object of class <code>g2r</code> as returned by <code><a href='g2r.html'>g2r</a></code>.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Any styling options</p></td>
+      <td><p>Any option, aesthetic (<code><a href='asp.html'>asp</a></code>), or animation (<code><a href='G2animation.html'>Animation</a></code>).</p></td>
+    </tr>
+    <tr>
+      <th>count</th>
+      <td><p>Number of dots to use.</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>A <code>data.frame</code> containing data to chart or a <code>list</code>.</p></td>
+    </tr>
+    <tr>
+      <th>inherit_asp</th>
+      <td><p>Whether to inherit aspects from <code>g2r</code>.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>Name of figure, useful to apply functions to specific figures.</p></td>
     </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>states</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>name</span>, <span class='no'>value</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>State</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'>fig_dotplot</span>(<span class='fu'><a href='asp.html'>asp</a></span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='st'>"square"</span>))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

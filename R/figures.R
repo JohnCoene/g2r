@@ -397,46 +397,110 @@ fig_bin <- function(g2, ..., type = c("rectangle", "hexagon"), bins = c(10, 5), 
 
 #' Dot plot
 #' 
-#' Create a dot plot based on \code{x}, \code{y}, and optionally \code{group} aspects.
+#' Create a dot plot based on \code{x}, \code{y}, and optionally \code{color} aspects.
 #' 
 #' @inheritParams geoms
+#' @param count Number of dots to use.
 #'
 #' @examples
-#' df <- dplyr::tibble(
-#'   x = runif(25, 1, 500),
-#'   y = runif(25, 1, 500),
-#'   value = runif(25, 1, 500)
-#' )
-#' 
-#' g2(df, asp(x, y, color = value)) %>% 
-#'   fig_voronoi()
+#' g2(states, asp(name, value, color = State)) %>% 
+#'   fig_dotplot(asp(shape = "square")) 
 #' 
 #' @export
-fig_dotplot <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
+fig_dotplot <- function(g2, ..., count = 500, data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   has_aes <- aes[names(aes) %in% c("x", "y")]
 
   if(rlang::is_empty(has_aes))
-    stop("no `x`, or `y` aspect", call. = FALSE)
+    stop("no `x`, `y`, or `color` aspect", call. = FALSE)
 
   if(is.null(data)) data <- g2$x$data
-  x <- tryCatch(pull(data, !!aes$x), error = function(e) e)
-  y <- tryCatch(pull(data, !!aes$y), error = function(e) e)
-  if(!inherits(x, "error"))
-    maxX <- x %>% max()
-  else
-    maxX <- aes$x
-  if(!inherits(y, "error"))
-    maxY <- y %>% max()
-  else
-    maxY <- aes$y
 
-  data <- alter(data, type = "diagram.voronoi", fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y)), size = list(maxX, maxY), as = list("x_", "y_"), .rename = FALSE)
+  if(length(aes$x)) grp <- rlang::quo_name(aes$x)
 
-  aes$x <- "x_"
-  aes$y <- "y_"
+  args <- list(
+    data = data, 
+    type = "waffle", 
+    maxCount = count,
+    as = list("dotx", "doty"),
+    fields = list(rlang::quo_name(aes$color), rlang::quo_name(aes$y))
+  )
 
-  make_geom(g2, ..., data = pmap(data, list), chart_type = "polygon", inherit_aes = TRUE, name = name, mapping = aes)
+  if(exists(grp)) args$groupBy <- list(grp)
 
+  data <- do.call("alter", args)
+
+  aes$x <- "dotx"
+  aes$y <- "doty"
+  if(!"shape" %in% names(aes))
+    aes$shape <- "circle"
+
+  if(!"size" %in% names(aes))
+    aes$size <- "hStep"
+
+  g2 <- make_geom(g2, ..., data = pmap(data, list), chart_type = "point", inherit_aes = TRUE, name = name, mapping = aes)
+
+  cb <- cb("function(hStep) {
+    return Math.min((window.innerHeight - 100) * 0.3 * hStep, 5);
+  }")
+
+  if(aes$size == "hStep")
+    g2 <- gauge_size(g2, callback = cb)
+
+  g2
+}
+
+#' Waffle
+#' 
+#' Create a waffle plot based on \code{x}, \code{y}, and optionally \code{color} aspects.
+#' 
+#' @inheritParams geoms
+#' @param count Number of squares to use.
+#' @param rows Number of rows.
+#'
+#' @examples
+#' fruits %>% 
+#'   dplyr::mutate(value = value * 100) %>% 
+#'   g2(asp(fruit, value)) %>% 
+ #'  fig_waffle(asp(color = fruit))
+#' 
+#' @export
+fig_waffle <- function(g2, ..., rows = 10, count = 500, data = NULL, inherit_asp = TRUE, name = NULL){
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  has_aes <- aes[names(aes) %in% c("x", "y")]
+
+  if(rlang::is_empty(has_aes))
+    stop("no `x`, `y`, or `color` aspect", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+
+  data <- alter(
+    data = data, 
+    type = "waffle", 
+    maxCount = count,
+    rows = rows,
+    as = list("wafflex", "waffley"),
+    fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y))
+  )
+
+  aes$x <- "wafflex"
+  aes$y <- "waffley"
+  if(!"shape" %in% names(aes))
+    aes$shape <- "square"
+
+  if(!"size" %in% names(aes))
+    aes$size <- "hStep"
+
+  g2 <- make_geom(g2, ..., data = pmap(data, list), chart_type = "point", inherit_aes = TRUE, name = name, mapping = aes)
+
+  cb <- cb("function(hStep) {
+    return Math.min((window.innerHeight - 100) * 0.4 * hStep, 15);
+  }")
+
+  if(aes$size == "hStep")
+    g2 <- gauge_size(g2, callback = cb)
+
+  g2
 }

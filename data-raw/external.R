@@ -146,6 +146,6 @@ data <- jsonlite::fromJSON('[{
 
 fields <- colnames(data)[!colnames(data) %in% "State"]
 
-state <- alter(data, type = "fold", fields = fields, key = "name")
+states <- alter(data, type = "fold", fields = fields, key = "name")
 
-usethis::use_data(temp, fruits, gaus, state, internal = FALSE, overwrite = TRUE)
+usethis::use_data(temp, fruits, gaus, states, internal = FALSE, overwrite = TRUE)
