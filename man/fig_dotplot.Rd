@@ -4,8 +4,8 @@
 \alias{fig_dotplot}
 \title{Dot plot}
 \usage{
-fig_dotplot(g2, ..., count = 500, data = NULL, inherit_asp = TRUE,
-  name = NULL)
+fig_dotplot(g2, ..., count = 500, dot_size = list(1, 1),
+  gap_ratio = 0.1, data = NULL, inherit_asp = TRUE, name = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -13,6 +13,10 @@ fig_dotplot(g2, ..., count = 500, data = NULL, inherit_asp = TRUE,
 \item{...}{Any option, aesthetic (\code{\link{asp}}), or animation (\code{\link{Animation}}).}
 
 \item{count}{Number of dots to use.}
+
+\item{dot_size}{Size of dots.}
+
+\item{gap_ratio}{Gap between dots.}
 
 \item{data}{A \code{data.frame} containing data to chart or a \code{list}.}
 

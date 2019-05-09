@@ -4,8 +4,8 @@
 \alias{fig_waffle}
 \title{Waffle}
 \usage{
-fig_waffle(g2, ..., rows = 10, count = 500, data = NULL,
-  inherit_asp = TRUE, name = NULL)
+fig_waffle(g2, ..., rows = 10, count = 500, waffle_size = list(1, 1),
+  gap_ratio = 0.1, data = NULL, inherit_asp = TRUE, name = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}
@@ -15,6 +15,10 @@ fig_waffle(g2, ..., rows = 10, count = 500, data = NULL,
 \item{rows}{Number of rows.}
 
 \item{count}{Number of squares to use.}
+
+\item{waffle_size}{Size of squares.}
+
+\item{gap_ratio}{Gap between squares.}
 
 \item{data}{A \code{data.frame} containing data to chart or a \code{list}.}
 

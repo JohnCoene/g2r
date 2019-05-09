@@ -401,13 +401,15 @@ fig_bin <- function(g2, ..., type = c("rectangle", "hexagon"), bins = c(10, 5), 
 #' 
 #' @inheritParams geoms
 #' @param count Number of dots to use.
+#' @param dot_size Size of dots.
+#' @param gap_ratio Gap between dots.
 #'
 #' @examples
 #' g2(states, asp(name, value, color = State)) %>% 
 #'   fig_dotplot(asp(shape = "square")) 
 #' 
 #' @export
-fig_dotplot <- function(g2, ..., count = 500, data = NULL, inherit_asp = TRUE, name = NULL){
+fig_dotplot <- function(g2, ..., count = 500, dot_size = list(1, 1), gap_ratio = 0.1, data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   has_aes <- aes[names(aes) %in% c("x", "y")]
@@ -423,6 +425,8 @@ fig_dotplot <- function(g2, ..., count = 500, data = NULL, inherit_asp = TRUE, n
     data = data, 
     type = "waffle", 
     maxCount = count,
+    size = dot_size,
+    gapRatio = gap_ratio,
     as = list("dotx", "doty"),
     fields = list(rlang::quo_name(aes$color), rlang::quo_name(aes$y))
   )
@@ -458,6 +462,8 @@ fig_dotplot <- function(g2, ..., count = 500, data = NULL, inherit_asp = TRUE, n
 #' @inheritParams geoms
 #' @param count Number of squares to use.
 #' @param rows Number of rows.
+#' @param waffle_size Size of squares.
+#' @param gap_ratio Gap between squares.
 #'
 #' @examples
 #' fruits %>% 
@@ -466,7 +472,7 @@ fig_dotplot <- function(g2, ..., count = 500, data = NULL, inherit_asp = TRUE, n
  #'  fig_waffle(asp(color = fruit))
 #' 
 #' @export
-fig_waffle <- function(g2, ..., rows = 10, count = 500, data = NULL, inherit_asp = TRUE, name = NULL){
+fig_waffle <- function(g2, ..., rows = 10, count = 500, waffle_size = list(1, 1), gap_ratio = 0.1, data = NULL, inherit_asp = TRUE, name = NULL){
 
   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
   has_aes <- aes[names(aes) %in% c("x", "y")]
@@ -481,6 +487,8 @@ fig_waffle <- function(g2, ..., rows = 10, count = 500, data = NULL, inherit_asp
     type = "waffle", 
     maxCount = count,
     rows = rows,
+    size = waffle_size,
+    gapRatio = gap_ratio,
     as = list("wafflex", "waffley"),
     fields = list(rlang::quo_name(aes$x), rlang::quo_name(aes$y))
   )
@@ -493,7 +501,7 @@ fig_waffle <- function(g2, ..., rows = 10, count = 500, data = NULL, inherit_asp
   if(!"size" %in% names(aes))
     aes$size <- "hStep"
 
-  g2 <- make_geom(g2, ..., data = pmap(data, list), chart_type = "point", inherit_aes = TRUE, name = name, mapping = aes)
+  g2 <- make_geom(g2, ..., axes = FALSE, data = pmap(data, list), chart_type = "point", inherit_aes = TRUE, name = name, mapping = aes)
 
   cb <- cb("function(hStep) {
     return Math.min((window.innerHeight - 100) * 0.4 * hStep, 15);
