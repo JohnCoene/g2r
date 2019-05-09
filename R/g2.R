@@ -11,7 +11,7 @@
 #' @import htmlwidgets
 #' @import purrr
 #' @import dplyr
-#' @importFrom graphics hist
+#' @importFrom graphics hist boxplot
 #' @importFrom stats density fitted
 #'
 #' @examples

@@ -20,6 +20,7 @@
 \alias{fig_interval_symmetric}
 \alias{fig_area_stack}
 \alias{fig_schema_dodge}
+\alias{fig_venn}
 \title{Primitive Firgures}
 \usage{
 fig_interval(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
@@ -64,6 +65,8 @@ fig_area_stack(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
 fig_schema_dodge(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)
+
+fig_venn(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

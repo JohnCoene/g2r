@@ -28,6 +28,6 @@ df <- dplyr::tibble(
 )
 
 g2(df, asp(x, y, color = value)) \%>\% 
-  fig_voronoi()
+  fig_voronoi(axes = FALSE)
 
 }

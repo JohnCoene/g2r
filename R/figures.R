@@ -97,6 +97,69 @@ fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
 
 }
 
+#' Boxplot
+#' 
+#' Create a density plot based on, \code{y} \code{x} and optionally \code{group} aspects.
+#' 
+#' @inheritParams geoms
+#' 
+#' @examples
+#' df <- mtcars %>% 
+#'   dplyr::mutate(
+#'     cyl = as.factor(cyl),
+#'     am = as.factor(am)
+#'   )
+#' 
+#' g2(df, asp(cyl , mpg, color = am)) %>% 
+#'   fig_boxplot()
+#'  
+#' @export
+fig_boxplot <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  has_aes <- aes[names(aes) %in% c("y")]
+
+  if(rlang::is_empty(has_aes))
+    stop("no `y` aspect", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+
+  grps <- aes[names(aes) %in% c("x", "color", "group")]
+
+  if(length(aes$x))
+    data <- group_split(data, !!!grps)
+  else
+    data <- list(data)
+
+  data <- data %>% 
+    map_dfr(function(df, aes){
+      qs <- df %>% 
+        pull(!!aes$y) %>% 
+        boxplot(plot = FALSE) %>%
+        .["stats"] %>%  
+        unlist() %>% 
+        unname() 
+
+      box <- tibble(y = list(qs))
+
+      if(length(aes$x))
+        box$x <- df %>% pull(!!aes$x) %>% unique()
+
+      if(length(aes$color))
+        box[[rlang::quo_name(aes$color)]] <- df %>% pull(!!aes$color) %>% unique()
+      
+      return(box)
+    }, aes)
+
+  aes$x <- "x"
+  aes$y <- "y"
+  aes$adjust <- "dodge"
+  aes$shape <- "box"
+
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "schema", inherit_aes = TRUE, name = name, mapping = aes)
+
+}
+
 #' Voronoi
 #' 
 #' Create a voronoi plot based on \code{x} and \code{y} aspects.
@@ -111,7 +174,7 @@ fig_density <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
 #' )
 #' 
 #' g2(df, asp(x, y, color = value)) %>% 
-#'   fig_voronoi()
+#'   fig_voronoi(axes = FALSE)
 #' 
 #' @export
 fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
@@ -255,7 +318,7 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
 #' 
 #' g2(df, asp(x, y, ymin = y1, ymax = y2)) %>% 
 #'   fig_line() %>% 
-#'   fig_ribbon()
+#'   fig_ribbon(axes = FALSE)
 #' 
 #' @export
 fig_ribbon <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){

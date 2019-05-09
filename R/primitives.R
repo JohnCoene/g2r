@@ -125,6 +125,12 @@ fig_schema_dodge <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NU
   make_geom(g2, ..., data = data, chart_type = "schemaDodge", inherit_aes = inherit_asp, name = name)
 }
 
+#' @rdname geoms
+#' @export
+fig_venn <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
+  make_geom(g2, ..., data = data, chart_type = "venn", inherit_aes = inherit_asp, name = name)
+}
+
 make_geom <- function(g2, ..., data = NULL, chart_type = "interval", inherit_aes = TRUE, name = NULL, mapping = NULL) {
   if(is.null(name)) name <- ""
 
