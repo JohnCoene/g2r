@@ -53,7 +53,7 @@ fig_histogram <- function(g2, ..., bin_width = 1, data = NULL, inherit_asp = TRU
 #' @inheritParams geoms
 #' 
 #' @examples
-#' g2(iris, asp(Petal.Length, color = Species)) %>% 
+#' g2(iris, asp(Petal.Length, group = Species, color = Species)) %>%
 #'   fig_density()
 #'  
 #' @export

@@ -145,7 +145,7 @@ iris %>%
   plane_wrap(planes(Species), type = "tree")
 ```
 
-If you navigate the [original examples of the g2 JavaScript](https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html) you will notice that they often make use of the [dataset library](https://github.com/antvis/data-set) to transform the data. This is imprelement as the function `alter`, mainly to easily replicate examples.
+If you navigate the [original examples of the g2 JavaScript](https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html) you will notice that they often make use of the [dataset library](https://github.com/antvis/data-set) to transform the data. This is imprelement as the function `alter`, mainly to easily replicate examples. Note that the waffle chart below can now simply be done with `fig_waffle`.
 
 ```{r}
 altered_fruits <- fruits %>% 
@@ -187,4 +187,51 @@ fruits %>%
   fig_point(asp(shape = "circle")) %>%  
   coord_type("theta", innerRadius = .2, endAngle = pi) %>% 
   info_text(asp(fruit, 0, content = label), style = list(textAlign = "right"))
+```
+
+Many figures have been implemented, many of them actually use the `group` aspect. 
+
+```{r}
+g2(iris, asp(Sepal.Length, group = Species, color = Species))  %>%
+  fig_histogram(bin_width = .3)
+```
+
+```{r}
+g2(iris, asp(Petal.Length, group = Species, color = Species)) %>%
+  fig_density()
+```
+
+```{r}
+df <- data.frame(
+  trt = factor(c(1, 1, 2, 2)),
+  resp = c(1, 5, 3, 4),
+  group = factor(c(1, 2, 1, 2)),
+  upper = c(1.1, 5.3, 3.3, 4.2),
+  lower = c(0.8, 4.6, 2.4, 3.6)
+)
+
+g2(df, asp(trt, resp, ymin = lower, ymax = upper, color = group)) %>%
+  fig_errorbar()
+```
+
+```{r}
+huron <- dplyr::tibble(
+  year = as.character(1875:1972), 
+  level = as.vector(LakeHuron)
+) %>% 
+  dplyr::mutate(
+    mn = level - 1,
+    mx = level + 1
+  )
+
+g2(huron, asp(year, level, ymin = mn, ymax = mx)) %>%
+  fig_line() %>%
+  fig_ribbon() %>% 
+  gauge_x_time(tickCount = 3)
+```
+
+```{r}
+g2(cars, asp(speed, dist)) %>%
+  fig_point() %>%
+  fig_smooth()
 ```
