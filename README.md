@@ -15,7 +15,7 @@ remotes::install_github("JohnCoene/g2r")
 
 ## Synthax
 
-From ggplot2 to g2r:
+From ggplot2 to g2r.
 
 1. `ggplot` -> `g2`
 2. `aes` -> `asp`
