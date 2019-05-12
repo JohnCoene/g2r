@@ -582,3 +582,65 @@ fig_waffle <- function(g2, ..., rows = 10, count = 500, waffle_size = list(1, 1)
 
   g2
 }
+
+#' Guitar
+#' 
+#' Create a density plot based on \code{x}, \code{y} and optionally \code{group} aspects.
+#' 
+#' @inheritParams geoms
+#' 
+#' @examples
+#' df <- mtcars %>% 
+#'   dplyr::mutate(
+#'     cyl = as.factor(cyl),
+#'     am = as.factor(am)
+#'   )
+#' 
+#' g2(df, asp(cyl , mpg, color = am)) %>% 
+#'   fig_guitar(tooltip = FALSE)
+#'  
+#' @export
+fig_guitar <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  has_aes <- aes[names(aes) %in% c("x", "y")]
+
+  if(rlang::is_empty(has_aes))
+    stop("no `x` `y` aspect", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+
+  grps <- aes[names(aes) %in% c("x", "color", "group")]
+
+  if(length(aes$x))
+    data <- group_split(data, !!!grps)
+  else
+    data <- list(data)
+
+  data <- data %>% 
+    map_dfr(function(df, aes){
+      ds <- df %>% 
+        pull(!!aes$y) %>% 
+        density()
+
+      box <- tibble(
+        y = list(ds$x),
+        size = list(ds$y)
+      )
+
+      box$x <- df %>% pull(!!aes$x) %>% unique()
+
+      if(length(aes$color))
+        box[[rlang::quo_name(aes$color)]] <- df %>% pull(!!aes$color) %>% unique()
+      
+      return(box)
+    }, aes)
+
+  aes$x <- "x"
+  aes$y <- "y"
+  aes$size <- "size"
+  aes$adjust <- "dodge"
+
+  make_geom(g2, ..., data = pmap(data, list), chart_type = "violin", inherit_aes = TRUE, name = name, mapping = aes)
+
+}

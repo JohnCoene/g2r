@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 )
 library(dplyr)
 library(g2r)
+library(gt)
 g2r_globals(font = "Quicksand")
 ```
 
@@ -22,7 +23,7 @@ g2r_globals(font = "Quicksand")
 The synthax of g2r is heavily inspired by ggplot2.
 
 ```{r, echo=FALSE}
-df <- dplyr::tribble(
+dplyr::tribble(
   ~"ggplot2",       ~"g2r",
   "ggplot",         "g2",
   "aes",            "asp",
@@ -30,9 +31,12 @@ df <- dplyr::tribble(
   "geom_*",         "fig_*",
   "facet_*",        "plane_*",
   "theme_*",        "motif_*"
-)
-
-knitr::kable(df, caption = "ggplot2 to g2r synthax map.", format = "html")
+) %>% 
+  gt() %>% 
+  tab_header(
+    title = "g2r syntax",
+    subtitle = "From ggplot2 to g2r"
+  )
 ```
 
 ## Aspects
@@ -40,16 +44,16 @@ knitr::kable(df, caption = "ggplot2 to g2r synthax map.", format = "html")
 In g2r you use aspects (`asp`) instead of aesthetics (`aes`) in ggplot2 but they work in very much the same way.
 
 ```{r}
-g2(cars, asp(dist, speed, size = speed)) %>% 
+g2(cars, asp(dist, speed, color = speed)) %>% 
   fig_point()
 ```
 
 Then you can use gauges (instead of scales in ggplot2) to manipulate those aspects.
 
 ```{r}
-g2(cars, asp(dist, speed, color = speed, size = 10)) %>% 
+g2(cars, asp(dist, speed, color = speed, size = speed)) %>% 
   fig_point() %>% 
-  gauge_color(c("blue", "white", "red"))
+  gauge_color(c("blue", "white", "red")) 
 ```
 
 It may seem like some some figures (equivalent to geoms) are missing, but technically all are available.
@@ -61,65 +65,39 @@ fruits %>%
   coord_type("theta")
 ```
 
-You won't find `fig_bar` but `fig_interval` does the trick. Below we the `adjust` function which is similar to using the `stat` argument in ggplot2.
+## Examples
+
+You won't find `fig_bar` but `fig_interval` does the trick. Below we use the `adjust` function which is similar to using the `stat` argument in ggplot2.
 
 ```{r}
 g2(temp, asp(month, temp, color = city)) %>% 
-  fig_interval_dodge() 
+  fig_interval(adjust("dodge")) # equivalent to fig_interval_dodge
 ```
-
-There are no fig_boxplot either, yet.
 
 ```{r, collapse=TRUE}
 library(dplyr)
-library(purrr)
 
-df <- rep(100, 8) %>% 
-  map(runif) %>% 
-  map(boxplot, plot = FALSE) %>% 
-  map_dfr(function(x){
-    x$stats %>% 
-      unlist() %>% 
-      t %>% 
-      as.data.frame
-  }) %>% 
-  mutate(
-    group = LETTERS[1:n()],
-    type = rep(letters[1:2], 4)
-  ) %>% 
-  tidyr::nest(V1, V2, V3, V4, V5)
+df <- mtcars %>%
+  dplyr::mutate(
+    cyl = as.factor(cyl),
+    am = as.factor(am)
+  )
 
-df$data <- df$data %>% 
-  map(unlist) %>% 
-  map(unname)
+g2(df, asp(cyl , mpg, color = am)) %>%
+  fig_boxplot()
 ```
 
-Plot created data
+There is a `fig_violin` but it expects the data in a specific format, so a helper function exists, `fig_guitar`.
 
 ```{r}
-g2(df, asp(type, data, adjust = "dodge", shape = "box", size = 60, color = group)) %>% 
-  fig_schema()
-```
+df <- mtcars %>%
+  dplyr::mutate(
+    cyl = as.factor(cyl),
+    am = as.factor(am)
+  )
 
-There is a `fig_violin` but it expects the data in a specific format.
-
-```{r}
-get_density <- function(k = "A"){
-  density <- runif(100) %>% 
-    density() 
-  df <- dplyr::tibble(key = k)
-  df$x <- list(density$x)
-  df$y <- list(density$y)
-  return(df)
-}
-
-df <- get_density("A") %>% 
-  bind_rows(get_density("B")) %>% 
-  bind_rows(get_density("C"))
-
-g2(df, asp(key, x, size = y, color = key)) %>% 
-  fig_violin(style(fillOpacity = .3)) %>% 
-  conf_tooltip(FALSE)
+g2(df, asp(cyl , mpg, color = am)) %>%
+  fig_guitar(asp(opacity = .3), tooltip = FALSE)
 ```
 
 A heatmap is easier.
@@ -145,26 +123,25 @@ iris %>%
   plane_wrap(planes(Species), type = "tree")
 ```
 
-If you navigate the [original examples of the g2 JavaScript](https://antv.alipay.com/zh-cn/g2/3.x/demo/index.html) you will notice that they often make use of the [dataset library](https://github.com/antvis/data-set) to transform the data. This is imprelement as the function `alter`, mainly to easily replicate examples. Note that the waffle chart below can now simply be done with `fig_waffle`.
-
 ```{r}
-altered_fruits <- fruits %>% 
-  mutate(value = value * 100) %>% 
-  select(name = fruit, value) %>% 
-  alter(type = "waffle", maxCount = 500, rows = 12) 
- 
-g2(altered_fruits, asp(x, y, shape = "square", color = name, size = 10)) %>% 
-  fig_point(axes = FALSE) %>% 
-  gauge_axis(x, FALSE) %>% 
-  motif(padding = rep(50, 4)) 
+fruits %>%
+  dplyr::mutate(value = value * 100) %>%
+  g2(asp(fruit, value)) %>% 
+  fig_waffle(asp(color = fruit))
 ```
 
 The `alter` function is used internally by `get_map` to process GeoJSON files. It'll enable you to easily build otherwise difficult charts. Though there is a `fig_hex` helper now.
 
 ```{r}
-g2(gaus, asp(x, y)) %>% 
+g2(gaus, asp(x, y, color = "count")) %>% 
   fig_bin() %>% 
-  gauge_color("#BAE7FF-#1890FF-#0050B3")
+  gauge_color(c("#BAE7FF", "#1890FF", "#0050B3"))
+```
+
+```{r}
+g2(gaus, asp(x, y, color = "count")) %>% 
+  fig_bin(size_count = FALSE) %>% 
+  gauge_color(c("#BAE7FF", "#1890FF", "#0050B3"))
 ```
 
 ```{r}
