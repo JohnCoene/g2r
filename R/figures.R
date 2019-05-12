@@ -578,7 +578,7 @@ fig_waffle <- function(g2, ..., rows = 10, count = 500, waffle_size = list(1, 1)
   }")
 
   if(aes$size == "hStep")
-    g2 <- gauge_size(g2, callback = cb)
+    g2 <- gauge_size(g2, callback = cb) %>% conf_legend("hStep", FALSE)
 
   g2
 }
