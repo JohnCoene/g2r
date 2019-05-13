@@ -60,6 +60,7 @@ It may seem like some some figures (equivalent to geoms) are missing, but techni
 
 ```{r}
 fruits %>% 
+  arrange(-value) %>% 
   g2(asp(value, color = fruit)) %>% 
   fig_interval_stack() %>% 
   coord_type("theta")

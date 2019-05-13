@@ -191,22 +191,22 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>fruits</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 2</span><span>
 #&gt;   fruit   value
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Apples    0.3
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bananas   0.2
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Pears     0.4
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Oranges   0.1</div><div class='input'>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Apples   0.45
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bananas  0.15
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Pears    0.35
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Oranges  0.05</div><div class='input'>
 <span class='no'>fr</span> <span class='kw'>&lt;-</span> <span class='no'>fruits</span> <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>value</span> * <span class='fl'>100</span>) <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='no'>fruit</span>, <span class='no'>value</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>alter</span>(<span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"waffle"</span>, <span class='kw'>maxCount</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>rows</span> <span class='kw'>=</span> <span class='fl'>12</span>)
 
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>fr</span>)</div><div class='output co'>#&gt;     name value          x      y     wStep hStep
-#&gt; 1 Apples    30 0.05555556 0.0375 0.1111111 0.075
-#&gt; 2 Apples    30 0.05555556 0.1125 0.1111111 0.075
-#&gt; 3 Apples    30 0.05555556 0.1875 0.1111111 0.075
-#&gt; 4 Apples    30 0.05555556 0.2625 0.1111111 0.075
-#&gt; 5 Apples    30 0.05555556 0.3375 0.1111111 0.075
-#&gt; 6 Apples    30 0.05555556 0.4125 0.1111111 0.075</div><div class='input'>
+#&gt; 1 Apples    45 0.05555556 0.0375 0.1111111 0.075
+#&gt; 2 Apples    45 0.05555556 0.1125 0.1111111 0.075
+#&gt; 3 Apples    45 0.05555556 0.1875 0.1111111 0.075
+#&gt; 4 Apples    45 0.05555556 0.2625 0.1111111 0.075
+#&gt; 5 Apples    45 0.05555556 0.3375 0.1111111 0.075
+#&gt; 6 Apples    45 0.05555556 0.4125 0.1111111 0.075</div><div class='input'>
 <span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>fr</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='st'>"square"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>name</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='geoms.html'>fig_point</a></span>(<span class='kw'>axes</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='gauge_axis.html'>gauge_axis</a></span>(<span class='no'>x</span>, <span class='fl'>FALSE</span>)</div></span></pre>

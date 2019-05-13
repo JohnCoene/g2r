@@ -8,6 +8,15 @@ template:
 development:
   mode: release
 
+articles:
+  - title: "Get Started"
+    desc: >
+      Get up and running with g2r, discover the similarities with ggplot2 and a few examples to point you in the right direction.
+    contents:
+    - get-started
+    - planes
+    - maps
+
 reference:
   - title: "Initialisation & Shiny"
     desc: "Initialise g2r chart."

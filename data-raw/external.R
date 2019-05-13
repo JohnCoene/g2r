@@ -71,7 +71,7 @@ temp <- jsonlite::fromJSON(temp_json) %>%
 
 fruits <- dplyr::tibble(
   fruit = c("Apples", "Bananas", "Pears", "Oranges"),
-  value = c(.3, .2, .4, .1)
+  value = c(.45, .15, .35, .05)
 )
 
 gaus <- jsonlite::fromJSON("https://raw.githubusercontent.com/antvis/g2/master/demos/data/gaussion-distribution.json")
