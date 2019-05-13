@@ -65,6 +65,20 @@ fruits %>%
   coord_type("theta")
 ```
 
+The same could be said of the funnel.
+
+```{r}
+fr <- fruits %>% 
+  dplyr::mutate(value = value * 100) %>% 
+  dplyr::arrange(-value)
+
+g2(fr, asp(fruit, value, color = fruit, shape = "pyramid")) %>% 
+  fig_interval_symmetric() %>% 
+  coord_transpose() %>% 
+  coord_scale(1, -1) %>% 
+  hide_axis()
+```
+
 ## Examples
 
 You won't find `fig_bar` but `fig_interval` does the trick. Below we use the `adjust` function which is similar to using the `stat` argument in ggplot2.
@@ -72,6 +86,11 @@ You won't find `fig_bar` but `fig_interval` does the trick. Below we use the `ad
 ```{r}
 g2(temp, asp(month, temp, color = city)) %>% 
   fig_interval(adjust("dodge")) # equivalent to fig_interval_dodge
+```
+
+```{r}
+g2(temp, asp(month, temp, color = city)) %>% 
+  fig_interval(adjust("stack")) # equivalent to fig_interval_stack
 ```
 
 ```{r, collapse=TRUE}
@@ -140,7 +159,7 @@ g2(gaus, asp(x, y, color = "count")) %>%
 
 ```{r}
 g2(gaus, asp(x, y, color = "count")) %>% 
-  fig_bin(size_count = FALSE) %>% 
+  fig_bin(size_count = FALSE, type = "hexagon") %>% 
   gauge_color(c("#BAE7FF", "#1890FF", "#0050B3"))
 ```
 

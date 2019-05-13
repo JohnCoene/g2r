@@ -19,7 +19,7 @@ interact_brush <- function(g2) {
   g2
 }
 
-#' @name interact
+#' @rdname interact
 #' @export
 interact_slider <- function(g2, ...) {
   check_g2(g2)
@@ -27,7 +27,7 @@ interact_slider <- function(g2, ...) {
   g2
 }
 
-#' @name interact
+#' @rdname interact
 #' @export
 interact_zoom <- function(g2, ...) {
   check_g2(g2)
@@ -35,7 +35,7 @@ interact_zoom <- function(g2, ...) {
   g2
 }
 
-#' @name interact
+#' @rdname interact
 #' @export
 interact_drag <- function(g2, ...) {
   check_g2(g2)

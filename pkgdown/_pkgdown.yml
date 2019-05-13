@@ -61,11 +61,12 @@ reference:
       - temp
       - fruits
       - gaus
+      - states
   - title: "Helpers"
     desc: "Helper functions."
     contents:
       - cb
-      - slider
+      - interact
 
 navbar:
   title: "g2r"

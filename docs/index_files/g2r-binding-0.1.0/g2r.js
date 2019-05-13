@@ -50,6 +50,9 @@ HTMLWidgets.widget({
 
         if(!x.hasOwnProperty('facet'))
           chart.scale(x.dataOpts)
+        
+        if(x.hasOwnProperty("allAxes"))
+          chart.axis(false);
 
         if(!x.hasOwnProperty('facet')){
           opts.forEach(function(v){
@@ -76,6 +79,18 @@ HTMLWidgets.widget({
           chart.tooltip(x.tooltip);
 
         chart.render();
+
+        if(x.hasOwnProperty("brush"))
+          chart.interact("brush");
+
+        if(x.hasOwnProperty("slider"))
+          chart.interact("slider", x.slider);
+
+        if(x.hasOwnProperty("zoom"))
+          chart.interact("zoom", x.zoom);
+
+        if(x.hasOwnProperty("drag"))
+          chart.interact("drag", x.drag);
       },
 
       resize: function(width, height) {

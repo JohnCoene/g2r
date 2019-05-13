@@ -50,6 +50,9 @@ HTMLWidgets.widget({
 
         if(!x.hasOwnProperty('facet'))
           chart.scale(x.dataOpts)
+        
+        if(x.hasOwnProperty("allAxes"))
+          chart.axis(false);
 
         if(!x.hasOwnProperty('facet')){
           opts.forEach(function(v){
