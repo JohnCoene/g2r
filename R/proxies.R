@@ -330,7 +330,7 @@ reveal <- function(proxy, figures = NULL){
 #' 
 #' \dontrun{shinyApp(ui, server)}
 #' 
-#' @name visible
+#' @name visible-tooltip
 #' @export
 conceal_tooltip <- function(proxy){
   if (!"g2Proxy" %in% class(proxy)) 
@@ -342,7 +342,7 @@ conceal_tooltip <- function(proxy){
   return(proxy)
 }
 
-#' @rdname visible
+#' @rdname visible-tooltip
 #' @export
 reveal_tooltip <- function(proxy, x, y){
   if (!"g2Proxy" %in% class(proxy)) 

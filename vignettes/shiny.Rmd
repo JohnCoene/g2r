@@ -1,10 +1,10 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Shiny"
+author: "John (JP) Coene"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Shiny}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,3 +17,70 @@ knitr::opts_chunk$set(
 library(g2r)
 ```
 
+`g2r` comes with "proxies" which allow you to dynamically interact with a chart in [Shiny](https://shiny.rstudio.com/). For instance, in the example below we change the data plotted on the chart without redrawing the entire chart; axis and other elements remain.
+
+```r
+library(shiny)
+
+.make_data <- function(){
+  dplyr::tibble(
+    x = 1:20,
+    y = runif(20)
+  )
+}
+
+ui <- fluidPage(
+  fluidRow(
+    column(10, g2Output("chart")),
+    column(2, actionButton("chg", "chg"))
+  )
+)
+
+server <- function(input, output, session) {
+  output$chart <- renderG2({
+    g2(.make_data(), asp(x, y)) %>%
+      fig_point()
+  })
+
+  observeEvent(input$chg, {
+    g2Proxy("chart") %>%
+      change_data(.make_data(), x, y)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+Or in the example below where we can programatically reveal and conceal figures. 
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  actionButton("hide", "hide"),
+  actionButton("show", "show"),
+  g2Output("chart")
+)
+
+server <- function(input, output) {
+  output$chart <- renderG2({
+    g2(cars, asp(speed, dist)) %>%
+      fig_point() %>%
+      fig_line()
+  })
+
+  observeEvent(input$hide, {
+    g2Proxy("chart") %>%
+      conceal()
+  })
+
+  observeEvent(input$show, {
+    g2Proxy("chart") %>%
+      reveal()
+  })
+}
+
+shinyApp(ui, server)
+```
+
+You can find other proxies in the [reference manual](https://g2r.dev/reference/#section-shiny).

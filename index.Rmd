@@ -17,7 +17,7 @@ g2r_globals(font = "Quicksand")
 <p>
 <br/>
 <br/>
-<a class="btn btn-primary btn-lg" href="articles/get-started.html" role="button">Get started</a>
+<a class="btn btn-primary btn-lg" href="articles/" role="button">Documentation</a>
 </p>
 </div>
 
@@ -42,8 +42,7 @@ It's looks similar to ggplot2.
 ```{r, fig.height = 8}
 library(ggplot2)
 
-iris %>%
-  ggplot(aes(Petal.Length, Petal.Width, color = Species)) +
+ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
   geom_point() +
   facet_wrap(.~Species)
 ```
@@ -56,8 +55,7 @@ iris %>%
 ```{r}
 library(g2r)
 
-iris %>%
-  g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
+g2(iris, asp(Petal.Length, Petal.Width, color = Species)) %>% 
   fig_point() %>%
   plane_wrap(planes(Species))
 ```

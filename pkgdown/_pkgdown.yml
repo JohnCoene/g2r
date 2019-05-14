@@ -16,6 +16,11 @@ articles:
     - get-started
     - planes
     - maps
+  - title: "Shiny"
+    desc: >
+      How g2r works with Shiny.
+    contents:
+    - shiny
 
 reference:
   - title: "Initialisation & Shiny"
@@ -78,7 +83,7 @@ reference:
       - download_image
       - reveal
       - conceal
-      -plot_callbacks
+      - plot_callbacks
   - title: "Data"
     desc: "Datasets and data manipulation function, namely for examples."
     contents:
