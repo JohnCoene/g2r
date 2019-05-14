@@ -5,8 +5,8 @@
 \alias{g2}
 \title{Initialise}
 \usage{
-g2(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
-  elementId = NULL)
+g2(data = NULL, asp = NULL, ..., render = TRUE, width = NULL,
+  height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{A \code{data.frame} containing data to chart.}
@@ -14,6 +14,8 @@ g2(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
 \item{asp}{Mapping aesthetics as returned by \code{\link{asp}}.}
 
 \item{...}{Any general options.}
+
+\item{render}{Whether to render the chart.}
 
 \item{width, height}{Dimensions of chart.}
 

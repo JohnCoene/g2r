@@ -12,6 +12,8 @@
 \alias{fig_edge}
 \alias{fig_violin}
 \alias{fig_heatmap}
+\alias{fig_line_stack}
+\alias{fig_violin_dodge}
 \alias{fig_point_jitter}
 \alias{fig_point_stack}
 \alias{fig_point_dodge}
@@ -42,6 +44,11 @@ fig_edge(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 fig_violin(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
 
 fig_heatmap(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
+
+fig_line_stack(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL)
+
+fig_violin_dodge(g2, ..., data = NULL, inherit_asp = TRUE,
+  name = NULL)
 
 fig_point_jitter(g2, ..., data = NULL, inherit_asp = TRUE,
   name = NULL)

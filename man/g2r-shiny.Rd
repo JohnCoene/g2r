@@ -4,11 +4,14 @@
 \alias{g2r-shiny}
 \alias{g2Output}
 \alias{renderG2}
+\alias{g2Proxy}
 \title{Shiny bindings}
 \usage{
 g2Output(outputId, width = "100\%", height = "400px")
 
 renderG2(expr, env = parent.frame(), quoted = FALSE)
+
+g2Proxy(outputId, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{outputId}{output variable to read from.}
@@ -23,6 +26,8 @@ string and have \code{'px'} appended.}
 
 \item{quoted}{Is \code{expr} a quoted expression (with \code{quote()})? This
 is useful if you want to save an expression in a variable.}
+
+\item{session}{A valid shiny session.}
 }
 \description{
 Output and render functions for using g2r within Shiny
