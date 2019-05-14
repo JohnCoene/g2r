@@ -241,3 +241,15 @@ g2(cars, asp(speed, dist)) %>%
   fig_smooth(method = "loess") %>% 
   motif_dark()
 ```
+
+There is a helper function to create animations (You might have to refresh the page to see it).
+
+```{r}
+anim <- Animation$
+  new()$
+  appear(duration = 5000, delay = 5000)
+
+iris %>%
+  g2(asp(Sepal.Length, Sepal.Width, color = Species)) %>%
+  fig_point(anim)
+```
