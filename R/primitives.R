@@ -79,6 +79,18 @@ fig_heatmap <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
 
 #' @rdname geoms
 #' @export
+fig_line_stack <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
+  make_geom(g2, ..., data = data, chart_type = "lineStack", inherit_aes = inherit_asp, name = name)
+}
+
+#' @rdname geoms
+#' @export
+fig_violin_dodge <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
+  make_geom(g2, ..., data = data, chart_type = "violinDodge", inherit_aes = inherit_asp, name = name)
+}
+
+#' @rdname geoms
+#' @export
 fig_point_jitter <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
   make_geom(g2, ..., data = data, chart_type = "pointJitter", inherit_aes = inherit_asp, name = name)
 }
