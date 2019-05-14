@@ -7,6 +7,7 @@
 #' @param elementId ID of \code{DOM} container.
 #' @param ... Any general options.
 #' @param asp Mapping aesthetics as returned by \code{\link{asp}}.
+#' @param render Whether to render the chart.
 #'
 #' @import htmlwidgets
 #' @import purrr
@@ -20,8 +21,8 @@
 #' 
 #' @name g2r
 #' @export
-g2 <- function(data = NULL, asp = NULL, ..., width = NULL, height = NULL, 
-  elementId = NULL) {
+g2 <- function(data = NULL, asp = NULL, ..., render = TRUE, 
+  width = NULL, height = NULL, elementId = NULL) {
 
   x = list(
     opts = list(
@@ -29,6 +30,7 @@ g2 <- function(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
       padding = "auto",
       forceFit = TRUE
     ),
+    render = render,
     mapping = asp,
     data = NULL,
     dataOpts = list()
@@ -73,6 +75,7 @@ g2 <- function(data = NULL, asp = NULL, ..., width = NULL, height = NULL,
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
+#' @param session A valid shiny session.
 #'
 #' @name g2r-shiny
 #'
@@ -86,4 +89,14 @@ g2Output <- function(outputId, width = '100%', height = '400px'){
 renderG2 <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, g2Output, env, quoted = TRUE)
+}
+
+#' @rdname g2r-shiny
+#' @export
+g2Proxy <- function(outputId, session = shiny::getDefaultReactiveDomain()){
+  
+  proxy <- list(id = outputId, session = session)
+  class(proxy) <- "g2Proxy"
+  
+  return(proxy)
 }
