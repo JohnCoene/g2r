@@ -6,6 +6,8 @@
 
 A [ggplot2](https://ggplot2.tidyverse.org/)-inspired grammar of graphics for interactive visualisations via [g2](https://antv.alipay.com/zh-cn/g2/3.x/).
 
+See the [website](https://g2r.dev) for get started.
+
 ## Installation
 
 ``` r
