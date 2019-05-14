@@ -50,6 +50,6 @@ server <- function(input, output, session) {
   })
 }
 
-if(interactive()) shinyApp(ui, server)
+\dontrun{shinyApp(ui, server)}
 
 }

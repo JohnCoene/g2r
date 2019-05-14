@@ -63,6 +63,19 @@ reference:
     desc: "Planes, similar to facets."
     contents:
       - matches("plane")
+  - title: "Shiny"
+    desc: "Shiny proxies, dynamically interact with the chart."
+    contents:
+      - repaint
+      - clear
+      - render
+      - destroy
+      - change_data
+      - change_size
+      - change_width
+      - change_height
+      - to_dataURL
+      - download_image
   - title: "Data"
     desc: "Datasets and data manipulation function, namely for examples."
     contents:

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shiny bindings — g2r-shiny • g2r</title>
+<title>Manipulate Chart — chart-proxies • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,10 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Shiny bindings — g2r-shiny" />
+<meta property="og:title" content="Manipulate Chart — chart-proxies" />
 
-<meta property="og:description" content="Output and render functions for using g2r within Shiny
-applications and interactive Rmd documents." />
+<meta property="og:description" content="Repaint, clear, render, or destroy the chart." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -145,53 +144,31 @@ applications and interactive Rmd documents." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Shiny bindings</h1>
+    <h1>Manipulate Chart</h1>
     
-    <div class="hidden name"><code>g2r-shiny.Rd</code></div>
+    <div class="hidden name"><code>chart-proxies.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Output and render functions for using g2r within Shiny
-applications and interactive Rmd documents.</p>
+    <p>Repaint, clear, render, or destroy the chart.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>g2Output</span>(<span class='no'>outputId</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='st'>"100%"</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='st'>"400px"</span>)
+    <pre class="usage"><span class='fu'>repaint</span>(<span class='no'>proxy</span>)
 
-<span class='fu'>renderG2</span>(<span class='no'>expr</span>, <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sys.parent'>parent.frame</a></span>(), <span class='kw'>quoted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>clear</span>(<span class='no'>proxy</span>)
 
-<span class='fu'>g2Proxy</span>(<span class='no'>outputId</span>, <span class='kw'>session</span> <span class='kw'>=</span> <span class='kw pkg'>shiny</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/domains'>getDefaultReactiveDomain</a></span>())</pre>
+<span class='fu'>render</span>(<span class='no'>proxy</span>)
+
+<span class='fu'>destroy</span>(<span class='no'>proxy</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>outputId</th>
-      <td><p>output variable to read from.</p></td>
-    </tr>
-    <tr>
-      <th>width, height</th>
-      <td><p>Must be a valid CSS unit (like <code>'100%'</code>,
-<code>'400px'</code>, <code>'auto'</code>) or a number, which will be coerced to a
-string and have <code>'px'</code> appended.</p></td>
-    </tr>
-    <tr>
-      <th>expr</th>
-      <td><p>An expression that generates a g2r.</p></td>
-    </tr>
-    <tr>
-      <th>env</th>
-      <td><p>The environment in which to evaluate <code>expr</code>.</p></td>
-    </tr>
-    <tr>
-      <th>quoted</th>
-      <td><p>Is <code>expr</code> a quoted expression (with <code><a href='https://www.rdocumentation.org/packages/base/topics/substitute'>quote()</a></code>)? This
-is useful if you want to save an expression in a variable.</p></td>
-    </tr>
-    <tr>
-      <th>session</th>
-      <td><p>A valid shiny session.</p></td>
+      <th>proxy</th>
+      <td><p>A g2r proxy as returned by <code><a href='g2r-shiny.html'>g2Proxy</a></code></p></td>
     </tr>
     </table>
     

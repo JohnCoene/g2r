@@ -92,7 +92,7 @@ destroy <- function(proxy) {
 #'   })
 #' }
 #' 
-#' if(interactive()) shinyApp(ui, server)
+#' \dontrun{shinyApp(ui, server)}
 #'
 #' @export
 change_data <- function(proxy, data, ..., figures = NULL){
@@ -139,7 +139,7 @@ change_data <- function(proxy, data, ..., figures = NULL){
 #'   })
 #' }
 #' 
-#' if(interactive()) shinyApp(ui, server)
+#' \dontrun{shinyApp(ui, server)}
 #' 
 #' @name change-size
 #' @export
@@ -203,7 +203,7 @@ change_height <- function(proxy, height){
 #'       download_image()
 #'   })
 #' }
-#' if(interactive()) shinyApp(ui, server)
+#' \dontrun{shinyApp(ui, server)}
 #' 
 #' @name convert
 #' @export
