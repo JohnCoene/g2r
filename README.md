@@ -18,8 +18,8 @@ remotes::install_github("JohnCoene/g2r")
 From ggplot2 to g2r.
 
 1. `ggplot` -> `g2`
-2. `aes` -> `asp`
-3. `geom_*` -> `fig_*`
+2. `aes` -> `asp` (aspects)
+3. `geom_*` -> `fig_*` (figures)
 4. `scale_*` -> `gauge_*`
 5. `facet_*` -> `plane_*`
 6. `theme_*` -> `motif_*`
