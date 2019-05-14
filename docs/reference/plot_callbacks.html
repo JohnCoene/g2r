@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Style — style • g2r</title>
+<title>Plot Callbacks — plot_callbacks • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,9 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Style — style" />
+<meta property="og:title" content="Plot Callbacks — plot_callbacks" />
 
-<meta property="og:description" content="Style a figure." />
+<meta property="og:description" content="Add basic plot callbacks, will only be available in Shiny." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -144,27 +144,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Style</h1>
+    <h1>Plot Callbacks</h1>
     
-    <div class="hidden name"><code>style.Rd</code></div>
+    <div class="hidden name"><code>plot_callbacks.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Style a figure.</p>
+    <p>Add basic plot callbacks, will only be available in Shiny.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>style</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_callbacks</span>(<span class='no'>g2</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Any styling options</p></td>
+      <th>g2</th>
+      <td><p>An object of class <code>g2r</code> as returned by <code><a href='g2r.html'>g2r</a></code>.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A <code>list</code> containing <code>x</code> and <code>y</code> pixel coordinates of clicked/entered/left.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function will add the following callbacks</p><ul>
+<li><p><code>plot_enter</code></p></li>
+<li><p><code>plot_leave</code></p></li>
+<li><p><code>plot_click</code></p></li>
+</ul>
     
 
   </div>
@@ -172,7 +184,11 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

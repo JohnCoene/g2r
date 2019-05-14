@@ -19,6 +19,15 @@
     <loc>http://g2r.dev/reference/cb.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/change-size.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/change_data.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/chart-proxies.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/chart-title.html</loc>
   </url>
   <url>
@@ -32,6 +41,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/conf_tooltip.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/convert.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/coord.html</loc>
@@ -136,6 +148,9 @@
     <loc>http://g2r.dev/reference/plane.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/plot_callbacks.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/reference/states.html</loc>
   </url>
   <url>
@@ -151,6 +166,9 @@
     <loc>http://g2r.dev/reference/theme.html</loc>
   </url>
   <url>
+    <loc>http://g2r.dev/reference/visible.html</loc>
+  </url>
+  <url>
     <loc>http://g2r.dev/articles/get-started.html</loc>
   </url>
   <url>
@@ -158,5 +176,8 @@
   </url>
   <url>
     <loc>http://g2r.dev/articles/planes.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/articles/shiny.html</loc>
   </url>
 </urlset>

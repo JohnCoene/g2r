@@ -203,6 +203,7 @@ change_height <- function(proxy, height){
 #'       download_image()
 #'   })
 #' }
+#' 
 #' \dontrun{shinyApp(ui, server)}
 #' 
 #' @name convert
@@ -228,3 +229,128 @@ download_image <- function(proxy, name = "g2r"){
   
   return(proxy)
 }
+
+#' Conceal & Reveal Figures
+#' 
+#' Conceal & reveal figures.
+#' 
+#' @inheritParams change_data
+#' 
+#' @examples
+#' library(shiny)
+#' 
+#' ui <- fluidPage(
+#'   actionButton("hide", "hide"),
+#'   actionButton("show", "show"),
+#'   g2Output("chart")
+#' )
+#' 
+#' server <- function(input, output) {
+#'   output$chart <- renderG2({
+#'     g2(cars, asp(speed, dist)) %>% 
+#'       fig_point() %>% 
+#'       fig_line()
+#'   })
+#' 
+#'   observeEvent(input$hide, {
+#'     g2Proxy("chart") %>% 
+#'       conceal()
+#'   })
+#' 
+#'   observeEvent(input$show, {
+#'     g2Proxy("chart") %>% 
+#'       reveal()
+#'   })
+#' }
+#' 
+#' \dontrun{shinyApp(ui, server)}
+#' 
+#' @name visible
+#' @export
+conceal <- function(proxy, figures = NULL){
+  if (!"g2Proxy" %in% class(proxy)) 
+    stop("must pass g2Proxy object", call. = FALSE)
+  
+  # -1 for JavaScript
+  figures <- ifelse(is.null(figures), "*", figures - 1)
+
+  msg <- list(id = proxy$id, figures = figures)
+  proxy$session$sendCustomMessage("hide", msg)
+
+  return(proxy)
+}
+
+#' @rdname visible
+#' @export
+reveal <- function(proxy, figures = NULL){
+  if (!"g2Proxy" %in% class(proxy)) 
+    stop("must pass g2Proxy object", call. = FALSE)
+  
+  # -1 for JavaScript
+  figures <- ifelse(is.null(figures), "*", figures - 1)
+
+  msg <- list(id = proxy$id, figures = figures)
+  proxy$session$sendCustomMessage("show", msg)
+
+  return(proxy)
+}
+
+#' Conceal & Reveal Tooltips
+#' 
+#' Conceal & reveal tooltips.
+#' 
+#' @inheritParams change_data
+#' @param x,y Coordinates of tooltip
+#' 
+#' @examples
+#' library(shiny)
+#' 
+#' ui <- fluidPage(
+#'   actionButton("hide", "hide"),
+#'   actionButton("show", "show"),
+#'   g2Output("chart")
+#' )
+#' 
+#' server <- function(input, output) {
+#'   output$chart <- renderG2({
+#'     g2(cars, asp(speed, dist)) %>% 
+#'       fig_point() 
+#'   })
+#' 
+#'   observeEvent(input$hide, {
+#'     g2Proxy("chart") %>% 
+#'       conceal_tooltip()
+#'   })
+#' 
+#'   observeEvent(input$show, {
+#'     g2Proxy("chart") %>% 
+#'       reveal_tooltip(8, 16)
+#'   })
+#' }
+#' 
+#' \dontrun{shinyApp(ui, server)}
+#' 
+#' @name visible
+#' @export
+conceal_tooltip <- function(proxy){
+  if (!"g2Proxy" %in% class(proxy)) 
+    stop("must pass g2Proxy object", call. = FALSE)
+
+  msg <- list(id = proxy$id)
+  proxy$session$sendCustomMessage("hideTooltip", msg)
+
+  return(proxy)
+}
+
+#' @rdname visible
+#' @export
+reveal_tooltip <- function(proxy, x, y){
+  if (!"g2Proxy" %in% class(proxy)) 
+    stop("must pass g2Proxy object", call. = FALSE)
+
+  msg <- list(id = proxy$id, tooltip = list(x = x, y = y))
+  proxy$session$sendCustomMessage("showTooltip", msg)
+
+  return(proxy)
+}
+

@@ -37,6 +37,7 @@ server <- function(input, output) {
       download_image()
   })
 }
+
 \dontrun{shinyApp(ui, server)}
 
 }

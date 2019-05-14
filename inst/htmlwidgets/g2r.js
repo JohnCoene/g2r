@@ -59,7 +59,7 @@ HTMLWidgets.widget({
         if(!x.hasOwnProperty('facet')){
           opts.forEach(function(v){
             view = chart.view(v.layer);
-            views.push(view);
+            
             if(v.hasOwnProperty('data'))
               view.source(v.data);
             else
@@ -67,6 +67,8 @@ HTMLWidgets.widget({
 
             if(x.hasOwnProperty("axes"))
               view.axis(x.axes);
+            
+            views.push(view); // add view to array for proxy
           });
         } else {
           chart.source(x.data, x.dataOpts);
@@ -95,6 +97,31 @@ HTMLWidgets.widget({
 
         if(x.hasOwnProperty("drag"))
           chart.interact("drag", x.drag);
+
+        if (HTMLWidgets.shinyMode) {
+          if(x.hasOwnProperty("plotCallbacks")){
+            chart.on('plotenter', function(e){
+              Shiny.onInputChange(el.id + '_plot_enter', {x: e.x, y: e.y});
+            });
+            chart.on('plotleave', function(e){
+              Shiny.onInputChange(el.id + '_plot_leave', {x: e.x, y: e.y});
+            });
+            chart.on('plotclick', function(e){
+              Shiny.onInputChange(el.id + '_plot_click', {x: e.x, y: e.y});
+            });
+          }
+
+          if(x.hasOwnProperty("getSnapRecords")){
+            x.getSnapRecords.forEach(function(cb){
+              chart.on(cb.on, function(ev){
+                console.log(ev);
+                var records = chart.getSnapRecords({x: ev.x, y: ev.y});
+                console.log(records);
+                Shiny.onInputChange(el.id + '_' + cb.action, records);
+              }); 
+            })
+          }
+        }
       },
 
       resize: function(width, height) {
@@ -222,6 +249,48 @@ if (HTMLWidgets.shinyMode) {
       var chart = getInstance(data.id);
       if (typeof chart != 'undefined') {
         chart.downloadImage(data.name);
+      }
+  });
+  
+  Shiny.addCustomMessageHandler('showTooltip',
+    function(data) {
+      var chart = getInstance(data.id);
+      if (typeof chart != 'undefined') {
+        chart.showTooltip(data.tooltip);
+      }
+  });
+
+  Shiny.addCustomMessageHandler('hideTooltip',
+    function(data) {
+      var chart = getInstance(data.id);
+      if (typeof chart != 'undefined') {
+        chart.hideTooltip();
+      }
+  });
+
+  Shiny.addCustomMessageHandler('hide',
+    function(data) {
+      var views = getViews(data.id);
+      if (typeof views != 'undefined') {
+        views.forEach(function(v, i){
+          if(data.figures = "*")
+            v.hide()
+          else if(data.figures.includes(i))
+            v.hide()
+        })
+      }
+  });
+
+  Shiny.addCustomMessageHandler('show',
+    function(data) {
+      var views = getViews(data.id);
+      if (typeof views != 'undefined') {
+        views.forEach(function(v, i){
+          if(data.figures = "*")
+            v.show()
+          else if(data.figures.includes(i))
+            v.show()
+        })
       }
   });
 }
