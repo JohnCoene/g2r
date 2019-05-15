@@ -25,13 +25,13 @@ articles:
 reference:
   - title: "Initialisation & Shiny"
     desc: "Initialise g2r chart."
-    contents: 
+    contents:
       - g2r
       - g2r-shiny
   - title: "Animation"
     desc: >
       Helper functions to easily animate individual figures.
-    contents: 
+    contents:
       - Animation
       - new_animation
   - title: "Aspects"
@@ -106,7 +106,7 @@ navbar:
     - icon: fa-balance-scale
       href: LICENSE.html
     - icon: fa-newspaper-o
-      href: news/index.html
+      href: news.html
     - icon: fa-code
       text: Reference
       href: "reference/"
