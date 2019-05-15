@@ -13,7 +13,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Shiny">
@@ -63,12 +64,6 @@
   </a>
 </li>
 <li>
-  <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/">
     <span class="fa fa-code"></span>
      
@@ -105,7 +100,7 @@
       <h1>Shiny</h1>
                         <h4 class="author">John (JP) Coene</h4>
             
-            <h4 class="date">2019-05-14</h4>
+            <h4 class="date">2019-05-15</h4>
       
       
       <div class="hidden name"><code>shiny.Rmd</code></div>
@@ -115,63 +110,63 @@
     
     
 <p><code>g2r</code> comes with “proxies” which allow you to dynamically interact with a chart in <a href="https://shiny.rstudio.com/">Shiny</a>. For instance, in the example below we change the data plotted on the chart without redrawing the entire chart; axis and other elements remain.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)
-
-.make_data &lt;-<span class="st"> </span><span class="cf">function</span>(){
-  dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">tibble</a></span>(
-    <span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>,
-    <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">20</span>)
-  )
-}
-
-ui &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidRow</a></span>(
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/column">column</a></span>(<span class="dv">10</span>, <span class="kw"><a href="../reference/g2r-shiny.html">g2Output</a></span>(<span class="st">"chart"</span>)),
-    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/column">column</a></span>(<span class="dv">2</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">"chg"</span>, <span class="st">"chg"</span>))
-  )
-)
-
-server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {
-  output<span class="op">$</span>chart &lt;-<span class="st"> </span><span class="kw"><a href="../reference/g2r-shiny.html">renderG2</a></span>({
-    <span class="kw"><a href="../reference/g2r.html">g2</a></span>(<span class="kw">.make_data</span>(), <span class="kw"><a href="../reference/asp.html">asp</a></span>(x, y)) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="../reference/geoms.html">fig_point</a></span>()
-  })
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>chg, {
-    <span class="kw"><a href="../reference/g2r-shiny.html">g2Proxy</a></span>(<span class="st">"chart"</span>) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="../reference/change_data.html">change_data</a></span>(<span class="kw">.make_data</span>(), x, y)
-  })
-}
-
-<span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server)</code></pre></div>
+<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">.make_data &lt;-<span class="st"> </span><span class="cf">function</span>(){</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">tibble</a></span>(</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    <span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>,</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="dt">y =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">ui &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidRow</a></span>(</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/column">column</a></span>(<span class="dv">10</span>, <span class="kw"><a href="../reference/g2r-shiny.html">g2Output</a></span>(<span class="st">"chart"</span>)),</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/column">column</a></span>(<span class="dv">2</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">"chg"</span>, <span class="st">"chg"</span>))</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">  )</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">)</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">  output<span class="op">$</span>chart &lt;-<span class="st"> </span><span class="kw"><a href="../reference/g2r-shiny.html">renderG2</a></span>({</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">    <span class="kw"><a href="../reference/g2r.html">g2</a></span>(<span class="kw">.make_data</span>(), <span class="kw"><a href="../reference/asp.html">asp</a></span>(x, y)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="st">      </span><span class="kw"><a href="../reference/geoms.html">fig_point</a></span>()</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">  })</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>chg, {</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">    <span class="kw"><a href="../reference/g2r-shiny.html">g2Proxy</a></span>(<span class="st">"chart"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-25" data-line-number="25"><span class="st">      </span><span class="kw"><a href="../reference/change_data.html">change_data</a></span>(<span class="kw">.make_data</span>(), x, y)</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">  })</a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">}</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server)</a></code></pre>
 <p>Or in the example below where we can programatically reveal and conceal figures.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)
-
-ui &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">"hide"</span>, <span class="st">"hide"</span>),
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">"show"</span>, <span class="st">"show"</span>),
-  <span class="kw"><a href="../reference/g2r-shiny.html">g2Output</a></span>(<span class="st">"chart"</span>)
-)
-
-server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {
-  output<span class="op">$</span>chart &lt;-<span class="st"> </span><span class="kw"><a href="../reference/g2r-shiny.html">renderG2</a></span>({
-    <span class="kw"><a href="../reference/g2r.html">g2</a></span>(cars, <span class="kw"><a href="../reference/asp.html">asp</a></span>(speed, dist)) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="../reference/geoms.html">fig_point</a></span>() <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="../reference/geoms.html">fig_line</a></span>()
-  })
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>hide, {
-    <span class="kw"><a href="../reference/g2r-shiny.html">g2Proxy</a></span>(<span class="st">"chart"</span>) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="../reference/visible.html">conceal</a></span>()
-  })
-
-  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>show, {
-    <span class="kw"><a href="../reference/g2r-shiny.html">g2Proxy</a></span>(<span class="st">"chart"</span>) <span class="op">%&gt;%</span>
-<span class="st">      </span><span class="kw"><a href="../reference/visible.html">reveal</a></span>()
-  })
-}
-
-<span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server)</code></pre></div>
+<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">ui &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">"hide"</span>, <span class="st">"hide"</span>),</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/actionButton">actionButton</a></span>(<span class="st">"show"</span>, <span class="st">"show"</span>),</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">  <span class="kw"><a href="../reference/g2r-shiny.html">g2Output</a></span>(<span class="st">"chart"</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">  output<span class="op">$</span>chart &lt;-<span class="st"> </span><span class="kw"><a href="../reference/g2r-shiny.html">renderG2</a></span>({</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">    <span class="kw"><a href="../reference/g2r.html">g2</a></span>(cars, <span class="kw"><a href="../reference/asp.html">asp</a></span>(speed, dist)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="st">      </span><span class="kw"><a href="../reference/geoms.html">fig_point</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="st">      </span><span class="kw"><a href="../reference/geoms.html">fig_line</a></span>()</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">  })</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>hide, {</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">    <span class="kw"><a href="../reference/g2r-shiny.html">g2Proxy</a></span>(<span class="st">"chart"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="st">      </span><span class="kw"><a href="../reference/visible.html">conceal</a></span>()</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">  })</a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/observeEvent">observeEvent</a></span>(input<span class="op">$</span>show, {</a>
+<a class="sourceLine" id="cb2-22" data-line-number="22">    <span class="kw"><a href="../reference/g2r-shiny.html">g2Proxy</a></span>(<span class="st">"chart"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="st">      </span><span class="kw"><a href="../reference/visible.html">reveal</a></span>()</a>
+<a class="sourceLine" id="cb2-24" data-line-number="24">  })</a>
+<a class="sourceLine" id="cb2-25" data-line-number="25">}</a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server)</a></code></pre>
 <p>You can find other proxies in the <a href="https://g2r.dev/reference/#section-shiny">reference manual</a>.</p>
   </div>
 
@@ -186,7 +181,7 @@ server &lt;-<span class="st"> </span><span class="cf">function</span>(input, out
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
 </div>

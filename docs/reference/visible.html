@@ -42,8 +42,7 @@
   
 <meta property="og:title" content="Conceal &amp; Reveal Figures — visible" />
 
-<meta property="og:description" content="Conceal &amp;amp; reveal figures.
-Conceal &amp;amp; reveal tooltips." />
+<meta property="og:description" content="Conceal &amp;amp; reveal figures." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -105,12 +104,6 @@ Conceal &amp;amp; reveal tooltips." />
   </a>
 </li>
 <li>
-  <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/">
     <span class="fa fa-code"></span>
      
@@ -153,17 +146,12 @@ Conceal &amp;amp; reveal tooltips." />
     <div class="ref-description">
     
     <p>Conceal &amp; reveal figures.</p>
-<p>Conceal &amp; reveal tooltips.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>conceal</span>(<span class='no'>proxy</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>reveal</span>(<span class='no'>proxy</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>conceal_tooltip</span>(<span class='no'>proxy</span>)
-
-<span class='fu'>reveal_tooltip</span>(<span class='no'>proxy</span>, <span class='no'>x</span>, <span class='no'>y</span>)</pre>
+<span class='fu'>reveal</span>(<span class='no'>proxy</span>, <span class='kw'>figures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,10 +163,6 @@ Conceal &amp;amp; reveal tooltips." />
     <tr>
       <th>figures</th>
       <td><p>Index of figures to apply the change to.</p></td>
-    </tr>
-    <tr>
-      <th>x, y</th>
-      <td><p>Coordinates of tooltip</p></td>
     </tr>
     </table>
     
@@ -207,32 +191,6 @@ Conceal &amp;amp; reveal tooltips." />
   <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
     <span class='fu'><a href='g2r-shiny.html'>g2Proxy</a></span>(<span class='st'>"chart"</span>) <span class='kw'>%&gt;%</span>
       <span class='fu'>reveal</span>()
-  })
-}</div><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
-<span class='co'># }</span><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>shiny</span>)
-
-<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/fluidPage'>fluidPage</a></span>(
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/actionButton'>actionButton</a></span>(<span class='st'>"hide"</span>, <span class='st'>"hide"</span>),
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/actionButton'>actionButton</a></span>(<span class='st'>"show"</span>, <span class='st'>"show"</span>),
-  <span class='fu'><a href='g2r-shiny.html'>g2Output</a></span>(<span class='st'>"chart"</span>)
-)
-
-<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
-  <span class='no'>output</span>$<span class='no'>chart</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='g2r-shiny.html'>renderG2</a></span>({
-    <span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>cars</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>)) <span class='kw'>%&gt;%</span>
-      <span class='fu'><a href='geoms.html'>fig_point</a></span>()
-  })
-
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>hide</span>, {
-    <span class='fu'><a href='g2r-shiny.html'>g2Proxy</a></span>(<span class='st'>"chart"</span>) <span class='kw'>%&gt;%</span>
-      <span class='fu'>conceal_tooltip</span>()
-  })
-
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
-    <span class='fu'><a href='g2r-shiny.html'>g2Proxy</a></span>(<span class='st'>"chart"</span>) <span class='kw'>%&gt;%</span>
-      <span class='fu'>reveal_tooltip</span>(<span class='fl'>8</span>, <span class='fl'>16</span>)
   })
 }</div><span class='co'># NOT RUN {</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)

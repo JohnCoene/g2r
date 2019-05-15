@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plane — plane • g2r</title>
+<title>Conceal &amp; Reveal Tooltips — visible-tooltip • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,9 +40,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Plane — plane" />
+<meta property="og:title" content="Conceal &amp; Reveal Tooltips — visible-tooltip" />
 
-<meta property="og:description" content="This function is similar to the facet_* family of functions from the ggplot2 package." />
+<meta property="og:description" content="Conceal &amp;amp; reveal tooltips." />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -138,69 +138,69 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plane</h1>
+    <h1>Conceal &amp; Reveal Tooltips</h1>
     
-    <div class="hidden name"><code>plane.Rd</code></div>
+    <div class="hidden name"><code>visible-tooltip.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function is similar to the <code>facet_*</code> family of functions from the <code>ggplot2</code> package.</p>
+    <p>Conceal &amp; reveal tooltips.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plane_wrap</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"list"</span>, <span class='st'>"rect"</span>, <span class='st'>"circle"</span>, <span class='st'>"tree"</span>, <span class='st'>"mirror"</span>,
-  <span class='st'>"matrix"</span>), <span class='kw'>sync</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>conceal_tooltip</span>(<span class='no'>proxy</span>)
 
-<span class='fu'>planes</span>(<span class='no'>...</span>)</pre>
+<span class='fu'>reveal_tooltip</span>(<span class='no'>proxy</span>, <span class='no'>x</span>, <span class='no'>y</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>g2</th>
-      <td><p>An object of class <code>g2r</code> as returned by <code><a href='g2r.html'>g2r</a></code>.</p></td>
+      <th>proxy</th>
+      <td><p>A g2r proxy as returned by <code><a href='g2r-shiny.html'>g2Proxy</a></code></p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Planes, bare column names or <code>NULL</code>.</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>The type of facet to user.</p></td>
-    </tr>
-    <tr>
-      <th>sync</th>
-      <td><p>Wether to <code><a href='sync.html'>sync</a></code> the <code>planes</code> and main mapping that were passed <code><a href='g2r.html'>g2</a></code></p></td>
+      <th>x, y</th>
+      <td><p>Coordinates of tooltip</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="type"><a class="anchor" href="#type"></a>Type</h2>
-
-    
-    <ul>
-<li><p><code>list</code></p></li>
-<li><p><code>rect</code></p></li>
-<li><p><code>circle</code></p></li>
-<li><p><code>mirror</code></p></li>
-<li><p><code>tree</code></p></li>
-<li><p><code>mirror</code></p></li>
-</ul>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>iris</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='g2r.html'>g2</a></span>(<span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>Petal.Length</span>, <span class='no'>Petal.Width</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>Species</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='geoms.html'>fig_point</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>plane_wrap</span>(<span class='fu'>planes</span>(<span class='no'>Species</span>))</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>shiny</span>)
+
+<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/fluidPage'>fluidPage</a></span>(
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/actionButton'>actionButton</a></span>(<span class='st'>"hide"</span>, <span class='st'>"hide"</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/actionButton'>actionButton</a></span>(<span class='st'>"show"</span>, <span class='st'>"show"</span>),
+  <span class='fu'><a href='g2r-shiny.html'>g2Output</a></span>(<span class='st'>"chart"</span>)
+)
+
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
+  <span class='no'>output</span>$<span class='no'>chart</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='g2r-shiny.html'>renderG2</a></span>({
+    <span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>cars</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>)) <span class='kw'>%&gt;%</span>
+      <span class='fu'><a href='geoms.html'>fig_point</a></span>()
+  })
+
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>hide</span>, {
+    <span class='fu'><a href='g2r-shiny.html'>g2Proxy</a></span>(<span class='st'>"chart"</span>) <span class='kw'>%&gt;%</span>
+      <span class='fu'>conceal_tooltip</span>()
+  })
+
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/observeEvent'>observeEvent</a></span>(<span class='no'>input</span>$<span class='no'>show</span>, {
+    <span class='fu'><a href='g2r-shiny.html'>g2Proxy</a></span>(<span class='st'>"chart"</span>) <span class='kw'>%&gt;%</span>
+      <span class='fu'>reveal_tooltip</span>(<span class='fl'>8</span>, <span class='fl'>16</span>)
+  })
+}</div><span class='co'># NOT RUN {</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/shiny/topics/shinyApp'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#type">Type</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
