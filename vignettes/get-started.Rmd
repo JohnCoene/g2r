@@ -273,7 +273,7 @@ g2(bw, asp(year, n)) %>%
   ) %>% 
   info_text(
     content = "Bretton Woods",
-    position = c("1949", 20),
+    position = c("1945", 20),
     inherit_asp = FALSE
   )
 ```
