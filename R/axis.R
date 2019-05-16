@@ -264,10 +264,16 @@ gauge_all_axis <- function(g2, ...){
 
 #' @rdname gauge_axis
 #' @export
-hide_axis <- function(g2){
+hide_axes <- function(g2){
   check_g2(g2)
   g2$x$allAxes <- FALSE
   g2
+}
+
+#' @rdname gauge_axis
+#' @export
+hide_axis <- function(g2){
+  .Deprecated("hide_axes")
 }
 
 axes <- function(g2, var, ..., nice = TRUE, range = NULL, ticks = NULL, tick_count = NULL, tick_interval = NULL, 

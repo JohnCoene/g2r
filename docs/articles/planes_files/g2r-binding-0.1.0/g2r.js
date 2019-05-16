@@ -11,6 +11,7 @@ HTMLWidgets.widget({
         chart;
     var views = [];
     G2.track(false);
+    var ran = false;
 
     return {
 
@@ -30,7 +31,12 @@ HTMLWidgets.widget({
 
         // initialise
         x.opts.container = el.id;
-        chart = new G2.Chart(x.opts);
+        if(ran == false){
+          chart = new G2.Chart(x.opts);
+          ran = true;
+        } else {
+          chart.clear();
+        }
 
         opts = x.layers;
 

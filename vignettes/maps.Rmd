@@ -55,3 +55,15 @@ g2(asp(longitude, latitude, color = value), data = countries) %>%
   fig_polygon(axes = FALSE, tooltip = FALSE) %>% 
   gauge_color(c("red", "white", "blue"))
 ```
+
+```{r}
+data("airports", package = "nycflights13")
+
+airports %>% 
+  dplyr::filter(lon <= -50) %>% 
+  g2(asp(lon, lat, color = "count"), height = 820) %>% 
+  fig_bin(type = "hexagon", bins = c(70, 70), size_count = FALSE) %>% 
+  gauge_color(c("red", "white", "blue")) %>% 
+  hide_axes() %>% 
+  motif(height = 820)
+```

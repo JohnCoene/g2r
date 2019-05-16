@@ -17,6 +17,7 @@
 \alias{gauge_x_discrete_time}
 \alias{gauge_y_discrete_time}
 \alias{gauge_all_axis}
+\alias{hide_axes}
 \alias{hide_axis}
 \title{Axis}
 \usage{
@@ -76,6 +77,8 @@ gauge_y_discrete_time(g2, ..., mask = NULL, nice = TRUE, sync = TRUE,
   formatter = NULL, ticks = NULL, tick_count = NULL, figure = NULL)
 
 gauge_all_axis(g2, ...)
+
+hide_axes(g2)
 
 hide_axis(g2)
 }
