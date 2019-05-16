@@ -12,7 +12,8 @@
 #'   fig_point() %>% 
 #'   info_data_marker(
 #'     content = "Marker",
-#'     position = c(20, 20)
+#'     position = c(20, 20),
+#'     inherit_asp = FALSE
 #'   )
 #' 
 #' newcars <- cars[1:26,]

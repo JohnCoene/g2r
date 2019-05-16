@@ -253,3 +253,27 @@ iris %>%
   g2(asp(Sepal.Length, Sepal.Width, color = Species)) %>%
   fig_point(anim)
 ```
+
+Using "informational elements" to a chart. See [documentation](/reference/info.html) for the full list. Note the chart below is inspired by the [Bretton Woods Wikipedia page](https://en.wikipedia.org/wiki/Bretton_Woods_system) which actually uses the same dataset from [CRAN](https://cran.r-project.org/web/packages/Ecdat/index.html).
+
+```{r}
+data("bankingCrises", package = "Ecdat")
+
+bw <- bankingCrises %>% 
+  tidyr::gather("country", "value", -year) %>% 
+  dplyr::group_by(year) %>% 
+  dplyr::summarise(n = sum(value))
+
+g2(bw, asp(year, n)) %>% 
+  fig_interval() %>% 
+  info_region(
+    start = c("1945", "min"),
+    end = c("1971", "max"),
+    inherit_asp = FALSE
+  ) %>% 
+  info_text(
+    content = "Bretton Woods",
+    position = c("1949", 20),
+    inherit_asp = FALSE
+  )
+```
