@@ -37,6 +37,8 @@ iris %>%
   plane_wrap(planes(Species), type = "tree")
 ```
 
+![](readme.png)
+
 Please note that the 'g2r' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 <a href="https://www.buymeacoffee.com/JohnCoene" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/black_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
