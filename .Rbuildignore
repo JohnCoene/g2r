@@ -10,3 +10,4 @@ pkgdown
 index.Rmd
 vignettes
 ^\.travis\.yml$
+readme.png

@@ -37,7 +37,7 @@ iris %>%
   plane_wrap(planes(Species), type = "tree")
 ```
 
-![](readme.png)
+![](./readme.png)
 
 Please note that the 'g2r' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
