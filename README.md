@@ -31,8 +31,7 @@ From ggplot2 to g2r.
 ``` r
 library(g2r)
 
-iris %>%
-  g2(asp(Petal.Length, Petal.Width, color = Species)) %>% 
+g2(iris, asp(Petal.Length, Petal.Width, color = Species)) %>% 
   fig_point() %>%
   plane_wrap(planes(Species), type = "tree")
 ```
