@@ -236,9 +236,12 @@ g2(cars, asp(speed, dist)) %>%
 In g2r you use `motif` instead of `theme`, though you can build your own with `custom_motif` there is a build-in `motif_dark` in addition to the default.
 
 ```{r}
-g2(cars, asp(speed, dist)) %>%
+cars2 <- dplyr::mutate(cars, speed = jitter(speed))
+
+g2(cars2, asp(speed, dist)) %>%
   fig_point() %>%
-  fig_smooth(method = "loess") %>% 
+  fig_smooth(method = "loess") %>%
+  fig_rug() %>%  
   motif_dark()
 ```
 

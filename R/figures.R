@@ -644,3 +644,69 @@ fig_guitar <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL) {
   make_geom(g2, ..., data = pmap(data, list), chart_type = "violin", inherit_aes = TRUE, name = name, mapping = aes)
 
 }
+
+#' Rug
+#' 
+#' Add rugs
+#' 
+#' @inheritParams geoms
+#' @param x_axis,y_axis Whether to show the ruf on the x and y axis.
+#' @param opacity Opacity of individual ticks, passed to \code{\link{asp}}.
+#' 
+#' @examples
+#' cars2 <- cars %>% 
+#'   dplyr::bind_rows(cars) %>% 
+#'   dplyr::mutate(
+#'     speed = jitter(speed),
+#'     dist = jitter(dist)
+#'   )
+#' 
+#' g2(cars2, asp(speed, dist)) %>% 
+#'   fig_point() %>% 
+#'   fig_rug()
+#' 
+#' @export
+fig_rug <- function(g2, ..., x_axis = TRUE, y_axis = TRUE, opacity = .5, data = NULL, inherit_asp = TRUE, name = NULL){
+
+  aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+  has_aes <- aes[names(aes) %in% c("x", "y")]
+
+  if(rlang::is_empty(has_aes))
+    stop("no `x`, or `y` aspect", call. = FALSE)
+
+  if(is.null(data)) data <- g2$x$data
+
+  grps <- aes[names(aes) %in% c("x", "y", "group")]
+
+  if(length(aes$group))
+    data <- group_split(data, !!!grps)
+  else
+    data <- list(data)
+
+  if(x_axis){
+    df <- data %>% 
+      map_dfr(function(df, aes){
+        df[[rlang::quo_name(aes$y)]] <- 0
+        return(df)
+      }, aes)
+
+    if(!length(aes$opacity)) aes$opacity <- opacity
+    aes$shape <- "line"
+
+    g2 <- make_geom(g2, ..., data = pmap(df, list), chart_type = "point", inherit_aes = TRUE, name = name, mapping = aes)
+  }
+
+  if(y_axis){
+    df <- data %>% 
+      map_dfr(function(df, aes){
+        df[[rlang::quo_name(aes$x)]] <- 0
+        return(df)
+      }, aes)
+
+    if(!length(aes$opacity)) aes$opacity <- opacity
+    aes$shape <- "hyphen"
+
+    g2 <- make_geom(g2, ..., data = pmap(df, list), chart_type = "point", inherit_aes = TRUE, name = name, mapping = aes)
+  }
+  return(g2)
+}
