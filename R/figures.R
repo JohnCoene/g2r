@@ -221,6 +221,7 @@ fig_voronoi <- function(g2, ..., data = NULL, inherit_asp = TRUE, name = NULL){
 #'   fig_point() %>% 
 #'   fig_smooth()
 #' 
+#' @name smooth
 #' @export
 fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, name = NULL){
 
@@ -241,7 +242,11 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
     paste0(collapse = "~")
 
   if(length(aes$group)){
+    # pull x before forcing numeric conversion
+    x <- pull(data, !!unname(aes$x))
+
     data <- data %>%
+      mutate(!!aes$x := as.numeric(!!aes$x)) %>% 
       group_split(!!aes$group) %>% 
       map_df(function(data, formula, aes){
 
@@ -256,7 +261,6 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
           stop("can't fit model", call. = FALSE)
 
         y <- fitted(model)
-        x <- pull(data, !!unname(aes$x))
 
         data <- dplyr::tibble(
           x = x,
@@ -269,6 +273,11 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
 
       }, formula, aes)
   } else {
+    x <- pull(data, !!unname(aes$x))
+
+    data <- data %>%
+      mutate(!!aes$x := as.numeric(!!aes$x))
+      
     model <- tryCatch(
       do.call(method, list(formula, data = data)),
       error = function(e) e
@@ -278,7 +287,6 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
       stop("can't fit model", call. = FALSE)
     
     y <- fitted(model)
-    x <- pull(data, !!unname(aes$x))
 
     data <- dplyr::tibble(
       x = x,
@@ -298,6 +306,48 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
 
   g2
 }
+
+# fig_se <- function(g2, ..., method = "lm", level = .95, data = NULL, inherit_asp = TRUE, name = NULL){
+  
+#   aes <- combine_aes_for_geom(g2$x$mapping, inherit_asp, ...)
+#   has_aes <- aes[names(aes) %in% c("x", "y", "group")]
+
+#   if(rlang::is_empty(has_aes))
+#     stop("no `x`, `y` aspects", call. = FALSE)
+
+#   if(is.null(data)) data <- g2$x$data
+
+#   formula <- aes %>% 
+#     map(rlang::quo_name) %>% 
+#     unlist() %>%
+#     .[names(.) %in% c("x", "y")] %>% 
+#     .[order(names(.), decreasing = TRUE)] %>% 
+#     unname() %>% 
+#     paste0(collapse = "~")
+
+#   model <- tryCatch(
+#     do.call(method, list(formula, data = data)),
+#     error = function(e) e
+#   )
+
+#   key <- "data"
+#   if(length(aes$y)) key <- rlang::quo_name(aes$y)
+
+#   new <- data %>% select(!!aes$x)
+#   conf_interval <- predict(model, newdata = new, interval = "confidence", level = level)
+#   conf_interval <- broom::tidy(conf_interval)
+#   conf_interval$fit <- NULL
+#   conf_interval <- bind_cols(new, conf_interval) %>% 
+#     tidyr::nest(lwr, upr, .key = !!key)
+
+#   conf_interval[[key]] <- conf_interval[[key]] %>% 
+#     map(unlist) %>% 
+#     map(unname)
+
+#   aes$y <- key
+
+#   make_geom(g2, ..., data = pmap(conf_interval, list), chart_type = "area", inherit_aes = TRUE, name = name, mapping = aes)
+# }
 
 #' Ribbon
 #' 
