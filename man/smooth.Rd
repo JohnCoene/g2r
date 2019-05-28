@@ -3,10 +3,14 @@
 \name{smooth}
 \alias{smooth}
 \alias{fig_smooth}
+\alias{fig_se}
 \title{Smooth}
 \usage{
 fig_smooth(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE,
   name = NULL)
+
+fig_se(g2, ..., method = "lm", level = 0.95, data = NULL,
+  inherit_asp = TRUE, name = NULL)
 }
 \arguments{
 \item{g2}{An object of class \code{g2r} as returned by \code{\link{g2r}}.}

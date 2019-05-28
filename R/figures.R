@@ -325,10 +325,15 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
 #     unname() %>% 
 #     paste0(collapse = "~")
 
+#   x <- pull(data, !!aes$x)
+
 #   model <- tryCatch(
 #     do.call(method, list(formula, data = data)),
 #     error = function(e) e
 #   )
+
+#   if(inherits(model, "error"))
+#     stop("can't fit model", call. = FALSE)
 
 #   key <- "data"
 #   if(length(aes$y)) key <- rlang::quo_name(aes$y)
@@ -337,7 +342,9 @@ fig_smooth <- function(g2, ..., method = "lm", data = NULL, inherit_asp = TRUE, 
 #   conf_interval <- predict(model, newdata = new, interval = "confidence", level = level)
 #   conf_interval <- broom::tidy(conf_interval)
 #   conf_interval$fit <- NULL
-#   conf_interval <- bind_cols(new, conf_interval) %>% 
+#   conf_interval$lwr <- x
+#   conf_interval <- bind_cols(new, conf_interval) %>%
+#     distinct() %>% 
 #     tidyr::nest(lwr, upr, .key = !!key)
 
 #   conf_interval[[key]] <- conf_interval[[key]] %>% 

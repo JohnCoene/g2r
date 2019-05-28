@@ -280,3 +280,25 @@ g2(bw, asp(year, n)) %>%
     inherit_asp = FALSE
   )
 ```
+
+You can pass lists as axis data.
+
+```{r}
+library(g2r)
+library(purrr)
+
+df <- dplyr::tibble(
+  x = letters[1:10],
+  y1 = runif(10, 1, 5),
+  y2 = runif(10, 7, 10)
+) %>% 
+  tidyr::nest(y1, y2)
+
+df$data <- df$data %>% 
+  map(unlist) %>% 
+  map(unname)
+
+g2(df, asp(x, data)) %>% 
+  fig_point(asp(shape = "circle", size = 5)) %>% 
+  fig_interval(asp(size = 3))
+```
