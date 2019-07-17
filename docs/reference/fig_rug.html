@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gauge shape — gauge_shape • g2r</title>
+<title>Rug — fig_rug • g2r</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Gauge shape — gauge_shape" />
+<meta property="og:title" content="Rug — fig_rug" />
 
-<meta property="og:description" content="Gauge shapes." />
+<meta property="og:description" content="Add rugs" />
 
 <meta property="og:image" content="http://g2r.dev/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -137,18 +137,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Gauge shape</h1>
+    <h1>Rug</h1>
     
-    <div class="hidden name"><code>gauge_shape.Rd</code></div>
+    <div class="hidden name"><code>fig_rug.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Gauge shapes.</p>
+    <p>Add rugs</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>gauge_shape</span>(<span class='no'>g2</span>, <span class='kw'>shapes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>callback</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>fig_rug</span>(<span class='no'>g2</span>, <span class='no'>...</span>, <span class='kw'>x_axis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>y_axis</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>opacity</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>inherit_asp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,20 +159,43 @@
       <td><p>An object of class <code>g2r</code> as returned by <code><a href='g2r.html'>g2r</a></code>.</p></td>
     </tr>
     <tr>
-      <th>shapes</th>
-      <td><p>A vector of shapes.</p></td>
+      <th>...</th>
+      <td><p>Any option, aesthetic (<code><a href='asp.html'>asp</a></code>), or animation (<code><a href='G2animation.html'>Animation</a></code>).</p></td>
     </tr>
     <tr>
-      <th>callback</th>
-      <td><p>A JavaScript callback function (see <code><a href='cb.html'>cb</a></code>) which returns a color.</p></td>
+      <th>x_axis, y_axis</th>
+      <td><p>Whether to show the ruf on the x and y axis.</p></td>
+    </tr>
+    <tr>
+      <th>opacity</th>
+      <td><p>Opacity of individual ticks, passed to <code><a href='asp.html'>asp</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>A <code>data.frame</code> containing data to chart or a <code>list</code>.</p></td>
+    </tr>
+    <tr>
+      <th>inherit_asp</th>
+      <td><p>Whether to inherit aspects from <code>g2r</code>.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>Name of figure, useful to apply functions to specific figures.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>mtcars</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>mpg</span>, <span class='no'>qsec</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='no'>am</span>)) <span class='kw'>%&gt;%</span>
+    <pre class="examples"><div class='input'><span class='no'>cars2</span> <span class='kw'>&lt;-</span> <span class='no'>cars</span> <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>cars</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(
+    <span class='kw'>speed</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/jitter'>jitter</a></span>(<span class='no'>speed</span>),
+    <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/jitter'>jitter</a></span>(<span class='no'>dist</span>)
+  )
+
+<span class='fu'><a href='g2r.html'>g2</a></span>(<span class='no'>cars2</span>, <span class='fu'><a href='asp.html'>asp</a></span>(<span class='no'>speed</span>, <span class='no'>dist</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='geoms.html'>fig_point</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'>gauge_shape</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"hollowDiamond"</span>, <span class='st'>"hollowBowtie"</span>))</div></pre>
+  <span class='fu'>fig_rug</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

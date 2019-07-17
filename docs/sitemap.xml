@@ -76,7 +76,7 @@
     <loc>http://g2r.dev/reference/fig_ribbon.html</loc>
   </url>
   <url>
-    <loc>http://g2r.dev/reference/fig_smooth.html</loc>
+    <loc>http://g2r.dev/reference/fig_rug.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/fig_voronoi.html</loc>
@@ -149,6 +149,9 @@
   </url>
   <url>
     <loc>http://g2r.dev/reference/plot_callbacks.html</loc>
+  </url>
+  <url>
+    <loc>http://g2r.dev/reference/smooth.html</loc>
   </url>
   <url>
     <loc>http://g2r.dev/reference/states.html</loc>
