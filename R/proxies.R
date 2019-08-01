@@ -353,4 +353,3 @@ reveal_tooltip <- function(proxy, x, y){
 
   return(proxy)
 }
-
