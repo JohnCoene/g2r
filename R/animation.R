@@ -10,7 +10,7 @@
 #' 
 #' iris %>% 
 #'   g2(asp(Sepal.Length, Sepal.Width, color = Species)) %>% 
-#'   fig_point(anim) # pass animation to the geom
+#'   fig_point(anim) # pass animation to the geom
 #' 
 #' @name G2animation
 #' @export
