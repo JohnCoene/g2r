@@ -1,6 +1,7 @@
 url: http://g2r.dev
 
 template:
+  path: pkgdown/templates
   params:
     bootswatch: paper
     ganalytics: UA-74544116-1
